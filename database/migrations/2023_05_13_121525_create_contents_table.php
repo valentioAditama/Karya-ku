@@ -15,7 +15,7 @@ class CreateContentsTable extends Migration
     {
         Schema::create('content', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_users');
+            $table->uuid('id_users');
             $table->string('title', 50);
             $table->string('sub_title', 150);
             $table->text('description');

@@ -15,7 +15,7 @@ class CreateVideoContentCommunitiesTable extends Migration
     {
         Schema::create('video_content_communities', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_content_community');
+            $table->uuid('id_content_community');
             $table->string('path', 200);
             $table->timestamps();
 

@@ -15,7 +15,7 @@ class CreateImageContentCommunitiesTable extends Migration
     {
         Schema::create('image_content_community', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_content_community');
+            $table->uuid('id_content_community');
             $table->string('path', 200);
             $table->timestamps();
 

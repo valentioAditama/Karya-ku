@@ -15,7 +15,7 @@ class CreateVideoContentsTable extends Migration
     {
         Schema::create('video_content', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_content');
+            $table->uuid('id_content');
             $table->string('path', 200);
             $table->timestamps();
 

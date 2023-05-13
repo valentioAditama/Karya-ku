@@ -15,8 +15,8 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_community');
-            $table->unsignedBigInteger('id_user');
+            $table->uuid('id_community');
+            $table->uuid('id_user');
             $table->timestamps();
 
             // referece to community and users

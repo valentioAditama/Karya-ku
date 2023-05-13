@@ -15,10 +15,10 @@ class CreateSocialMediaTable extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_user');
+            $table->uuid('id_user');
             $table->string('name', 40);
             $table->timestamps();
-            
+
             // reference to users
             $table->foreign('id_user')->references('id')->on('users');
         });

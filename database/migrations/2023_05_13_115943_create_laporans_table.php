@@ -15,10 +15,10 @@ class CreateLaporansTable extends Migration
     {
         Schema::create('laporan', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_user');
+            $table->uuid('id_user');
             $table->string('comment', 600);
             $table->timestamps();
-            
+
             // reference to users
             $table->foreign('id_user')->references('id')->on('users');
         });

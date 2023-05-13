@@ -15,8 +15,8 @@ class CreateLikeContentCommunitiesTable extends Migration
     {
         Schema::create('like_content_community', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_content_community');
-            $table->unsignedBigInteger('id_user');
+            $table->uuid('id_content_community');
+            $table->uuid('id_user');
             $table->timestamps();
 
             // reference to to content community and users

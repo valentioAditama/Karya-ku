@@ -15,8 +15,8 @@ class CreateContentCommunitiesTable extends Migration
     {
         Schema::create('content_community', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedInteger('id_user');
-            $table->unsignedInteger('id_community');
+            $table->uuid('id_user');
+            $table->uuid('id_community');
             $table->string('description', 2000);
             $table->timestamps();
 

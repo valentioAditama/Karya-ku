@@ -15,7 +15,7 @@ class CreateContactUsTable extends Migration
     {
         Schema::create('contact_us', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_user');
+            $table->uuid('id_user');
             $table->string('subject', 50);
             $table->string('messages', 600);
             $table->timestamps();

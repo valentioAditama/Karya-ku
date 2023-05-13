@@ -15,7 +15,7 @@ class CreateThumbnailCommunitiesTable extends Migration
     {
         Schema::create('thumbnail_community', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_community');
+            $table->uuid('id_community');
             $table->string('path', 200);
             $table->timestamps();
 
