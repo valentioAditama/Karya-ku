@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSkillsTable extends Migration
+class CreateThumbnailCommunitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('thumbnail_community', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_user');
-            $table->string('name_skills', 30);
+            $table->unsignedBigInteger('id_community');
+            $table->string('path', 200);
             $table->timestamps();
 
-            // reference to users
-            $table->foreign('id_user')->references('id')->on('users');
+            // reference to community
+            $table->foreign('id_community')->references('id')->on('community');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('thumbnail_community');
     }
 }
