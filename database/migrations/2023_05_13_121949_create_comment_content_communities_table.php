@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSkillsTable extends Migration
+class CreateCommentContentCommunitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('comment_content_community', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('id_content_community');
             $table->uuid('id_user');
-            $table->string('name_skills', 30);
+            $table->string('comment', 600);
             $table->timestamps();
 
-            // reference to users
+            // reference to to content community and users
+            $table->foreign('id_content_community')->references('id')->on('content_community');
             $table->foreign('id_user')->references('id')->on('users');
         });
     }
@@ -31,6 +33,6 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('comment_content_community');
     }
 }

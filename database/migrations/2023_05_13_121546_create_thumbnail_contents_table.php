@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSkillsTable extends Migration
+class CreateThumbnailContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('thumbnail_content', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id_user');
-            $table->string('name_skills', 30);
+            $table->uuid('id_content');
+            $table->string('path', 200);
             $table->timestamps();
 
-            // reference to users
-            $table->foreign('id_user')->references('id')->on('users');
+            // reference to Content
+            $table->foreign('id_content')->references('id')->on('content');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('thumbnail_contents');
     }
 }

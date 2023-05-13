@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSkillsTable extends Migration
+class CreateContactUsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('contact_us', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('id_user');
-            $table->string('name_skills', 30);
+            $table->string('subject', 50);
+            $table->string('messages', 600);
             $table->timestamps();
 
             // reference to users
@@ -31,6 +32,6 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('contact_us');
     }
 }
