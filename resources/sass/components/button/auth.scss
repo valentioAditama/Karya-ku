@@ -81,3 +81,24 @@
 .button-auth-register:active{
     background-color: black;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .form-input{
+        text-decoration: none;
+        color: rgba($color: white, $alpha: 1);
+        background-color: rgba($color: #000000, $alpha: .7);
+        border: 1px solid white;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 10px;
+        width: 100%;
+        animation: ease-out;
+        transition: 0.3s;
+    }
+    
+    .form-input:focus{
+        background-color: black;
+    }
+}
