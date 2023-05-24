@@ -20,8 +20,5 @@ Auth::routes();
 
 // Landing Page
 Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
-
-Route::middleware('auth')->group(function () {
-    // Home Page
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-});
+// home page
+Route::get('/home', [HomeController::class, 'index'])->name('home');
