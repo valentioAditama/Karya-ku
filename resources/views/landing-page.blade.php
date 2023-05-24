@@ -10,7 +10,7 @@
                     <p class="sub-title">Imajinasi berkembang di setiap lembar karya-mu</p>
                 </div>
                 <div class="mt-4">
-                    <a href="{{route('login')}}">
+                    <a href="{{route('home')}}">
                         <button class="button-auth ">Mulai Sekarang</button>
                     </a>
                 </div>
