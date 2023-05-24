@@ -4,7 +4,7 @@
 <div class="background-login text-light">
     <div class="container d-flex justify-content-end align-items-center h-100">
         <div class="row">
-            <div class="col-12 col-sm-12col-md-12">
+            <div class="col-12 col-sm-12 col-md-12">
                 <div class="title-auth">
                     <p class="fs-1">Selamat Datang</p>
                     <p class="fs-5">Silakan Login jika anda ingin <b>berkarya</b></p>

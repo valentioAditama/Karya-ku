@@ -1,4 +1,4 @@
-// Global function
+ /* Global function */
 .title-auth {
     line-height: 0.7;
 }
@@ -11,28 +11,28 @@
     font-size: 15px;
 }
 
-//landing page 
+/* landing page  */
 .background-landing-page {
     background-image: url('/public/images/landingpage.jpg');
     background-size: cover;
     height: 100vh;
 }
 
-// Login
+ /* Login */
 .background-login{
     background-image: url('/public/images/login.jpg');
     background-size: cover;
     height: 100vh;
 }
 
-// Register 
+ /* Register  */
 .background-register{
     background-image: url('/public/images/register.jpg');
     background-size: cover;
     height: 100vh;
 }
 
-// forgot Password
+ /* forgot Password */
 .background-forgot-password {
     background-image: url('/public/images/forgot-password.jpg');
     background-size: cover;
@@ -41,7 +41,7 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    // Global function
+     /* Global function */
     .title-auth {
         line-height: 0.9;
     }
@@ -54,14 +54,14 @@
         font-size: 12px;
     }
 
-    //landing page 
+    /* landing page  */
     .background-landing-page {
         background-image: url('/public/images/landingpage.jpg');
         background-size: cover;
         height: 100vh;
     }
 
-    // Login
+     /* Login */
     .background-login{
         background-image: url('/public/images/login.jpg');
         background-size: cover;
@@ -69,7 +69,7 @@
         background-position-x: -200px;
     }
 
-    // Register 
+     /* Register  */
     .background-register{
         background-image: url('/public/images/register.jpg');
         background-size: cover;
@@ -77,7 +77,7 @@
         background-position-x: -250px;
     }
 
-    // forgot Password
+     /* forgot Password */
     .background-forgot-password {
         background-image: url('/public/images/forgot-password.jpg');
         background-size: cover;
