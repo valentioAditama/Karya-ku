@@ -25,13 +25,13 @@
                     </div>
                     <div class="mt-3">
                         <div class="row d-flex">
-                            <div class="col-md-6">
+                            <div class="col-6 col-md-6">
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="show-password">
                                     <label class="form-check-label" for="show-password">Show password</label>
                                 </div>
                             </div>
-                            <div class="col-md-6 d-flex justify-content-end">
+                            <div class="col-6 col-md-6 d-flex justify-content-end">
                                 <a href="{{route('login')}}" class="text-decoration-none text-light">Sudah Punya Akun?</a>
                             </div>
                         </div>

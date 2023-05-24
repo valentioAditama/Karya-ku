@@ -1,0 +1,164 @@
+/* Landing Page */
+.button-auth {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    padding: 6px;
+    border-radius: 43px;
+    width: 170px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .button-auth:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  
+  .button-auth:active {
+    background-color: black;
+  }
+  
+  /* Login */
+  .button-auth-login {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    padding: 6px;
+    border-radius: 10px;
+    width: 120px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .button-auth-login:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  
+  .button-auth-login:active {
+    background-color: black;
+  }
+  
+  .form-input {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    width: 500px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .form-input:focus {
+    background-color: black;
+  }
+  
+  /* Register */
+  .button-auth-register {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    padding: 6px;
+    border-radius: 10px;
+    width: 120px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .button-auth-register:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  
+  .button-auth-register:active {
+    background-color: black;
+  }
+
+  /* Home */
+  .button-home-register {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #cab53fbc;
+    padding: 6px;
+    border-radius: 20px;
+    width: 150px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .button-home-register:hover {
+    background-color: rgba(0, 0, 0, 1);
+    border: 2px solid #cab53f;
+    color: white;
+  }
+
+  /* Komunitas */
+  .button-komunitas {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.581);
+    border: 2px solid rgba(255, 255, 255, 0.645);
+    padding: 6px;
+    border-radius: 20px;
+    width: 180px;
+    height: 50px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .button-komunitas:hover {
+    background-color: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+    color: white;
+  }
+
+   /* laporan */
+   .button-laporan {
+    text-decoration: none;
+    color: black;
+    background-color: lightgray;
+    border: 2px solid rgba(255, 255, 255, 0.645);
+    padding: 6px;
+    border-radius: 20px;
+    width: 180px;
+    height: 50px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .button-laporan:hover {
+    background-color: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+    color: white;
+  }
+  
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .form-input {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 1);
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 1px solid white;
+      padding: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 10px;
+      width: 100%;
+      animation: ease-out;
+      transition: 0.3s;
+    }
+  
+    .form-input:focus {
+      background-color: black;
+    }
+  }  

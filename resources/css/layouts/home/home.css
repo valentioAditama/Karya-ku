@@ -1,0 +1,30 @@
+.banner-home{
+    background-image: url('/public/images/home.png');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.nav-item {
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+.banner-home-title {
+    margin-top: 22vh;
+    line-height: 1.5;
+}
+
+.banner-home-sub-title {
+    font-size: 15px;
+}
+
+.banner-home-form {
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 20px ;
+}
+
+.banner-home-form:focus {
+    outline: none;
+}
