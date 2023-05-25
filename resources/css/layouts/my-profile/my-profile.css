@@ -1,0 +1,62 @@
+.banner-my-profile{
+    background-image: url('/public/images/my-profile.png');
+    height: 50vh;
+    background-size: cover;
+}
+
+.nav-item {
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+.profile-image{
+    height: 250px;
+}
+
+.image-profile {
+    position: absolute;
+    top: 330px;
+}
+
+.profile-location{
+    width: auto;
+    background-color: #89D5FF;
+    color: black;
+    padding: 10px;
+}
+
+.skills-profile {
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.social-media-profile {
+    display: inline-block;
+}
+
+.social-media-input {
+    width: 90%;
+    margin-left: 10px;
+    height: 35px;
+    padding-left: 10px;
+}
+
+.social-media-input:focus {
+    outline: none;
+}
+
+/* Change Password Login */
+.banner-need-login{
+    background-image: url('/public/images/change-password.png');
+    height: 70vh;
+    background-size: cover;
+}
+
+.banner-need-login-title {
+    margin-top: 22vh;
+    line-height: 1.2;
+}
+
+.banner-need-login-sub-title {
+    font-size: 15px;
+}

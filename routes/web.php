@@ -5,7 +5,10 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KomunitasController;
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\TentangKamiController;
+use App\Http\Controllers\UploadKarya;
+use App\Http\Controllers\UploadKaryaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +46,18 @@ Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tent
 
 // Kategori Page
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+
+// need Login 
+// Upload Karya Content
+Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
+
+// My Profiles
+Route::get('/my-profile', [MyProfileController::class, 'index'])->name('my-profile');
+Route::prefix('my-profile')->group(function () {
+    Route::get('/my-karya', [MyProfileController::class, 'my_karya'])->name('my-profile.karya');
+    
+    // ubah password
+    Route::get('/login-change-password', [MyProfileController::class, 'login_change_password'])->name('my-profile.login-change-password');
+    Route::get('/reset-password', [MyProfileController::class, 'reset_password'])->name('my-profile.reset-password');
+
+});
