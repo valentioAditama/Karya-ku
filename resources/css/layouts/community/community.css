@@ -28,3 +28,104 @@
 .banner-komunitas-form:focus {
     outline: none;
 }
+
+/* create community */
+.banner-komunitas-create{
+    background-image: url('/public/images/create-community.png');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.nav-item {
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+.banner-komunitas-create-title {
+    margin-top: 22vh;
+    line-height: 1.5;
+}
+
+.banner-komunitas-create-sub-title {
+    font-size: 15px;
+}
+
+.banner-komunitas-create-form {
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 20px ;
+}
+
+.banner-komunitas-create-form:focus {
+    outline: none;
+}
+
+/* Review community */
+.banner-komunitas-review{
+    background-image: url('/public/images/review-community.png');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.nav-item {
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+.banner-komunitas-review-title {
+    margin-top: 22vh;
+    line-height: 1.5;
+}
+
+.banner-komunitas-review-sub-title {
+    font-size: 15px;
+}
+
+.banner-komunitas-review-form {
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 20px ;
+}
+
+.banner-komunitas-review-form:focus {
+    outline: none;
+}
+
+.form-post {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+}
+
+.input-post {
+    background-color: #EDE9E9;
+    width: 100%;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-post:focus {
+    outline: none;
+}
+
+.image-file {
+    background-color: #EEEBEB;
+    padding: 10px;
+    width: 20vh;
+    border-radius: 20px;
+}
+
+.background-komunitas-review {
+    background-color: #EDE9E9;
+}
+
+.user-info{
+    line-height: 0.5;
+}
