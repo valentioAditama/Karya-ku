@@ -12,3 +12,5 @@
 @import 'layouts/home/home';
 @import 'layouts/community/community';
 @import 'layouts/report/report';
+@import 'layouts/category/category';
+@import 'layouts/about-us/about-us';
