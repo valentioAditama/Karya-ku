@@ -18,7 +18,9 @@
                             </p>
                             <input type="text" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda'>
                             <div class="mt-3">
-                                <button class="button-komunitas">Buat Komunitas</button>
+                                <a href="{{route('komunitas.create')}}">
+                                    <button class="button-komunitas">Buat Komunitas</button>
+                                </a>
                             </div>
                         </div>
                     </div>

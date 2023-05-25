@@ -30,6 +30,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Komunitas Page
 Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
+Route::prefix('komunitas')->group(function () {
+    Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
+    Route::get('/review', [KomunitasController::class, 'review'])->name('komunitas.review');
+});
 
 // Laporan Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
