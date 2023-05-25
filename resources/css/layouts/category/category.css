@@ -1,0 +1,30 @@
+.banner-category{
+    background-image: url('/public/images/category.png');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.nav-item {
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+.banner-category-title {
+    margin-top: 22vh;
+    line-height: 1.5;
+}
+
+.banner-category-sub-title {
+    font-size: 15px;
+}
+
+.banner-category-form {
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 20px ;
+}
+
+.banner-category-form:focus {
+    outline: none;
+}

@@ -1,0 +1,38 @@
+.banner-about-us{
+    background-image: url('/public/images/about-us.png');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.nav-item {
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+.banner-about-us-title {
+    margin-top: 22vh;
+    line-height: 1.5;
+}
+
+.banner-about-us-sub-title {
+    font-size: 15px;
+}
+
+.banner-about-us-form {
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 20px ;
+}
+
+.banner-about-us-form:focus {
+    outline: none;
+}
+
+.our-mission {
+    margin-top: 150px;
+}
+
+.contact{
+    margin-top: 150px;
+}
