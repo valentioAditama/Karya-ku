@@ -1,3 +1,5 @@
+/* All ABOUT STYLING */
+
 /* Fonts */
 @import url('https://fonts.bunny.net/css?family=Montserrat');
 
@@ -7,12 +9,32 @@
 /* components */
 @import 'components/button/button';
 
-/* Layouts */
+/* Layouts Views ALL PAGE */
+/* auth */
 @import 'layouts/auth/auth';
+
+/* home */
 @import 'layouts/home/home';
+
+/* review content */
+@import 'layouts/review-content/review-content';
+
+/* community */
 @import 'layouts/community/community';
+
+/* report */
 @import 'layouts/report/report';
+
+/* category */
 @import 'layouts/category/category';
+
+/* about us */
 @import 'layouts/about-us/about-us';
+
+/* Upload Content Karya */
 @import 'layouts/upload-karya/upload-karya';
+
+/* My Profile */
 @import 'layouts/my-profile/my-profile';
+
+/* HAPPY HACKING :) */

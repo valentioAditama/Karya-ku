@@ -23,4 +23,10 @@ class KomunitasController extends Controller
     {
         return view('user.community.review');
     }
+
+    // comment details 
+    public function reviewComment()
+    {
+        return view('user.community.commentsDetail');
+    }
 }
