@@ -4,21 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ReviewContentKarya extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // return view for users
-        return view('user.review-content.review-content');
-    }
-
-    public function adminPage()
-    {
-        // return view for admin and super-admin
-        return view('admin.content-karya.content-karya');
+        // return view for admin
+        return view('admin.users.users');
     }
 
     /**

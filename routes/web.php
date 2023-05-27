@@ -8,9 +8,11 @@ use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\ReviewContentKarya;
+use App\Http\Controllers\RolePermission;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\UploadKarya;
 use App\Http\Controllers\UploadKaryaController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,5 +72,24 @@ Route::prefix('my-profile')->group(function () {
 
 // Admin Page
 Route::prefix('admin')->group(function () {
+    // Dashboard
     Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
+
+    // Management Users
+    Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+
+    // Laporan
+    Route::get('/laporan', [LaporanController::class, 'adminPage'])->name('admin.laporan');
+
+    // Community
+    Route::get('/community', [KomunitasController::class, 'adminPageCommunity'])->name('admin.community');
+
+    // Community Comments
+    Route::get('/community/comments', [KomunitasController::class, 'adminPageComment'])->name('admin.community.comments');
+
+    // content Karya
+    Route::get('/content-karya', [ReviewContentKarya::class, 'adminPage'])->name('admin.content-karya');
+
+    // Role & permission
+    Route::get('/role-permission', [RolePermission::class, 'index'])->name('admin.role-permission');
 });
