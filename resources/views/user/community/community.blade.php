@@ -18,9 +18,17 @@
                             </p>
                             <input type="text" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda'>
                             <div class="mt-3">
+                                <!-- for guest -->
+                                @guest
+                                <button class="button-komunitas" onclick="communityNoAuth()">Buat Komunitas</button>
+                                @endguest
+
+                                <!-- for user has login -->
+                                @auth
                                 <a href="{{route('komunitas.create')}}">
                                     <button class="button-komunitas">Buat Komunitas</button>
                                 </a>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -90,5 +98,10 @@
 
 <!-- footer -->
 @include('components.user.footer')
+<!-- Notification -->
+@include('components.notifications')
+
+<!-- Nnotification -->
+@include('components.notifications')
 
 @endsection

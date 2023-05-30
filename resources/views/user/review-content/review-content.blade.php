@@ -155,5 +155,7 @@
 
 <!-- footer -->
 @include('components.user.footer')
+<!-- Notification -->
+@include('components.notifications')
 
 @endsection

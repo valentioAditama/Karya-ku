@@ -44,13 +44,13 @@
         </div>
         @endguest
 
-        <!-- for access login -->
+        <!-- for user has login -->
         @auth
         <div class="d-flex align-items-center">
-            <a href="" class="text-light">{{Auth::user()->fullname}}</a>&nbsp;
+            <a href="" class="text-light">{{Auth::user()->fullname}}</a> &nbsp; &nbsp;
             <div class="dropdown">
                 <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="rounded-circle" height="35" alt="Black and White Portrait of a Man" loading="lazy" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                     <li>
@@ -61,13 +61,17 @@
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-                        
+
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </li>
                 </ul>
             </div>
+            &nbsp; &nbsp;
+            <a class="text-light text-center button-home-upload" href="{{route('upload')}}" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Upload Karya">
+                <i class="fa-solid fa-upload"></i>
+            </a>
         </div>
         @endauth
 

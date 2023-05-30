@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\LaporanRequestStore;
-use App\Models\Laporan;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
@@ -14,7 +12,7 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        return view('user.report.report');
+        return view('admin.laporan.laporan');
     }
 
     /**
@@ -28,14 +26,9 @@ class LaporanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(LaporanRequestStore $request)
+    public function store(Request $request)
     {
-        // validation request 
-        $validateData = $request->validated();
-
-        // Store Data
-        Laporan::create($validateData);
-        return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+        //
     }
 
     /**
