@@ -10,18 +10,19 @@
                     <p class="fs-5">Silakan Login jika anda ingin <b>berkarya</b></p>
                 </div>
                 @csrf
-                <form action="" method="">
+                <form action="{{route('login')}}" method="POST">
+                    @csrf
                     <div class="mt-3">
-                        <input type="text" class="form-input" name="" id="" placeholder="Email" required>
+                        <input type="text" class="form-input" name="email" id="email" placeholder="Email" required>
                     </div>
                     <div class="mt-3">
-                        <input type="password" class="form-input " name="" id="" placeholder="Password" required>
+                        <input type="password" class="form-input" name="password" id="password" placeholder="Password" required>
                     </div>
                     <div class="mt-3">
                         <div class="row d-flex">
                             <div class="col-6 col-sm-8 col-md-8">
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="show-password">
+                                    <input type="checkbox" class="form-check-input" id="show-password" onclick="showPassword()">
                                     <label class="form-check-label" for="show-password">Show password</label>
                                 </div>
                             </div>
@@ -30,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="button-auth-login">Login</button>
+                    <button class="button-auth-login" type="submit">Login</button>
                 </form>
                 <div class="mt-2">
                     <a href="{{route('password.request')}}" class="text-decoration-none text-light">Lupa Password?</a>
@@ -39,4 +40,11 @@
         </div>
     </div>
 </div>
+
+<!-- Show Password -->
+@include('components.user.show-password')
+
+<!-- Notification -->
+@include('components.notifications')
+
 @endsection

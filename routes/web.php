@@ -32,6 +32,7 @@ Auth::routes();
 // Landing Page
 Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
 
+// Auth
 // home page
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

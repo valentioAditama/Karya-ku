@@ -1,5 +1,7 @@
+<!-- Extend from app -->
 @extends('layouts.app')
 
+<!-- Show Content -->
 @section('content')
 <div class="background-register text-light">
     <div class="container d-flex justify-content-end align-items-center h-100">
@@ -10,24 +12,26 @@
                     <p class="fs-5">Silakan daftar akun-mu jika belum mempunyai akun</p>
                 </div>
                 @csrf
-                <form action="" method="">
+                <!-- Form Page -->
+                <form action="{{route('register')}}" method="POST">
+                    @csrf
                     <div class="mt-3">
-                        <input type="text" class="form-input" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required>
+                        <input type="text" class="form-input @error('fullname') @enderror" name="fullname" value="{{ old('fullname') }}" id="fullname" placeholder="Nama Lengkap" required>
                     </div>
                     <div class="mt-3">
-                        <input type="text" class="form-input" name="email" id="email" placeholder="Email" required>
+                        <input type="email" class="form-input @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required>
                     </div>
                     <div class="mt-3">
-                        <input type="password" class="form-input" name="password" id="password" placeholder="Password" required>
+                        <input type="password" class="form-input @error('password') is-invalid @enderror" name="password" id="password" value="{{ old('password') }}" placeholder="Password" required>
                     </div>
                     <div class="mt-3">
-                        <input type="password" class="form-input" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                        <input type="password" class="form-input" name="password_confirmation" id="password_confirm" placeholder="Password Confirm" required>
                     </div>
                     <div class="mt-3">
                         <div class="row d-flex">
                             <div class="col-6 col-md-6">
                                 <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="show-password">
+                                    <input type="checkbox" class="form-check-input" id="show-password" onclick="showPassword()">
                                     <label class="form-check-label" for="show-password">Show password</label>
                                 </div>
                             </div>
@@ -36,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="button-auth-login">Register</button>
+                    <button class="button-auth-login" type="submit" onclick="validation()">Register</button>
                 </form>
                 <div class="mt-2">
                     <a href="password/reset" class="text-decoration-none text-light">Lupa Password?</a>
@@ -45,4 +49,11 @@
         </div>
     </div>
 </div>
+
+<!-- Show function Password -->
+@include('components.user.show-password')
+
+<!-- Notification -->
+@include('components.notifications')
+
 @endsection
