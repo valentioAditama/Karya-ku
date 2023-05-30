@@ -36,10 +36,41 @@
         <!-- Collapsible wrapper -->
 
         <!-- Right elements -->
+        <!-- for guest -->
+        @guest
         <div class="d-flex align-items-center">
             <a class="text-light me-3" href="{{route('login')}}">Masuk</a>
             <a class="text-light text-center button-home-register" href="{{route('register')}}">Buat Akun</a>
         </div>
+        @endguest
+
+        <!-- for access login -->
+        @auth
+        <div class="d-flex align-items-center">
+            <a href="" class="text-light">{{Auth::user()->fullname}}</a>&nbsp;
+            <div class="dropdown">
+                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @endauth
+
         <!-- Right elements -->
     </div>
     <!-- Container wrapper -->
