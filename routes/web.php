@@ -26,71 +26,80 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Auth::routes();
 
-// Landing Page
-Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
-
-// Auth
-// home page
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-// review content Karya
-Route::get('/review-karyaku', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
-
-// Komunitas Page
-Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
-Route::prefix('komunitas')->group(function () {
-    Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
-    Route::get('/review', [KomunitasController::class, 'review'])->name('komunitas.review');
-    Route::get('/review/comment', [KomunitasController::class, 'reviewComment'])->name('komunitas.review');
-});
-
-// Laporan Page
-Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
-
-// Tentang Kami Page
-Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
-
-// Kategori Page
-Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
-
-// need Login 
-// Upload Karya Content
-Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
-
-// My Profiles
-Route::get('/my-profile', [MyProfileController::class, 'index'])->name('my-profile');
-Route::prefix('my-profile')->group(function () {
-    Route::get('/my-karya', [MyProfileController::class, 'my_karya'])->name('my-profile.karya');
-
-    // ubah password
-    Route::get('/login-change-password', [MyProfileController::class, 'login_change_password'])->name('my-profile.login-change-password');
-    Route::get('/reset-password', [MyProfileController::class, 'reset_password'])->name('my-profile.reset-password');
-});
-
-
-// Admin Page
-Route::prefix('admin')->group(function () {
-    // Dashboard
-    Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
-
-    // Management Users
-    Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
-
-    // Laporan
-    Route::get('/laporan', [LaporanController::class, 'adminPage'])->name('admin.laporan');
+// Auth 
+Route::middleware('auth')->group(function () {
 
     // Community
-    Route::get('/community', [KomunitasController::class, 'adminPageCommunity'])->name('admin.community');
+    Route::prefix('komunitas')->group(function () {
+        Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
+    });
 
-    // Community Comments
-    Route::get('/community/comments', [KomunitasController::class, 'adminPageComment'])->name('admin.community.comments');
+    // My Profiles
+    Route::get('/my-profile', [MyProfileController::class, 'index'])->name('my-profile');
+    Route::prefix('my-profile')->group(function () {
+        Route::get('/my-karya', [MyProfileController::class, 'my_karya'])->name('my-profile.karya');
 
-    // content Karya
-    Route::get('/content-karya', [ReviewContentKarya::class, 'adminPage'])->name('admin.content-karya');
+        // ubah password
+        Route::get('/login-change-password', [MyProfileController::class, 'login_change_password'])->name('my-profile.login-change-password');
+        Route::get('/reset-password', [MyProfileController::class, 'reset_password'])->name('my-profile.reset-password');
+    });
 
-    // Role & permission
-    Route::get('/role-permission', [RolePermission::class, 'index'])->name('admin.role-permission');
+    // Upload Karya Content
+    Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
+
+
+    // ================= Admin Page =============================
+    Route::prefix('admin')->group(function () {
+        // Dashboard
+        Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
+
+        // Management Users
+        Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+
+        // Laporan
+        Route::get('/laporan', [LaporanController::class, 'adminPage'])->name('admin.laporan');
+
+        // Community
+        Route::get('/community', [KomunitasController::class, 'adminPageCommunity'])->name('admin.community');
+
+        // Community Comments
+        Route::get('/community/comments', [KomunitasController::class, 'adminPageComment'])->name('admin.community.comments');
+
+        // content Karya
+        Route::get('/content-karya', [ReviewContentKarya::class, 'adminPage'])->name('admin.content-karya');
+
+        // Role & permission
+        Route::get('/role-permission', [RolePermission::class, 'index'])->name('admin.role-permission');
+    });
+});
+
+// Guest
+Route::middleware('guest')->group(function () {
+    // Landing Page
+    Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
+
+    // home page
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // Komunitas Page
+    Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
+    Route::prefix('komunitas')->group(function () {
+        Route::get('/review', [KomunitasController::class, 'review'])->name('komunitas.review');
+        Route::get('/review/comment', [KomunitasController::class, 'reviewComment'])->name('komunitas.review');
+    });
+
+    // Laporan Page
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+
+    // Tentang Kami Page
+    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
+
+    // Kategori Page
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+
+
+    // review content Karya
+    Route::get('/review-karyaku', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
 });
