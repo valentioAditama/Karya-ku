@@ -1,18 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeAdminController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\KomunitasController;
-use App\Http\Controllers\LandingPage;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\MyProfileController;
-use App\Http\Controllers\ReviewContentKarya;
-use App\Http\Controllers\RolePermission;
-use App\Http\Controllers\TentangKamiController;
-use App\Http\Controllers\UploadKarya;
-use App\Http\Controllers\UploadKaryaController;
-use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,30 +63,28 @@ Route::middleware('auth')->group(function () {
 });
 
 // Guest
-Route::middleware('guest')->group(function () {
-    // Landing Page
-    Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
+// Landing Page
+Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
 
-    // home page
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+// home page
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    // Komunitas Page
-    Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
-    Route::prefix('komunitas')->group(function () {
-        Route::get('/review', [KomunitasController::class, 'review'])->name('komunitas.review');
-        Route::get('/review/comment', [KomunitasController::class, 'reviewComment'])->name('komunitas.review');
-    });
-
-    // Laporan Page
-    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
-
-    // Tentang Kami Page
-    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
-
-    // Kategori Page
-    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
-
-
-    // review content Karya
-    Route::get('/review-karyaku', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
+// Komunitas Page
+Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
+Route::prefix('komunitas')->group(function () {
+    Route::get('/review', [KomunitasController::class, 'review'])->name('komunitas.review');
+    Route::get('/review/comment', [KomunitasController::class, 'reviewComment'])->name('komunitas.review');
 });
+
+// Laporan Page
+Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+
+// Tentang Kami Page
+Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
+
+// Kategori Page
+Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+
+
+// review content Karya
+Route::get('/review-karyaku', [ReviewContentKarya::class, 'index'])->name('reviewKarya');

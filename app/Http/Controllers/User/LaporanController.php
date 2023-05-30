@@ -10,9 +10,4 @@ class LaporanController extends Controller
     {
         return view('user.report.report');
     }
-
-    public function adminPage()
-    {
-        return view('admin.laporan.laporan');
-    }
 }
