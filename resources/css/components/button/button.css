@@ -101,6 +101,25 @@
     color: white;
   }
 
+  /* home Upload */
+  .button-home-upload {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #cab53fbc;
+    padding: 6px;
+    border-radius: 20px;
+    width: 40px;
+    animation: ease-out;
+    transition: 0.3s;
+  }
+  
+  .button-home-upload:hover {
+    background-color: rgba(0, 0, 0, 1);
+    border: 2px solid #cab53f;
+    color: white;
+  }
+
   /* Komunitas */
   .button-komunitas {
     text-decoration: none;

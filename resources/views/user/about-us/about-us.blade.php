@@ -65,34 +65,46 @@
     </div>
 
     <div class="container mt-5 mb-5">
-        <div class="row">
+        <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="">Nama Lengkap</label>
-                    <input type="text" class="form-control">
+                @guest
+                <div class="text-center mt-5">
+                    <h4>Silakan Anda Login Terlebih Dahulu ya Agar Bisa Kontak Kami Disini</h4>
                 </div>
-                <div class="mb-3">
-                    <label for="">Alamat Email</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="">Subject</label>
-                    <input type="text" class="form-control">
-                </div>
+                @endguest
+
+                @auth
+                <form action="{{route('tentang-kami.add')}}" method="post">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="">Nama Lengkap</label>
+                        <input type="text" class="form-control" value="{{Auth::user()->fullname}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Alamat Email</label>
+                        <input type="email" class="form-control" value="{{Auth::user()->email}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Subject</label>
+                        <input type="text" class="form-control" name="subject" required>
+                    </div>
             </div>
             <div class="col-md-6">
                 <label for="">Pesan</label>
-                <textarea class="form-control" name="" id="" cols="30" rows="7"></textarea>
+                <textarea class="form-control" name="messages" id="" cols="30" rows="7" required></textarea>
             </div>
             <div class="d-flex justify-content-end mt-3">
                 <button type="submit" class="button-laporan">Kirimkan</button>
             </div>
+            </form>
+            @endauth
         </div>
-
     </div>
 </section>
 
 <!-- footer -->
 @include('components.user.footer')
+<!-- Notification -->
+@include('components.notifications')
 
 @endsection

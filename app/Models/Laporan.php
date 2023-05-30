@@ -19,10 +19,4 @@ class Laporan extends Model
         'id_user',
         'comment'
     ];
-
-    // Relation To Users 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

@@ -20,7 +20,7 @@
                             <div class="mt-3">
                                 <!-- for guest -->
                                 @guest
-                                    <button class="button-komunitas" onclick="communityNoAuth()">Buat Komunitas</button>
+                                <button class="button-komunitas" onclick="communityNoAuth()">Buat Komunitas</button>
                                 @endguest
 
                                 <!-- for user has login -->
@@ -98,6 +98,8 @@
 
 <!-- footer -->
 @include('components.user.footer')
+<!-- Notification -->
+@include('components.notifications')
 
 <!-- Nnotification -->
 @include('components.notifications')

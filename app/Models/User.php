@@ -50,8 +50,8 @@ class User extends Authenticatable
 
     // relation to manny tables 
     // To Laporan 
-    public function laporan()
-    {
-        return $this->hasMany(Laporan::class);
-    }
+    // public function laporan()
+    // {
+    //     return $this->hasMany(Laporan::class);
+    // }
 }
