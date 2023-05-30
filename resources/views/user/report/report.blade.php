@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <!-- Banner-laporan -->
 <section class="banner-laporan">
     <div class="container-fluid">
@@ -35,26 +36,28 @@
 
     <!-- Form Laporan -->
     <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-5 align-items-center">
             <div class="col-md-6">
                 <img src="{{asset('icon/image 70.png')}}" class="img-fluid " alt="">
             </div>
             <div class="col-md-6">
-                <form action="" method="post">
+                @guest
+                <div class="text-center">
+                    <h4>Silakan Anda Login Terlebih Dahulu ya Agar Bisa Berkometar Disini</h4>
+                </div>
+                @endguest
+                @auth
+                <form action="{{route('laporan.add')}}" method="POST">
                     @csrf
-                    <div class="mt-5">
-                        <label for="">Nama Lengkap</label> <br>
-                        <input type="text" class="form-control" required>
-                    </div>
-
                     <div class="mt-3">
                         <label for="">Komentar Anda</label> <br>
-                        <textarea name="" class="form-control" id="" cols="30" rows="5" required></textarea>
+                        <textarea name="comment" class="form-control" id="" cols="30" rows="10" required></textarea>
                     </div>
                     <div class="d-flex justify-content-end mt-3">
                         <button type="submit" class="button-laporan">Kirimkan Komentar</button>
                     </div>
                 </form>
+                @endauth
             </div>
         </div>
     </div>
@@ -62,5 +65,8 @@
 
 <!-- footer -->
 @include('components.user.footer')
+
+<!-- Notification -->
+@include('components.notifications')
 
 @endsection

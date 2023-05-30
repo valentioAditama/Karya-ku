@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
+use App\Http\Requests\LaporanRequestStore;
+use App\Models\Laporan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class RolePermission extends Controller
+class LaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.role-permission.role-permission');
+        return view('user.report.report');
     }
 
     /**
@@ -25,9 +28,14 @@ class RolePermission extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LaporanRequestStore $request)
     {
-        //
+        // validation request 
+        $validateData = $request->validated();
+
+        // Store Data
+        Laporan::create($validateData);
+        return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
     }
 
     /**

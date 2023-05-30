@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class VideoContentCommunity extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
+
+    public $incrementing = false;
+    protected $keyType = 'string';
 }

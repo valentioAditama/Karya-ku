@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ThumbnailContent extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
+
+    public $incrementing = false;
+    protected $keyType = 'string';
 }

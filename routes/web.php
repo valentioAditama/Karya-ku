@@ -1,5 +1,19 @@
 <?php
 
+use App\Http\Controllers\Admin\CommunityController;
+use App\Http\Controllers\Admin\HomeAdminController;
+use App\Http\Controllers\Admin\KontenKaryaController;
+use App\Http\Controllers\Admin\RolePermission;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KomunitasController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\ReviewContentKarya;
+use App\Http\Controllers\TentangKamiController;
+use App\Http\Controllers\UploadKaryaController;
+use App\Http\Controllers\LandingPage;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,16 +60,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
 
         // Laporan
-        Route::get('/laporan', [LaporanController::class, 'adminPage'])->name('admin.laporan');
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
 
         // Community
-        Route::get('/community', [KomunitasController::class, 'adminPageCommunity'])->name('admin.community');
+        Route::get('/community', [CommunityController::class, 'index'])->name('admin.community');
 
         // Community Comments
-        Route::get('/community/comments', [KomunitasController::class, 'adminPageComment'])->name('admin.community.comments');
+        Route::get('/community/comments', [CommunityController::class, 'adminPageComment'])->name('admin.community.comments');
 
         // content Karya
-        Route::get('/content-karya', [ReviewContentKarya::class, 'adminPage'])->name('admin.content-karya');
+        Route::get('/content-karya', [KontenKaryaController::class, 'adminPage'])->name('admin.content-karya');
 
         // Role & permission
         Route::get('/role-permission', [RolePermission::class, 'index'])->name('admin.role-permission');
@@ -78,9 +92,20 @@ Route::prefix('komunitas')->group(function () {
 
 // Laporan Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+Route::prefix('laporan')->group(function() {
+    Route::post('/add', [LaporanController::class, 'store'])->name('laporan.add');
+    Route::post('/edit/{id}', [LaporanController::class, 'update'])->name('laporan.update');
+    Route::post('/delete/{id}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
+});
 
 // Tentang Kami Page
 Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
+Route::prefix('tentang-kami')->group(function() {
+    Route::post('/add', [TentangKamiController::class, 'store'])->name('tentang-kami.add');
+    Route::post('/edit/{id}', [TentangKamiController::class, 'update'])->name('tentang-kami.update');
+    Route::post('/delete/{id}', [TentangKamiController::class, 'destroy'])->name('tentang-kami.destroy');
+});
+
 
 // Kategori Page
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
