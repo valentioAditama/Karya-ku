@@ -49,6 +49,11 @@ Route::middleware('auth')->group(function () {
 
     // Upload Karya Content
     Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
+    Route::prefix('upload')->group(function() {
+        Route::post('/add', [UploadKaryaController::class, 'store'])->name('upload.add');        
+        Route::post('/update', [UploadKaryaController::class, 'update'])->name('upload.update');        
+        Route::post('/delete', [UploadKaryaController::class, 'destroy'])->name('upload.delete');        
+    });
 
 
     // ================= Admin Page =============================

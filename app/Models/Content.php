@@ -13,9 +13,13 @@ class Content extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'content';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_user',
+        'title',
+        'sub_title',
+        'description',
+        'status'
     ];
 }

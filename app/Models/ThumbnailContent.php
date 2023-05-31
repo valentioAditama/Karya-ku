@@ -13,9 +13,10 @@ class ThumbnailContent extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'image_content';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_content',
+        'path'
     ];
 }
