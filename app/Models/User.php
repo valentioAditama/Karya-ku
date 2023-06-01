@@ -27,6 +27,12 @@ class User extends Authenticatable
         'fullname',
         'email',
         'password',
+        'role',
+        'status',
+        'role_job',
+        'location',
+        'image_profile',
+        'image_banner'
     ];
 
     /**
@@ -48,8 +54,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // relation to manny tables 
-    // To Laporan 
+    // relation to manny tables
+    // My Content
+    public function content()
+    {
+        return $this->hasMany(Content::class);
+    }
+
+    // Laporan
     public function laporan()
     {
         return $this->hasMany(Laporan::class);

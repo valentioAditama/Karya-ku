@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Banner-my-profile -->
-<section class="banner-my-profile">
+<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}');">
     <div class="container-fluid">
         <!-- navbar -->
         @include('components.user.navbar')
@@ -14,21 +14,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3 image-profile" height="300" alt="Black and White Portrait of a Man" loading="lazy" />
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="rounded-circle mr-3 image-profile" height="300" alt="Black and White Portrait of a Man" loading="lazy" />
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="mt-4">
-                    <p class="h3"><b>Valentio Aditama</b></p>
-                    <p class="h4">Software Engineer</p>
+                    <p class="h3"><b>{{Auth::user()->fullname}}</b></p>
+                    <p class="h5">{{Auth::user()->role_job ? Auth::user()->role_job : 'Nothing have role postition' }}</p>
                     <div class="btn btn-primary text-center">
                         <i class="fa-sharp fa-solid fa-location-dot"></i> &nbsp;
-                        <b>Bandung,&nbsp; indonesian</b>
+                        <b>{{Auth::user()->location ? Auth::user()->location : 'Nothing have location'}}</b>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 d-flex justify-content-end align-items-center">
+            <div class="col-md-5 d-flex justify-content-end align-items-center">
                 <div class="mt-4">
-                    <a href="{{route('my-profile.karya')}}" class="btn btn-primary">
+                    <a href="{{route('my-profile.karya', Auth::id() )}}" class="btn btn-primary">
                         <div class="text-center">
                             <b>List Karya-ku</b>
                         </div>
@@ -100,26 +100,29 @@
                         <h5>Profile</h5>
                     </div>
                     <hr class="mt-3">
-                    <div class="mb-3">
-                        <label for="" class="mb-2">Nama Lengkap</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="mb-2">Email</label>
-                        <input type="email" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="mb-2">Role Job</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="mb-2">Location</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="d-flex justify-content-end mt-3">
-                        <button type="submit" class="btn btn-primary">Ubah Password</button> &nbsp; &nbsp;
-                        <button type="submit" class="btn btn-success">Simpan</button>
-                    </div>
+                    <form action="{{route('my-profile.edit', Auth::id())}}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="fullname" class="mb-2">Nama Lengkap</label>
+                            <input type="text" name="fullname" class="form-control" value="{{Auth::user()->fullname}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="mb-2">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{Auth::user()->email}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role_job" class="mb-2">Role Job</label>
+                            <input type="text" name="role_job" class="form-control" value="{{Auth::user()->role_job}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="mb-2">Location</label>
+                            <input type="text" name="location" class="form-control" value="{{Auth::user()->location}}" required>
+                        </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="submit" class="btn btn-primary">Ubah Password</button> &nbsp; &nbsp;
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -2,10 +2,10 @@
 
 @section('content')
 <!-- Banner-my-profile -->
-<section class="banner-my-profile">
-    <div class="container-fluid">
-        <!-- navbar -->
-        @include('components.user.navbar')
+<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}');>
+    <div class=" container-fluid">
+    <!-- navbar -->
+    @include('components.user.navbar')
     </div>
 </section>
 
@@ -16,17 +16,17 @@
             <div class="col-md-3">
                 <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3 image-profile" height="300" alt="Black and White Portrait of a Man" loading="lazy" />
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="mt-4">
-                    <p class="h3"><b>Valentio Aditama</b></p>
-                    <p class="h4">Software Engineer</p>
+                    <p class="h3"><b>{{Auth::user()->fullname}}</b></p>
+                    <p class="h5">{{Auth::user()->role_job ? Auth::user()->role_job : 'Nothing have role postition' }}</p>
                     <div class="btn btn-primary text-center">
                         <i class="fa-sharp fa-solid fa-location-dot"></i> &nbsp;
-                        <b>Bandung,&nbsp; indonesian</b>
+                        <b>{{Auth::user()->location ? Auth::user()->location : 'Nothing have location'}}</b>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 d-flex justify-content-end align-items-center">
+            <div class="col-md-5 d-flex justify-content-end align-items-center">
                 <div class="mt-4">
                     <a href="{{route('upload')}}" class="btn btn-primary">
                         <div class="text-center">
@@ -53,48 +53,22 @@
     <!-- data Karyaku -->
     <div class="container-fluid">
         <div class="row mt-5">
+            @foreach($getDataKarya as $data)
             <div class="col-md-4">
                 <img src="https://d23.com/app/uploads/2020/01/1180w-463h_010920-riviera-art-gallery-780x440.jpg" class="w-100 h-75 img-fluid " alt="">
                 <div class="d-flex justify-content-between mt-2">
                     <div>
                         <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                        Valentio Aditama
+                        {{Auth::user()->fullname}}
                     </div>
-                    <div>Selasa, 10 Feburari 2023</div>
+                    <div>{{\Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y');}}</div>
                 </div>
                 <div class="d-flex justify-content-end mt-2">
                     <a href="" class="btn btn-info">Delete</a> &nbsp;
                     <a href="" class="btn btn-info">Edit</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <img src="https://ilovelife.co.id/blog/wp-content/uploads/2021/12/Berniat-Beli-NFT-Art-Pelajari-Dulu-Cara-Kerjanya.jpg" class="w-100 h-75 img-fluid " alt="">
-                <div class="d-flex justify-content-between mt-2">
-                    <div>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                        Valentio Aditama
-                    </div>
-                    <div>Selasa, 10 Feburari 2023</div>
-                </div>
-                <div class="d-flex justify-content-end mt-2">
-                    <a href="" class="btn btn-info">Delete</a> &nbsp;
-                    <a href="" class="btn btn-info">Edit</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <img src="https://i.ytimg.com/vi/dBsd_Mb33dQ/maxresdefault.jpg" class="w-100 h-75 img-fluid " alt="">
-                <div class="d-flex justify-content-between mt-2">
-                    <div>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                        Valentio Aditama
-                    </div>
-                    <div>Selasa, 10 Feburari 2023</div>
-                </div>
-                <div class="d-flex justify-content-end mt-2">
-                    <a href="" class="btn btn-info">Delete</a> &nbsp;
-                    <a href="" class="btn btn-info">Edit</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
