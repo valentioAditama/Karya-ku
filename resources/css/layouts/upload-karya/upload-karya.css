@@ -28,3 +28,8 @@
 .banner-upload-karya-form:focus {
     outline: none;
 }
+
+/* for OnChange */
+.showingFile {
+   display: none;
+}
