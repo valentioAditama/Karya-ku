@@ -33,7 +33,7 @@
   </div>
 
   <div class="container">
-    <form action="{{route('upload.add')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('upload.add')}}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="row mt-5 mb-5">
         <div class="col-md-6">
@@ -64,7 +64,7 @@
         </div>
         <div class=" col-md-6">
           <label for="">Deskripsi Karya-mu</label>
-          <textarea class="form-control" name="description" id="" cols="30" rows="13"></textarea>
+          <textarea class="form-control" name="description" id="" cols="30" rows="13" required></textarea>
           <div class="d-flex justify-content-end mt-3">
             <button type="submit" class="button-laporan">Upload</button>
           </div>

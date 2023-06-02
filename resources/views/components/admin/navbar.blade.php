@@ -13,11 +13,18 @@
                         <img src="{{ asset('assets-admin/img/client_img.png') }}" alt="#">
                         <div class="profile_info_iner">
                             <div class="profile_author_name">
-                                <p>Neurologist </p>
-                                <h5>Dr. Robar Smith</h5>
+                                <p>{{Auth::user()->role}} </p>
+                                <h5>{{Auth::user()->fullname}}</h5>
                             </div>
                             <div class="profile_info_details">
-                                <a href="#">Log Out </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>

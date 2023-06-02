@@ -22,7 +22,7 @@
                             <h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
                             <ol class="breadcrumb page_bradcam mb-0">
                                 <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-                                <li class="breadcrumb-item active">Analytic</li>
+                                <li class="breadcrumb-item active">Users</li>
                             </ol>
                         </div>
                         <div class="page_title_right">
@@ -57,28 +57,37 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="QA_table mb_30">
-
-                                    <table class="table lms_table_active ">
+                                <div class="QA_table mb_30" style="overflow-x:auto;">
+                                    <table class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">id</th>
-                                                <th scope="col">User</th>
-                                                <th scope="col">Username</th>
-                                                <th scope="col">Email Address</th>
+                                                <th scope="col">Fullname</th>
+                                                <th scope="col">Email</th>
                                                 <th scope="col">Role</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Role Job</th>
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Image Profile</th>
+                                                <th scope="col">Image Banner</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                            $no = 0; $no++;
+                                            @endphp
+                                            @foreach($getDataUser as $data)
                                             <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c0b130e17484c453c1b111d1510521f1311">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
+                                                <th scope="row"> <a href="#" class="question_content"> {{$no++}} </a></th>
+                                                <td>{{$data->fullname}}</td>
+                                                <td>{{$data->email}}</td>
+                                                <td>{{$data->email}}</td>
+                                                <td>{{$data->role}}</td>
+                                                <td>{{$data->status ? $data->status : 'None'}}</td>
+                                                <td>{{$data->role_job ? $data->role_job : 'None'}}</td>
+                                                <td></td>
+                                                <td></td>
                                                 <td>
                                                     <div class="action_btns d-flex">
                                                         <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
@@ -86,104 +95,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c0b130e17484c453c1b111d1510521f1311">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f68199849dc2c6cfb6919b979f9ad895999b">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="374058455c03070e77505a565e5b1954585a">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6c1d9c4dd82868ff6d1dbd7dfda98d5d9db">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6c1d9c4dd82868ff6d1dbd7dfda98d5d9db">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b0c1409104f4b423b1c161a121755181416">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content"> 1 </a></th>
-                                                <td>Hayden</td>
-                                                <td>Hayden</td>
-                                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9ced6cbd28d8980f9ded4d8d0d597dad6d4">[email&#160;protected]</a></td>
-                                                <td><a href="#">Admin</a></td>
-                                                <td><a href="#" class="status_btn">Active</a></td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class HomeAdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.home.home');
+        // get all data user
+        $getDataUser = User::all()->where('role', 'user');
+        // return view for admin
+        return view('admin.users.users', compact('getDataUser'));
     }
 
     /**

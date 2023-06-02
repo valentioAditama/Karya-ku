@@ -59,11 +59,13 @@ class UploadKaryaController extends Controller
 
             // Store path file storage & Video Data
             // create path Video
-            $pathVideo = $request->file('path_video')->store('public/content/video');
-            VideoContent::create([
-                'id_content' => $getIdContent->id,
-                'path' => $pathVideo
-            ]);
+            if ($request->hasFile('path_video')) {
+                $pathVideo = $request->file('path_video')->store('public/content/video');
+                VideoContent::create([
+                    'id_content' => $getIdContent->id,
+                    'path' => $pathVideo
+                ]);
+            }
 
             return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
         } catch (\Throwable $error) {

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\CommunityController;
-use App\Http\Controllers\Admin\HomeAdminController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\KontenKaryaController;
+use App\Http\Controllers\Admin\LaporanController as AdminLaporanController;
 use App\Http\Controllers\Admin\RolePermission;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KomunitasController;
@@ -14,7 +16,6 @@ use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\UploadKaryaController;
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\MyListKaryaController;
-use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,18 +62,20 @@ Route::middleware('auth')->group(function () {
         Route::post('/update', [UploadKaryaController::class, 'update'])->name('upload.update');
         Route::post('/delete', [UploadKaryaController::class, 'destroy'])->name('upload.delete');
     });
+});
 
-
+// Admin
+Route::middleware('isAdmin')->group(function () {
     // ================= Admin Page =============================
     Route::prefix('admin')->group(function () {
         // Dashboard
-        Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
+        Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
 
         // Management Users
-        Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+        Route::get('/users', [UserController::class, 'index'])->name('admin.users');
 
         // Laporan
-        Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
+        Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('admin.laporan');
 
         // Community
         Route::get('/community', [CommunityController::class, 'index'])->name('admin.community');
