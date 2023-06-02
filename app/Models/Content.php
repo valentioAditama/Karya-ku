@@ -13,9 +13,29 @@ class Content extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'content';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_user',
+        'title',
+        'sub_title',
+        'description',
+        'status'
     ];
+
+    // relation table
+    public function thumbnail()
+    {
+        return $this->hasOne(ThumbnailContent::class);
+    }
+
+    public function image()
+    {
+        return $this->hasOne(ImageContent::class);
+    }
+
+    public function video()
+    {
+        return $this->hasOne(VideoContent::class);
+    }
 }

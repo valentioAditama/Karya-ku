@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\CommunityController;
-use App\Http\Controllers\Admin\HomeAdminController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\KontenKaryaController;
+use App\Http\Controllers\Admin\LaporanController as AdminLaporanController;
 use App\Http\Controllers\Admin\RolePermission;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KomunitasController;
@@ -13,7 +15,7 @@ use App\Http\Controllers\ReviewContentKarya;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\UploadKaryaController;
 use App\Http\Controllers\LandingPage;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\MyListKaryaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Auth 
+// Auth
 Route::middleware('auth')->group(function () {
 
     // Community
@@ -38,29 +40,42 @@ Route::middleware('auth')->group(function () {
     });
 
     // My Profiles
-    Route::get('/my-profile', [MyProfileController::class, 'index'])->name('my-profile');
+    Route::get('/my-profile/{id}', [MyProfileController::class, 'index'])->name('my-profile');
     Route::prefix('my-profile')->group(function () {
-        Route::get('/my-karya', [MyProfileController::class, 'my_karya'])->name('my-profile.karya');
-
-        // ubah password
-        Route::get('/login-change-password', [MyProfileController::class, 'login_change_password'])->name('my-profile.login-change-password');
-        Route::get('/reset-password', [MyProfileController::class, 'reset_password'])->name('my-profile.reset-password');
+        Route::post('/add', [MyProfileController::class, 'store'])->name('my-profile.add');
+        Route::post('/edit/{id}', [MyProfileController::class, 'update'])->name('my-profile.edit');
+        Route::post('/delete/{}', [MyProfileController::class, 'destroy'])->name('my-profile.delete');
     });
+
+    // Change Password
+    Route::get('/login-change-password', [MyProfileController::class, 'login_change_password'])->name('my-profile.login-change-password');
+    Route::get('/reset-password', [MyProfileController::class, 'reset_password'])->name('my-profile.reset-password');
+
+
+    // my list karya
+    Route::get('/my-karya/{id}', [MyListKaryaController::class, 'index'])->name('my-profile.karya');
 
     // Upload Karya Content
     Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
+    Route::prefix('upload')->group(function () {
+        Route::post('/add', [UploadKaryaController::class, 'store'])->name('upload.add');
+        Route::post('/update', [UploadKaryaController::class, 'update'])->name('upload.update');
+        Route::post('/delete', [UploadKaryaController::class, 'destroy'])->name('upload.delete');
+    });
+});
 
-
+// Admin
+Route::middleware('isAdmin')->group(function () {
     // ================= Admin Page =============================
     Route::prefix('admin')->group(function () {
         // Dashboard
-        Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
+        Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
 
         // Management Users
-        Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+        Route::get('/users', [UserController::class, 'index'])->name('admin.users');
 
         // Laporan
-        Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
+        Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('admin.laporan');
 
         // Community
         Route::get('/community', [CommunityController::class, 'index'])->name('admin.community');
@@ -92,7 +107,7 @@ Route::prefix('komunitas')->group(function () {
 
 // Laporan Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
-Route::prefix('laporan')->group(function() {
+Route::prefix('laporan')->group(function () {
     Route::post('/add', [LaporanController::class, 'store'])->name('laporan.add');
     Route::post('/edit/{id}', [LaporanController::class, 'update'])->name('laporan.update');
     Route::post('/delete/{id}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
@@ -100,7 +115,7 @@ Route::prefix('laporan')->group(function() {
 
 // Tentang Kami Page
 Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
-Route::prefix('tentang-kami')->group(function() {
+Route::prefix('tentang-kami')->group(function () {
     Route::post('/add', [TentangKamiController::class, 'store'])->name('tentang-kami.add');
     Route::post('/edit/{id}', [TentangKamiController::class, 'update'])->name('tentang-kami.update');
     Route::post('/delete/{id}', [TentangKamiController::class, 'destroy'])->name('tentang-kami.destroy');

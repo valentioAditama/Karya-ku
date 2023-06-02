@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
@@ -12,7 +13,9 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        return view('admin.laporan.laporan');
+        // Get All Data Report
+        $getDataReport = DB::table('laporan')->join('users', 'users.id', '=', 'laporan.id_user')->get();
+        return view('admin.laporan.laporan', compact('getDataReport'));
     }
 
     /**

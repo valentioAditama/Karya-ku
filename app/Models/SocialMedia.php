@@ -13,9 +13,10 @@ class SocialMedia extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'social_media';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_user',
+        'name'
     ];
 }

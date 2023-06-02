@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
+use App\Models\Content;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class HomeAdminController extends Controller
+class MyListKaryaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.home.home');
+        // Get Data Karya from id loggedin
+        $getDataKarya =  Content::where('id_user', Auth::id())->get();
+        return view('user.my-profile.my-karya', compact('getDataKarya'));
     }
 
     /**

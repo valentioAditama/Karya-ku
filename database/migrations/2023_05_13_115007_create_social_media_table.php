@@ -16,6 +16,7 @@ class CreateSocialMediaTable extends Migration
         Schema::create('social_media', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('id_user');
+            $table->enum('brand_social_media', ['Facebook', 'Instagram', 'Twitter', 'Youtube']);
             $table->string('name', 40);
             $table->timestamps();
 

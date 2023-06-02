@@ -19,4 +19,11 @@ class Laporan extends Model
         'id_user',
         'comment'
     ];
+
+    // relation to manny tables 
+    // To Users 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

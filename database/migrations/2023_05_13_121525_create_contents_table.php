@@ -15,14 +15,14 @@ class CreateContentsTable extends Migration
     {
         Schema::create('content', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('id_users');
+            $table->uuid('id_user');
             $table->string('title', 50);
             $table->string('sub_title', 150);
             $table->text('description');
             $table->enum('status', ['active', 'non-active'])->default('active');
             $table->timestamps();
 
-            $table->foreign('id_users')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
