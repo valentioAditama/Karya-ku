@@ -42,7 +42,7 @@ class UploadKaryaController extends Controller
             $getIdContent = Content::create($validateData);
 
             // // Store path file storage & Thumbnails Data
-            // create path image
+            // create path Thumbnail
             $pathThumbnail = $request->file('path_thumbnail')->store('public/content/thumbnail');
             ThumbnailContent::create([
                 'id_content' => $getIdContent->id,

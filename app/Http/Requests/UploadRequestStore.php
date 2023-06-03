@@ -26,8 +26,8 @@ class UploadRequestStore extends FormRequest
             'title' => 'required',
             'sub_title' => 'required',
             'description' => 'required',
-            'path_thumbnail' => 'required|mimes:jpeg,jpg,png|max:2048',
-            'path_image' => 'required|mimes:jpeg,jpg,png|max:2048',
+            'path_thumbnail' => 'required|mimes:jpeg,jpg,png|max:8000',
+            'path_image' => 'required|mimes:jpeg,jpg,png|max:8000',
             'path_video' => 'mimes:mp4|max:100000',
         ];
     }

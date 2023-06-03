@@ -121,10 +121,8 @@ Route::prefix('tentang-kami')->group(function () {
     Route::post('/delete/{id}', [TentangKamiController::class, 'destroy'])->name('tentang-kami.destroy');
 });
 
-
 // Kategori Page
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
 
-
 // review content Karya
-Route::get('/review-karyaku', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
+Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');

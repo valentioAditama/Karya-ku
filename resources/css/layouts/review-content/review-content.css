@@ -1,6 +1,6 @@
 .banner-review-content{
-    background-image: url('/public/images/review-content.png');
     height: 80vh;
+    background-position-y: -300px;
     background-size: cover;
     border-radius: 0 0 86px 86px;
 }
@@ -16,7 +16,7 @@
 }
 
 .banner-review-content-sub-title {
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .banner-review-content-form {
