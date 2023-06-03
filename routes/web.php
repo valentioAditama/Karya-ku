@@ -84,7 +84,7 @@ Route::middleware('isAdmin')->group(function () {
         Route::get('/community/comments', [CommunityController::class, 'adminPageComment'])->name('admin.community.comments');
 
         // content Karya
-        Route::get('/content-karya', [KontenKaryaController::class, 'adminPage'])->name('admin.content-karya');
+        Route::get('/content-karya', [KontenKaryaController::class, 'index'])->name('admin.content-karya');
 
         // Role & permission
         Route::get('/role-permission', [RolePermission::class, 'index'])->name('admin.role-permission');

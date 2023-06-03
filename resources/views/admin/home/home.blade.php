@@ -607,5 +607,9 @@
   <!-- footer -->
   @include('components.admin.footer')
   <!-- end -->
+
+  <!-- Notification -->
+  @include('components.notifications')
+  <!-- end -->
 </section>
 @endSection
