@@ -35,7 +35,7 @@ class UploadKaryaController extends Controller
     public function store(UploadRequestStore $request)
     {
         try {
-            // validation request 
+            // validation request
             $validateData = $request->validated();
 
             // Store Data Content Upload
@@ -46,7 +46,7 @@ class UploadKaryaController extends Controller
             $pathThumbnail = $request->file('path_thumbnail')->store('public/content/thumbnail');
             ThumbnailContent::create([
                 'id_content' => $getIdContent->id,
-                'path' => $pathThumbnail
+                'path' => substr($pathThumbnail, 25)
             ]);
 
             // Store path file storage & Image Data
@@ -54,7 +54,7 @@ class UploadKaryaController extends Controller
             $pathImage = $request->file('path_image')->store('public/content/image');
             ImageContent::create([
                 'id_content' => $getIdContent->id,
-                'path' => $pathImage
+                'path' => substr($pathImage, 21)
             ]);
 
             // Store path file storage & Video Data
@@ -63,7 +63,7 @@ class UploadKaryaController extends Controller
                 $pathVideo = $request->file('path_video')->store('public/content/video');
                 VideoContent::create([
                     'id_content' => $getIdContent->id,
-                    'path' => $pathVideo
+                    'path' => substr($pathVideo, 21)
                 ]);
             }
 
