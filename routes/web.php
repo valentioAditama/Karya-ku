@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     // My Profiles
     Route::get('/my-profile/{id}', [MyProfileController::class, 'index'])->name('my-profile');
     Route::prefix('my-profile')->group(function () {
-        Route::post('/add', [MyProfileController::class, 'store'])->name('my-profile.add');
+        Route::post('/add-social-media', [MyProfileController::class, 'StoreSocialMedia'])->name('my-profile.add-social-media');
         Route::post('/edit/{id}', [MyProfileController::class, 'update'])->name('my-profile.edit');
         Route::post('/delete/{}', [MyProfileController::class, 'destroy'])->name('my-profile.delete');
     });
@@ -76,22 +76,16 @@ Route::middleware('isAdmin')->group(function () {
     Route::prefix('admin')->group(function () {
         // Dashboard
         Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
-
         // Management Users
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
-
         // Laporan
         Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('admin.laporan');
-
         // Community
         Route::get('/community', [CommunityController::class, 'index'])->name('admin.community');
-
         // Community Comments
         Route::get('/community/comments', [CommunityController::class, 'adminPageComment'])->name('admin.community.comments');
-
         // content Karya
         Route::get('/content-karya', [KontenKaryaController::class, 'index'])->name('admin.content-karya');
-
         // Role & permission
         Route::get('/role-permission', [RolePermission::class, 'index'])->name('admin.role-permission');
     });

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\userRequestStore;
+use App\Models\SocialMedia;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
 
 class MyProfileController extends Controller
 {
@@ -35,9 +38,15 @@ class MyProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function storeSocialMedia(Request $request)
     {
-        //
+        try {
+            if ($request->facebook || $request->instagram || $request->twitter || $request->youtube) {
+            }
+        } catch (\Throwable $error) {
+            // handling error
+            return $error->getMessage();
+        }
     }
 
     /**
@@ -67,12 +76,27 @@ class MyProfileController extends Controller
 
             // Change Image Profile And then save to folder and store
             // create path Thumbnail
-            $pathImageProfile = $request->file('image_profile')->store('public/user/profile');
-            $imageProfileName = basename($pathImageProfile);
+            if ($request->file('image_profile') == null) {
+            } else {
+                $pathImageProfile = $request->file('image_profile')->store('public/user/profile');
+                $imageProfileName = basename($pathImageProfile);
 
-            DB::table('users')->where('id', '=', $id)->update([
-                'image_profile' => $imageProfileName
-            ]);
+                DB::table('users')->where('id', '=', $id)->update([
+                    'image_profile' => $imageProfileName
+                ]);
+            }
+
+            // create path Image
+            if ($request->file('image_banner') == null) {
+            } else {
+                $pathBannerProfile = $request->file('image_banner')->store('public/user/banner');
+                $imageBannerName = basename($pathBannerProfile);
+
+                DB::table('users')->where('id', '=', $id)->update([
+                    'image_banner' => $imageBannerName
+                ]);
+            }
+
 
             // get data id user and then update store the data
             $getUserData = User::where('id', $id)->first();

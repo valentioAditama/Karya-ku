@@ -50,7 +50,7 @@
 			<a href="" class="text-light">{{Auth::user()->fullname}}</a> &nbsp; &nbsp;
 			<div class="dropdown">
 				<a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-					<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="rounded-circle" height="35" alt="Black and White Portrait of a Man" loading="lazy" />
+					<img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-navbar" height="35" alt="Black and White Portrait of a Man" loading="lazy" />
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
 					<li>

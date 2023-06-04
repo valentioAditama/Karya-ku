@@ -2,7 +2,8 @@
 
 @section('content')
 <!-- Banner-my-profile -->
-<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}');">
+<section class="banner-my-profile">
+    <img class="profilepic__banner banner-my-profile" src="{{ Auth::user()->image_banner ? asset('storage/user/banner/'. Auth::user()->image_banner) : asset('images/bannerDefault.png') }}" width="300" height="300" alt="Profile Picture" />
     <div class="container-fluid">
         <!-- navbar -->
         @include('components.user.navbar')
@@ -15,7 +16,7 @@
             <div class="col-md-3">
                 <div class="profilepic image-profile">
                     <label for="file" class="profilepic__label">
-                        <img class="profilepic__image" src="{{asset('storage/user/profile/'. Auth::user()->image_profile) }}" width="300" height="300" alt="Profile Picture" />
+                        <img class="profilepic__image" src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" width="300" height="300" alt="Profile Picture" />
                         <div class="profilepic__content">
                             <span class="profilepic__icon"><i class="fas fa-camera"></i></span>
                             <span class="profilepic__text">Edit Profile</span>
@@ -40,6 +41,9 @@
                             <b>List Karya-ku</b>
                         </div>
                     </a>
+                    <label for="fileBanner" class="profilepic__label btn btn-warning">
+                        Change Banner
+                    </label>
                 </div>
             </div>
         </div>
@@ -75,28 +79,34 @@
                     <div class="col-md-6 d-flex align-items-center">
                         <h5>Social Media</h5>
                     </div>
-                    <hr class="mt-3">
-                    <div class="row">
-                        <div class="social-media-profile mb-3">
-                            <i class="fa-brands fa-facebook fa-2xl"></i>
-                            <input type="text" class="social-media-input" placeholder="Facebook Username">
-                        </div>
-                        <div class="social-media-profile mb-3">
-                            <i class="fa-brands fa-instagram fa-2xl"></i>
-                            <input type="text" class="social-media-input" placeholder="Instagram Username">
-                        </div>
-                        <div class="social-media-profile mb-3">
-                            <i class="fa-brands fa-twitter fa-2xl"></i>
-                            <input type="text" class="social-media-input" placeholder="Twitter Username">
-                        </div>
-                        <div class="social-media-profile mb-3">
-                            <i class="fa-brands fa-youtube fa-2xl"></i>
-                            <input type="text" class="social-media-input" placeholder="Youtube Channel">
-                        </div>
-                        <div class="d-flex justify-content-end mt-3 mb-3">
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <a href="" class="btn btn-primary">Add Social Media</a>
                     </div>
+                    <hr class="mt-3">
+                    <form action="{{route('my-profile.add-social-media')}}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="social-media-profile mb-3">
+                                <i class="fa-brands fa-facebook fa-2xl"></i>
+                                <input type="text" class="social-media-input" name="facebook" placeholder="Facebook Username">
+                            </div>
+                            <div class="social-media-profile mb-3">
+                                <i class="fa-brands fa-instagram fa-2xl"></i>
+                                <input type="text" class="social-media-input" name="instagram" placeholder="Instagram Username">
+                            </div>
+                            <div class="social-media-profile mb-3">
+                                <i class="fa-brands fa-twitter fa-2xl"></i>
+                                <input type="text" class="social-media-input" name="twitter" placeholder="Twitter Username">
+                            </div>
+                            <div class="social-media-profile mb-3">
+                                <i class="fa-brands fa-youtube fa-2xl"></i>
+                                <input type="text" class="social-media-input" name="youtube" placeholder="Youtube Channel">
+                            </div>
+                            <div class="d-flex justify-content-end mt-3 mb-3">
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -109,7 +119,8 @@
                     <hr class="mt-3">
                     <form action="{{route('my-profile.edit', Auth::id())}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <input id="file" type="file" name="image_profile" onchange="updateProfilePic(event)" hidden/>
+                        <input id="file" type="file" name="image_profile" onchange="updateProfilePic(event)" hidden />
+                        <input id="fileBanner" type="file" name="image_banner" onchange="updateBannerPic(event)" hidden />
                         <div class="mb-3">
                             <label for="fullname" class="mb-2">Nama Lengkap</label>
                             <input type="text" name="fullname" class="form-control" value="{{Auth::user()->fullname}}" required>
@@ -145,6 +156,18 @@
 
         reader.onload = function(e) {
             profilePic.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    function updateBannerPic(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        const bannerPic = document.querySelector('.profilepic__banner');
+
+        reader.onload = function(e) {
+            bannerPic.src = e.target.result;
         };
 
         reader.readAsDataURL(file);
