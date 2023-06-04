@@ -13,9 +13,11 @@ class Community extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'community';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'name_community',
+        'status',
+        'description'
     ];
 }

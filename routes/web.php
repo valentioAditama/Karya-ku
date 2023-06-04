@@ -36,7 +36,13 @@ Route::middleware('auth')->group(function () {
 
     // Community
     Route::prefix('komunitas')->group(function () {
+        // get method
         Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
+        Route::get('/review/{id}', [KomunitasController::class, 'review'])->name('komunitas.review');
+        Route::get('/review/comment', [KomunitasController::class, 'reviewComment'])->name('komunitas.comment');
+
+        // post method
+        Route::post('/create/community', [KomunitasController::class, 'store'])->name('komunitas.store');
     });
 
     // My Profiles
@@ -100,10 +106,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Komunitas Page
 Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
-Route::prefix('komunitas')->group(function () {
-    Route::get('/review', [KomunitasController::class, 'review'])->name('komunitas.review');
-    Route::get('/review/comment', [KomunitasController::class, 'reviewComment'])->name('komunitas.review');
-});
 
 // Laporan Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');

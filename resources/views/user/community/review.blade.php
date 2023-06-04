@@ -3,7 +3,7 @@
 @section('content')
 <div class="background-komunitas-review">
     <!-- Banner-komunitas-review -->
-    <section class="banner-komunitas-review">
+    <section class="banner-komunitas-review" style="background-image: url({{ asset('storage/community/thumbnail/' . $getCommunity->path) }});">
         <div class="container-fluid">
             <!-- navbar -->
             @include('components.user.navbar')
@@ -12,9 +12,9 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12">
                             <div class="banner-komunitas-review-title text-light">
-                                <p class="h2"><b>Komunitas BasketBall Bandung</b></p>
+                                <p class="h2"><b>{{$getCommunity->name_community}}</b></p>
                                 <p class="banner-komunitas-review-sub-title">
-                                    Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
+                                    {{$getCommunity->description}} <br>
                                     Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
                                 </p>
                                 <div class="mt-3">
@@ -93,7 +93,7 @@
                 <!-- content komunitas -->
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-11">
-                        <p class="h5"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt expedita, voluptatum temporibus dolorem asperiores labore hic nam corrupti inventore id ipsa voluptatem. Ratione eum repudiandae id maxime, sint architecto officia.
+                        <p class="h6"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt expedita, voluptatum temporibus dolorem asperiores labore hic nam corrupti inventore id ipsa voluptatem. Ratione eum repudiandae id maxime, sint architecto officia.
                         </p>
                     </div>
                 </div>
@@ -127,4 +127,10 @@
         </div>
     </section>
 </div>
+
+<!-- footer -->
+@include('components.user.footer')
+<!-- Notification -->
+@include('components.notifications')
+
 @endsection

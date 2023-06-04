@@ -35,23 +35,26 @@
 
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-center">
-            <div class="row">
-                <div class="mb-3">
-                    <label for="">Nama Komunitas</label>
-                    <input type="text" class="form-control" placeholder="Masukan Nama Komunitas Anda">
+            <form action="{{route('komunitas.store')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="">Nama Komunitas</label>
+                        <input type="text" class="form-control" name="name_community" placeholder="Masukan Nama Komunitas Anda" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">file Thumbnail Komunitas</label>
+                        <input type="file" class="form-control" name="thumbnail_community" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Deskripsi Komunitas</label>
+                        <textarea class="form-control" name="description" id="description" cols="30" rows="7" placeholder="Masukan Deskripsi Komunitas Anda" required></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end mt-1">
+                        <button type="submit" class="button-laporan">Buat Komunitas</button>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="">file Thumbnail Komunitas</label>
-                    <input type="file" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="">Nama Komunitas</label>
-                    <textarea class="form-control" name="" id="" cols="30" rows="7" placeholder="Masukan Deskripsi Komunitas Anda"></textarea>
-                </div>
-                <div class="d-flex justify-content-end mt-1">
-                    <button type="submit" class="button-laporan">Buat Komunitas</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>

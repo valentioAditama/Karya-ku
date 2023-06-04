@@ -8,13 +8,20 @@
         @include('components.user.navbar')
     </div>
 </section>
-
 <!-- My Profile -->
 <section class="profile-image">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="rounded-circle mr-3 image-profile" height="300" alt="Black and White Portrait of a Man" loading="lazy" />
+                <div class="profilepic image-profile">
+                    <label for="file" class="profilepic__label">
+                        <img class="profilepic__image" src="{{asset('storage/user/profile/'. Auth::user()->image_profile) }}" width="300" height="300" alt="Profile Picture" />
+                        <div class="profilepic__content">
+                            <span class="profilepic__icon"><i class="fas fa-camera"></i></span>
+                            <span class="profilepic__text">Edit Profile</span>
+                        </div>
+                    </label>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="mt-4">
@@ -100,8 +107,9 @@
                         <h5>Profile</h5>
                     </div>
                     <hr class="mt-3">
-                    <form action="{{route('my-profile.edit', Auth::id())}}" method="post">
+                    <form action="{{route('my-profile.edit', Auth::id())}}" method="post" enctype="multipart/form-data">
                         @csrf
+                        <input id="file" type="file" name="image_profile" onchange="updateProfilePic(event)" hidden/>
                         <div class="mb-3">
                             <label for="fullname" class="mb-2">Nama Lengkap</label>
                             <input type="text" name="fullname" class="form-control" value="{{Auth::user()->fullname}}" required>
@@ -128,6 +136,20 @@
         </div>
     </div>
 </section>
+
+<script>
+    function updateProfilePic(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        const profilePic = document.querySelector('.profilepic__image');
+
+        reader.onload = function(e) {
+            profilePic.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+</script>
 
 <!-- footer -->
 @include('components.user.footer')

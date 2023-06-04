@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\userRequestStore;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MyProfileController extends Controller
 {
@@ -63,6 +64,15 @@ class MyProfileController extends Controller
         try {
             // validate request
             $validateRequest = $request->validated();
+
+            // Change Image Profile And then save to folder and store
+            // create path Thumbnail
+            $pathImageProfile = $request->file('image_profile')->store('public/user/profile');
+            $imageProfileName = basename($pathImageProfile);
+
+            DB::table('users')->where('id', '=', $id)->update([
+                'image_profile' => $imageProfileName
+            ]);
 
             // get data id user and then update store the data
             $getUserData = User::where('id', $id)->first();

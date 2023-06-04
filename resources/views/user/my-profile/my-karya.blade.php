@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Banner-my-profile -->
-<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}');>
+<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}')">
     <div class=" container-fluid">
     <!-- navbar -->
     @include('components.user.navbar')

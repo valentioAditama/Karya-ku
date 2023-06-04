@@ -17,6 +17,7 @@ class SocialMedia extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id_user',
+        'brand_social_media',
         'name'
     ];
 }
