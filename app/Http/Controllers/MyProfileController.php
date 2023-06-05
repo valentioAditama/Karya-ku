@@ -123,14 +123,14 @@ class MyProfileController extends Controller
 
             if ($socialMedia) {
                 // If an existing entry exists, update the name
-                $socialMedia->name = $name;
+                $socialMedia->name = $name !== null ? $name : ''; // Set to empty string if $name is null
                 $socialMedia->save();
             } else {
                 // If no existing entry exists, create a new one
                 SocialMedia::create([
                     'id_user' => $userId,
                     'brand_social_media' => $brand,
-                    'name' => $name,
+                    'name' => $name !== null ? $name : '', // Set to empty string if $name is null
                 ]);
             }
         }
