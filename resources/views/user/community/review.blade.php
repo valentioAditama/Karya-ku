@@ -31,59 +31,65 @@
     <!-- Load Postingan -->
     <section class="mb-5 mt-4">
         <div class="container">
+            @auth
             <div class="form-post">
                 <div class="row">
                     <div class="col-md-1 d-flex justify-content-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-11">
-                        <textarea class="input-post" name="" id="" cols="30" rows="3" placeholder="Apa yang anda sedang pikirkan?"></textarea>
-                        <!-- files opsional -->
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="mt-2">
-                                    <button class="image-file text-center">
-                                        <i class="fa-solid fa-image"></i>
-                                        &nbsp;
-                                        Gambar
-                                    </button>
+                        <form action="{{route('komunitas.storeArticel', $getCommunity->id)}}" method="post">
+                            @csrf
+                            <textarea class="input-post" name="description" id="description" cols="30" rows="3" placeholder="Apa yang anda sedang pikirkan?" required></textarea>
+                            <!-- files opsional -->
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="mt-2">
+                                        <button class="image-file text-center">
+                                            <i class="fa-solid fa-image"></i>
+                                            &nbsp;
+                                            Gambar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mt-2">
+                                        <button class="image-file text-center">
+                                            <i class="fa-solid fa-video"></i>
+                                            &nbsp;
+                                            Video
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex justify-content-end">
+                                    <div class="mt-2">
+                                        <button class="image-file text-center" type="submit">
+                                            Posting &nbsp;
+                                            <i class="fa-solid fa-upload"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="mt-2">
-                                    <button class="image-file text-center">
-                                        <i class="fa-solid fa-video"></i>
-                                        &nbsp;
-                                        Video
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-8 d-flex justify-content-end">
-                                <div class="mt-2">
-                                    <button class="image-file text-center">
-                                        Posting &nbsp;
-                                        <i class="fa-solid fa-upload"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+            @endauth
         </div>
     </section>
 
     <section class="mt-5">
         <div class="container">
-            <div class="form-post">
+            @foreach($getContentCommunity as $data)
+            <div class="form-post mb-3">
                 <div class="row">
                     <div class="col-md-1 d-flex justify-content-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-5 d-flex align-items-center">
                         <div class="user-info">
-                            <h5><b>Valentio Aditama</b></h5>
-                            <small>Few Minutes Ago</small>
+                            <h5><b>{{$data->fullname}}</b></h5>
+                            <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
@@ -93,8 +99,7 @@
                 <!-- content komunitas -->
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-11">
-                        <p class="h6"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt expedita, voluptatum temporibus dolorem asperiores labore hic nam corrupti inventore id ipsa voluptatem. Ratione eum repudiandae id maxime, sint architecto officia.
-                        </p>
+                        <p class="h6">{{$data->description}}</p>
                     </div>
                 </div>
                 <!-- likes and comments -->
@@ -113,10 +118,12 @@
                             <!-- comment -->
                             <div class="col-md-2">
                                 <div class="mt-2">
-                                    <button class="image-file text-center">
-                                        <i class="fa-solid fa-comment"></i>&nbsp;
-                                        200
-                                    </button>
+                                    <a href="{{route('komunitas.comment', $data->id)}}">
+                                        <button class="image-file text-center">
+                                            <i class="fa-solid fa-comment"></i>&nbsp;
+                                            200
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
 
@@ -124,6 +131,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 </div>

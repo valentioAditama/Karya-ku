@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class userRequestStore extends FormRequest
+class CreateArticelStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +24,21 @@ class userRequestStore extends FormRequest
     public function rules(): array
     {
         return [
-            'fullname' => 'required',
-            'email' => 'required',
+            'description' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'fullname' => 'fullname Tidak Boleh Kosong',
-            'email' => 'email Tidak Boleh Kosong',
+            'description' => 'description tidak boleh kosong'
         ];
+    }
+
+    public function validated($key = null, $default = null)
+    {
+        $validated = parent::validated();
+        $validated['id_user'] = Auth::id();
+        return $validated;
     }
 }

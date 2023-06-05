@@ -34,17 +34,6 @@ Auth::routes();
 // Auth
 Route::middleware('auth')->group(function () {
 
-    // Community
-    Route::prefix('komunitas')->group(function () {
-        // get method
-        Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
-        Route::get('/review/{id}', [KomunitasController::class, 'review'])->name('komunitas.review');
-        Route::get('/review/comment', [KomunitasController::class, 'reviewComment'])->name('komunitas.comment');
-
-        // post method
-        Route::post('/create/community', [KomunitasController::class, 'store'])->name('komunitas.store');
-    });
-
     // My Profiles
     Route::get('/my-profile/{id}', [MyProfileController::class, 'index'])->name('my-profile');
     Route::prefix('my-profile')->group(function () {
@@ -129,3 +118,20 @@ Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
 
 // review content Karya
 Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
+
+// Community
+Route::prefix('komunitas')->group(function () {
+    // get method
+    Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
+    Route::get('/review/{id}', [KomunitasController::class, 'review'])->name('komunitas.review');
+
+    // create community
+    Route::post('/create/community', [KomunitasController::class, 'store'])->name('komunitas.store');
+
+    // create community articel store
+    Route::post('/create/articel/{id}', [KomunitasController::class, 'storeArticel'])->name('komunitas.storeArticel');
+
+    // review comment
+    Route::get('/review/comment/{id}', [KomunitasController::class, 'reviewComment'])->name('komunitas.comment');
+    Route::post('/review/comment/store', [KomunitasController::class, 'storeComment'])->name('komunitas.comment-store');
+});

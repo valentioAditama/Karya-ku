@@ -138,11 +138,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="role_job" class="mb-2">Role Job</label>
-                            <input type="text" name="role_job" class="form-control" value="{{Auth::user()->role_job}}" required>
+                            <input type="text" name="role_job" class="form-control" value="{{Auth::user()->role_job}}">
                         </div>
                         <div class="mb-3">
                             <label for="location" class="mb-2">Location</label>
-                            <input type="text" name="location" class="form-control" value="{{Auth::user()->location}}" required>
+                            <input type="text" name="location" class="form-control" value="{{Auth::user()->location}}">
                         </div>
                         <div class="d-flex justify-content-end mt-3">
                             <button type="submit" class="btn btn-primary">Ubah Password</button> &nbsp; &nbsp;
