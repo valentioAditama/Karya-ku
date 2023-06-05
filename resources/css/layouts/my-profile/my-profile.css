@@ -38,15 +38,15 @@
     overflow: hidden;
     background-color: #111;
   }
-  
+
   .profilepic:hover .profilepic__content {
     opacity: 1;
   }
-  
+
   .profilepic:hover .profilepic__image {
     opacity: .5;
   }
-  
+
   .profilepic__image {
     /* height: 100%; */
     /* width: 100%; */
@@ -64,7 +64,7 @@
     transition: opacity .2s ease-in-out;
     filter: brightness(0.5)
   }
-  
+
   .profilepic__content {
     position: absolute;
     top: 0;
@@ -79,23 +79,23 @@
     opacity: 0;
     transition: opacity .2s ease-in-out;
   }
-  
+
   .profilepic__icon {
     color: white;
     padding-bottom: 8px;
   }
-  
+
   .fas {
     font-size: 20px;
   }
-  
+
   .profilepic__text {
     text-transform: uppercase;
     font-size: 12px;
     width: 50%;
     text-align: center;
   }
-  
+
   /* Styling the file input */
 .profilepic input[type="file"] {
     position: absolute;
@@ -106,7 +106,7 @@
     opacity: 0;
     cursor: pointer;
   }
-  
+
 
 .profile-location{
     width: auto;
@@ -125,7 +125,7 @@
 }
 
 .social-media-input {
-    width: 90%;
+    width: 80%;
     margin-left: 10px;
     height: 35px;
     padding-left: 10px;

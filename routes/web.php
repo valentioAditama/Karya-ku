@@ -48,9 +48,16 @@ Route::middleware('auth')->group(function () {
     // My Profiles
     Route::get('/my-profile/{id}', [MyProfileController::class, 'index'])->name('my-profile');
     Route::prefix('my-profile')->group(function () {
-        Route::post('/add-social-media', [MyProfileController::class, 'StoreSocialMedia'])->name('my-profile.add-social-media');
         Route::post('/edit/{id}', [MyProfileController::class, 'update'])->name('my-profile.edit');
-        Route::post('/delete/{}', [MyProfileController::class, 'destroy'])->name('my-profile.delete');
+        Route::post('/delete/{id}', [MyProfileController::class, 'destroy'])->name('my-profile.delete');
+
+        // add and update social media
+        Route::post('/add-social-media', [MyProfileController::class, 'storeSocialMedia'])->name('my-profile.add-social-media');
+
+        // add and update skills
+        Route::post('/add-skills', [MyProfileController::class, 'storeSkills'])->name('my-profile.add-skills');
+        Route::post('/update-skills', [MyProfileController::class, 'updateSkills'])->name('my-profile.update-skills');
+        Route::delete('/delete-skills', [MyProfileController::class, 'deleteSkills'])->name('my-profile.delete-skills');
     });
 
     // Change Password
@@ -65,7 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
     Route::prefix('upload')->group(function () {
         Route::post('/add', [UploadKaryaController::class, 'store'])->name('upload.add');
-        Route::post('/update', [UploadKaryaController::class, 'update'])->name('upload.update');
+        Route::post('/delete', [UploadKaryaController::class, 'update'])->name('upload.update');
         Route::post('/delete', [UploadKaryaController::class, 'destroy'])->name('upload.delete');
     });
 });

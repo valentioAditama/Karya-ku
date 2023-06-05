@@ -61,15 +61,25 @@
                         <h5>Skills</h5>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
-                        <a href="" class="btn btn-primary">Add Skills</a>
+                        <button type="button" class="btn btn-danger btn-sm" data-mdb-toggle="modal" data-mdb-target="#deleteSkill" data-mdb-placement="bottom" title="Delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                        &nbsp;
+                        <button type="button" class="btn btn-warning btn-sm" data-mdb-toggle="modal" data-mdb-target="#updateSkill" data-mdb-placement="bottom" title="Edit">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                        &nbsp;
+                        <!-- Add Skills -->
+                        <button type="button" class="btn btn-primary btn-sm" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-placement="bottom" title="Add">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
                     </div>
                     <hr class="mt-3">
                     <div class="row">
                         <div class="col-auto">
-                            <div class="btn btn-secondary mb-2">Software Engineer</div>
-                            <div class="btn btn-secondary mb-2">Software</div>
-                            <div class="btn btn-secondary mb-2">Software Engineer</div>
-                            <div class="btn btn-secondary mb-2">Software Engineer</div>
+                            @foreach($getDataSkills as $data)
+                            <div class="btn btn-secondary mb-2">{{$data->name_skills}}</div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -79,28 +89,25 @@
                     <div class="col-md-6 d-flex align-items-center">
                         <h5>Social Media</h5>
                     </div>
-                    <div class="col-md-6 d-flex justify-content-end">
-                        <a href="" class="btn btn-primary">Add Social Media</a>
-                    </div>
                     <hr class="mt-3">
                     <form action="{{route('my-profile.add-social-media')}}" method="post">
                         @csrf
                         <div class="row">
                             <div class="social-media-profile mb-3">
                                 <i class="fa-brands fa-facebook fa-2xl"></i>
-                                <input type="text" class="social-media-input" name="facebook" placeholder="Facebook Username">
+                                <input type="text" class="social-media-input" name="facebook" placeholder="Facebook Username" value="{{$getSocialFacebook ? $getSocialFacebook->name : '' }}">
                             </div>
                             <div class="social-media-profile mb-3">
                                 <i class="fa-brands fa-instagram fa-2xl"></i>
-                                <input type="text" class="social-media-input" name="instagram" placeholder="Instagram Username">
+                                <input type="text" class="social-media-input" name="instagram" placeholder="Instagram Username" value="{{$getSocialInstagram ? $getSocialInstagram->name : '' }}">
                             </div>
                             <div class="social-media-profile mb-3">
                                 <i class="fa-brands fa-twitter fa-2xl"></i>
-                                <input type="text" class="social-media-input" name="twitter" placeholder="Twitter Username">
+                                <input type="text" class="social-media-input" name="twitter" placeholder="Twitter Username" value="{{$getSocialTwitter ? $getSocialTwitter->name : '' }}">
                             </div>
                             <div class="social-media-profile mb-3">
                                 <i class="fa-brands fa-youtube fa-2xl"></i>
-                                <input type="text" class="social-media-input" name="youtube" placeholder="Youtube Channel">
+                                <input type="text" class="social-media-input" name="youtube" placeholder="Youtube Channel" value="{{$getSocialYoutube ? $getSocialYoutube->name : '' }}">
                             </div>
                             <div class="d-flex justify-content-end mt-3 mb-3">
                                 <button type="submit" class="btn btn-success">Simpan</button>
@@ -178,5 +185,8 @@
 @include('components.user.footer')
 <!-- Notification -->
 @include('components.notifications')
-
+<!-- Modal For Skills-->
+@include('components.modal.myprofile.skills')
+@include('components.modal.myprofile.skills-update')
+@include('components.modal.myprofile.skills-delete')
 @endsection
