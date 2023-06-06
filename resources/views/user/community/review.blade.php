@@ -45,30 +45,38 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="mt-2">
-                                        <button class="image-file text-center">
+                                        <span class="image-file text-center" onclick="document.getElementById('image').click()">
                                             <i class="fa-solid fa-image"></i>
                                             &nbsp;
                                             Gambar
-                                        </button>
+                                        </span>
+                                        <input type="file" id="image" accept="image/*" style="display: none;">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="mt-2">
-                                        <button class="image-file text-center">
+                                        <span class="image-file text-center" onclick="document.getElementById('video').click()">
                                             <i class="fa-solid fa-video"></i>
                                             &nbsp;
                                             Video
-                                        </button>
+                                        </span>
+                                        <input type="file" id="video" accept="video/*" style="display: none;">
                                     </div>
                                 </div>
                                 <div class="col-md-8 d-flex justify-content-end">
                                     <div class="mt-2">
-                                        <button class="image-file text-center" type="submit">
+                                        <button class="button-posting text-center" type="submit">
                                             Posting &nbsp;
                                             <i class="fa-solid fa-upload"></i>
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="mt-3">
+                                <img id="imagePreview" class="showingFile" width="150" height="100" />
+                            </div>
+                            <div class="mt-3">
+                                <video id="videoPreview" style="display: none;" width="250" height="150" controls></video>
                             </div>
                         </form>
                     </div>
@@ -106,27 +114,23 @@
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-11">
                         <div class="row">
-                            <!-- likes -->
                             <div class="col-md-2">
+                                <!-- likes -->
                                 <div class="mt-2">
-                                    <button class="image-file text-center">
+                                    <span class="image-file text-center" onclick="document.getElementById('image-input').click()">
                                         <i class="fa-solid fa-thumbs-up"></i> &nbsp;
                                         112
-                                    </button>
+                                    </span>
                                 </div>
                             </div>
-                            <!-- comment -->
                             <div class="col-md-2">
                                 <div class="mt-2">
-                                    <a href="{{route('komunitas.comment', $data->id)}}">
-                                        <button class="image-file text-center">
-                                            <i class="fa-solid fa-comment"></i>&nbsp;
-                                            200
-                                        </button>
+                                    <a href="{{route('komunitas.comment', $data->id)}}" class="image-file text-center text-dark">
+                                        <i class="fa-solid fa-comment"></i>&nbsp;
+                                        {{$data->comments_count}}
                                     </a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -135,6 +139,41 @@
         </div>
     </section>
 </div>
+
+<script>
+    // click input file
+    var image = document.getElementById('image');
+    var video = document.getElementById('video');
+
+    // showing
+    var imagePreview = document.getElementById('imagePreview');
+    var videoPreview = document.getElementById('videoPreview');
+
+    image.addEventListener('change', function() {
+        var file = image.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            imagePreview.style.display = 'inline-block';
+            imagePreview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    video.addEventListener('change', function() {
+        var file = video.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            videoPreview.style.display = 'inline-block';
+            videoPreview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    });
+</script>
+
 
 <!-- footer -->
 @include('components.user.footer')

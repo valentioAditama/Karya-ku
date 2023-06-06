@@ -29,10 +29,11 @@ class KomunitasController extends Controller
                 'thumbnail_community.path'
             ])->first();
 
-        // get content community from users
-        $getContentCommunity = Db::table('content_community')
+        // get content community from users and get count all
+        $getContentCommunity = ContentCommunity::withCount('comments')
             ->join('users', 'users.id', '=', 'content_community.id_user')
             ->where('id_community', '=', $id)
+            ->orderBy('content_community.created_at', 'DESC')
             ->get([
                 'users.fullname',
                 'users.image_profile',
@@ -67,6 +68,7 @@ class KomunitasController extends Controller
             ->join('thumbnail_community', 'thumbnail_community.id_community', '=', 'community.id')
             ->join('users', 'users.id', '=', 'content_community.id_user')
             ->where('content_community.id', '=', $id)
+            ->orderBy('created_at', 'DESC')
             ->get([
                 'community.id',
                 'community.name_community',
@@ -84,6 +86,7 @@ class KomunitasController extends Controller
             ->join('content_community', 'content_community.id', '=', 'comment_content_community.id_content_community')
             ->join('users', 'users.id', '=', 'comment_content_community.id_user')
             ->where('comment_content_community.id_content_community', '=', $id)
+            ->orderBy('created_at', 'ASC')
             ->get([
                 'users.fullname',
                 'users.image_profile',
@@ -116,6 +119,7 @@ class KomunitasController extends Controller
         // get id and showing community
         $getCommunity = DB::table('community')
             ->join('thumbnail_community', 'thumbnail_community.id_community', '=', 'community.id')
+            ->orderBy('created_at', 'DESC')
             // ->join('content_community', 'content_community.id_community', '=', 'community.id')
             ->get([
                 'community.id',

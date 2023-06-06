@@ -21,4 +21,9 @@ class CommentContentCommunity extends Model
         'comment',
         'status'
     ];
+
+    public function content()
+    {
+        return $this->belongsTo(ContentCommunity::class, 'id_community');
+    }
 }

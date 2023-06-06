@@ -137,6 +137,14 @@
 .image-file {
     background-color: #EEEBEB;
     padding: 10px;
+    width: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+.button-posting {
+    background-color: #EEEBEB;
+    padding: 10px;
     width: 20vh;
     border-radius: 20px;
 }
