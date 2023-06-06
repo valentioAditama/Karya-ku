@@ -51,47 +51,23 @@
     <!-- data Karyaku -->
     <div class="container-fluid">
         <div class="row mt-5">
+            @foreach($getCommunity as $data)
             <div class="col-md-4">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpg5ux29bil5cTtd2froKm1vDhdYg356bZKQ&usqp=CAU" class="w-100 h-75 img-fluid " alt="">
-                <div class="mt-2">
-                    <b>Komunitas Kesenian Bandung</b>
-                </div>
-                <div class="d-flex justify-content-between mt-2">
-                    <div>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                        Valentio Aditama
+                <a href="{{route('komunitas.review', $data->id)}}" class="text-dark">
+                    <img src="{{asset('storage/community/thumbnail/' . $data->path)}}" class="w-100 h-75 img-fluid " alt="">
+                    <div class="mt-2">
+                        <b>{{$data->name_community}}</b>
                     </div>
-                    <div>Selasa, 10 Feburari 2023</div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <img src="https://www.sampoernauniversity.ac.id/wp-content/uploads/2022/02/pexels-photo-3184428.jpeg" class="w-100 h-75 img-fluid " alt="">
-                <div class="mt-2">
-                    <b>Komunitas Kesenian Bandung</b>
-                </div>
-                <div class="d-flex justify-content-between mt-2">
-                    <div>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                        Valentio Aditama
+                    <div class="d-flex justify-content-between mt-2">
+                        <div>
+                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                            Valentio Aditama
+                        </div>
+                        <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
                     </div>
-                    <div>Selasa, 10 Feburari 2023</div>
-                </div>
+                </a>
             </div>
-
-            <div class="col-md-4">
-                <img src="https://cdn1-production-images-kly.akamaized.net/d5_K_6cAWyOSCSeHN0av3m0MGR8=/469x260/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2562187/original/099971300_1546384277-kolaborasi-asyiiik-dari-karya-kerajinan-dan-kesenian-lokal-komunitas.jpg" class="w-100 h-75 img-fluid " alt="">
-                <div class="mt-2">
-                    <b>Komunitas Kesenian Bandung</b>
-                </div>
-                <div class="d-flex justify-content-between mt-2">
-                    <div>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                        Valentio Aditama
-                    </div>
-                    <div>Selasa, 10 Feburari 2023</div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

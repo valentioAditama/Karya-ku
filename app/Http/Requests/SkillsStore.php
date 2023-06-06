@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UploadRequestStore extends FormRequest
+class SkillsStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,23 +23,14 @@ class UploadRequestStore extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'sub_title' => 'required',
-            'description' => 'required',
-            'path_thumbnail' => 'required|mimes:jpeg,jpg,png|max:8000',
-            'path_image' => 'required|mimes:jpeg,jpg,png|max:8000',
-            'path_video' => 'mimes:mp4|max:100000',
+            'name_skills' => 'string',
         ];
     }
 
     public function messages()
     {
         return [
-            'title' => 'Judul Tidak Boleh Kosong',
-            'sub_title' => 'Sub Judul Tidak Boleh Kosong',
-            'description' => 'Deskripsi Tidak Boleh Kosong',
-            'path_thumbnail' => 'Thumbanil Gambar Tidak Boleh Kosong',
-            'path_image' => 'Gambar Tidak Boleh Kosong',
+            'name_skills' => 'Name Skills tidak boleh kosong'
         ];
     }
 

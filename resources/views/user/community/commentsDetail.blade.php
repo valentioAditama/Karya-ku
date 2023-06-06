@@ -3,7 +3,7 @@
 @section('content')
 <div class="background-komunitas-review">
     <!-- Banner-komunitas-review -->
-    <section class="banner-komunitas-review">
+    <section class="banner-komunitas-review" style="background-image: url({{ asset('storage/community/thumbnail/' . $getCommunity->path) }});">
         <div class="container-fluid">
             <!-- navbar -->
             @include('components.user.navbar')
@@ -12,9 +12,9 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12">
                             <div class="banner-komunitas-review-title text-light">
-                                <p class="h2"><b>Komunitas BasketBall Bandung</b></p>
+                                <p class="h2"><b>{{$getCommunity->name_community}}</b></p>
                                 <p class="banner-komunitas-review-sub-title">
-                                    Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
+                                    {{$getCommunity->description}} <br>
                                     Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
                                 </p>
                                 <div class="mt-3">
@@ -33,12 +33,12 @@
             <div class="form-post">
                 <div class="row">
                     <div class="col-md-1 d-flex justify-content-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <img src="{{ $getContentCommunity->image_profile ? asset('storage/user/profile/'. $getContentCommunity->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-5 d-flex align-items-center">
                         <div class="user-info">
-                            <h5><b>Valentio Aditama</b></h5>
-                            <small>Few Minutes Ago</small>
+                            <h5><b>{{$getContentCommunity->fullname}}</b></h5>
+                            <div>{{ \Carbon\Carbon::parse($getContentCommunity->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
@@ -48,8 +48,7 @@
                 <!-- content komunitas -->
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-11">
-                        <p class="h5"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt expedita, voluptatum temporibus dolorem asperiores labore hic nam corrupti inventore id ipsa voluptatem. Ratione eum repudiandae id maxime, sint architecto officia.
-                        </p>
+                        <p class="h5">{{$getContentCommunity->description}}</p>
                     </div>
                 </div>
                 <!-- likes and comments -->
@@ -75,35 +74,43 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- data comment -->
+
                         <div class="mt-4">
                             <h3>Comments</h3>
+                        </div>
+                        <!-- data comment -->
+                        @foreach($getComment as $data)
+                        <div class="mt-4">
                             <div class="comments">
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-1">
-                                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                                     </div>
                                     <div class="col-md-11">
                                         <div class="user-info">
-                                            <h5><b>Valentio Aditama</b></h5>
-                                            <small>Few Minutes Ago</small>
+                                            <h5><b>{{$data->fullname}}</b></h5>
+                                            <div>{{ \Carbon\Carbon::parse($data->created_at)->diffForHumans() }}</div>
                                         </div>
                                     </div>
                                     <div class="mt-3 col-md-12">
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa quidem, perspiciatis laboriosam exercitationem cumque adipisci ratione alias, accusamus quisquam corporis nobis nesciunt obcaecati! Dolore eveniet autem blanditiis reprehenderit magni quaerat?
+                                        {{$data->comment}}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+                        @auth
                         <!-- form comment -->
                         <div class="mt-5">
-                            <form action="" method="post">
+                            <form action="{{route('komunitas.comment-store')}}" method="post">
+                                @csrf
                                 <div class="row d-flex align-items-center justify-content-start">
                                     <div class="col-md-1">
-                                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-comment" placeholder="Comment">
+                                        <input type="hidden" name="id_content" value="{{$getContentCommunity->id_content}}">
+                                        <input type="text" class="form-comment" name="comment" placeholder="Comment" required>
                                     </div>
                                     <div class="col-md-2">
                                         <button class="button-comment text-center">
@@ -114,6 +121,7 @@
                                 </div>
                             </form>
                         </div>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -121,3 +129,5 @@
     </section>
 </div>
 @endsection
+<!-- Notification -->
+@include('components.notifications')

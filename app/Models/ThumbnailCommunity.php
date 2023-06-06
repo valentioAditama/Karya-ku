@@ -13,9 +13,10 @@ class ThumbnailCommunity extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'thumbnail_community';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_community',
+        'path'
     ];
 }

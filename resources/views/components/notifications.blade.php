@@ -131,6 +131,19 @@
 </script>
 @endif
 
+@if (session('successStoreCommunity'))
+<script>
+    // Show Notification 
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.success({
+            title: 'Success',
+            message: `{{ session('successStoreCommunity') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
 <!-- FAILED Request Store Data -->
 @if(session('errors'))
 @foreach(session('errors')->all() as $error)

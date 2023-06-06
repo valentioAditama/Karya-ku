@@ -17,7 +17,7 @@ class ThumbnailContent extends Model
     protected $table = 'thumbnail_content';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id_content',
+        'id_community',
         'path'
     ];
 

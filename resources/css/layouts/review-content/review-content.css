@@ -1,7 +1,24 @@
+.navbar {
+    position: relative;
+    z-index: 1;
+}
+
 .banner-review-content{
-    background-image: url('/public/images/review-content.png');
     height: 80vh;
     background-size: cover;
+    border-radius: 0 0 86px 86px;
+    background-position: center;
+    position: relative;
+}
+
+.banner-review-content::after{
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0;
     border-radius: 0 0 86px 86px;
 }
 
@@ -13,10 +30,12 @@
 .banner-review-content-title {
     margin-top: 22vh;
     line-height: 1.5;
+    position: relative;
+    z-index: 1;
 }
 
 .banner-review-content-sub-title {
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .banner-review-content-form {

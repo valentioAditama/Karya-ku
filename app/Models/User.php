@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -59,6 +60,11 @@ class User extends Authenticatable
     public function content()
     {
         return $this->hasMany(Content::class);
+    }
+
+    public function contentCommuniy(): BelongsTo
+    {
+        return $this->belongsTo(ContentCommunity::class, 'id_user');
     }
 
     // Laporan

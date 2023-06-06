@@ -37,9 +37,9 @@
 
 <!-- our mission -->
 <section class="container our-mission">
-    <div class="row">
+    <div class="row d-flex align-items-center">
         <div class="col-md-6">
-            <h1 class="text-center"><b>Our Mission </b></h1>
+            <h1 class="text-start"><b>Our Mission </b></h1>
             <p class="">Karya-ku adalah sebuah platform website yang memungkinkan pengguna untuk mengunggah dan memamerkan karya-karya mereka secara online. Dari seni visual hingga desain grafis, fotografi, musik, dan banyak lagi, pengguna dapat membagikan karya mereka dengan dunia dan berinteraksi dengan pengguna lain yang memiliki minat yang sama.</p>
             <figcaption class="blockquote-footer mt-2">
                 "Innovating software solutions for a better tomorrow."
@@ -47,7 +47,7 @@
 
         </div>
         <div class="col-md-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quae qui obcaecati necessitatibus, quis provident nam, excepturi ut voluptatibus repudiandae hic sequi incidunt tenetur quos quibusdam cumque unde iste atque.
+            <img src="{{ asset('images/aboutus.jpg') }}" class="img-fluid" alt="">
         </div>
     </div>
 </section>

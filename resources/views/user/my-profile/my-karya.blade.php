@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Banner-my-profile -->
-<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}');>
+<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}')">
     <div class=" container-fluid">
     <!-- navbar -->
     @include('components.user.navbar')
@@ -61,7 +61,7 @@
                         <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
                         {{Auth::user()->fullname}}
                     </div>
-                    <div>{{\Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y');}}</div>
+                    <div>{{\Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y')}}</div>
                 </div>
                 <div class="d-flex justify-content-end mt-2">
                     <a href="" class="btn btn-info">Delete</a> &nbsp;
