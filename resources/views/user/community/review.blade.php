@@ -18,7 +18,10 @@
                                     Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
                                 </p>
                                 <div class="mt-3">
-                                    <button class="button-komunitas">800 Members</button>
+                                    <form action="{{route('komunitas.storeArticelMember', $getCommunity->id)}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="button-komunitas">{{ $getMembersCommunity }} Members</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -123,15 +126,18 @@
                             <div class="col-md-2">
                                 <!-- likes -->
                                 <div class="mt-2">
-                                    <span class="image-file text-center" onclick="document.getElementById('image-input').click()">
-                                        <i class="fa-solid fa-thumbs-up"></i> &nbsp;
-                                        112
-                                    </span>
+                                    <form action="{{ route('komunitas.storeArticelLikes', $data->id) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn image-file w-100 text-center">
+                                            <i class="fa-solid fa-thumbs-up"></i> &nbsp;
+                                            {{$data->like_count > 0 && $data->like_count == 1 ? $data->like_count : $data->like_count}}
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="mt-2">
-                                    <a href="{{route('komunitas.comment', $data->id)}}" class="image-file text-center text-dark">
+                                    <a href="{{route('komunitas.comment', $data->id)}}" class="btn w-100 image-file text-center text-dark">
                                         <i class="fa-solid fa-comment"></i>&nbsp;
                                         {{$data->comment_count}} comments
                                     </a>
@@ -179,7 +185,6 @@
         reader.readAsDataURL(file);
     });
 </script>
-
 
 <!-- footer -->
 @include('components.user.footer')

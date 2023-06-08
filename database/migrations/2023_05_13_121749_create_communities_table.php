@@ -15,10 +15,14 @@ class CreateCommunitiesTable extends Migration
     {
         Schema::create('community', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('id_user');
             $table->string('name_community', 50);
             $table->enum('status', ['active', 'non-active'])->default('active');
             $table->string('description', 150);
             $table->timestamps();
+
+            // reference to users
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

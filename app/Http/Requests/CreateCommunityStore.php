@@ -25,7 +25,7 @@ class CreateCommunityStore extends FormRequest
         return [
             'name_community' => 'required',
             'description' => 'required',
-            'thumbnail_community' => 'required',     
+            'thumbnail_community' => 'required',
         ];
     }
 
@@ -33,8 +33,15 @@ class CreateCommunityStore extends FormRequest
     {
         return [
             'name_community' => 'name_community Tidak Boleh Kosong',
-            'description' => 'description Tidak Boleh Kosong',    
+            'description' => 'description Tidak Boleh Kosong',
             'thumbnail_community' => 'Thumbnail Tidak Boleh Kosong'
         ];
+    }
+
+    public function validated($key = null, $default = null)
+    {
+        $validated = parent::validated();
+        $validated['id_user'] = Auth::id();
+        return $validated;
     }
 }

@@ -13,9 +13,10 @@ class LikeContentCommunity extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'like_content_community';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_content_community',
+        'id_user'
     ];
 }

@@ -58,15 +58,18 @@
                             <div class="col-md-2">
                                 <!-- likes -->
                                 <div class="mt-2">
-                                    <span class="image-file text-center" onclick="document.getElementById('image-input').click()">
-                                        <i class="fa-solid fa-thumbs-up"></i> &nbsp;
-                                        112
-                                    </span>
+                                    <form action="{{ route('komunitas.storeArticelLikes', $getContentCommunity->id_content) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn image-file w-100 text-center">
+                                            <i class="fa-solid fa-thumbs-up"></i> &nbsp;
+                                            {{$getCountLikes}}
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="mt-2">
-                                    <span class="image-file text-center text-dark">
+                                    <span class="btn w-100 image-file text-center text-dark">
                                         <i class="fa-solid fa-comment"></i>&nbsp;
                                         {{$getCountComment}} Comments
                                     </span>
