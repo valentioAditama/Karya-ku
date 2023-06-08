@@ -39,11 +39,11 @@
         <div class="col-md-6">
           <div class="mb-3">
             <label for="">Judul</label>
-            <input type="text" class="form-control" name="title" value="{{ old('title') }}" required>
+            <input type="text" class="form-control" name="title" maxlength="40" value="{{ old('title') }}" required>
           </div>
           <div class="mb-3">
             <label for="">Sub Judul</label>
-            <input type="text" class="form-control" name="sub_title" value="{{ old('sub_title') }}" required>
+            <input type="text" class="form-control" name="sub_title" maxlength="150" value="{{ old('sub_title') }}" required>
           </div>
           <div class="mb-3">
             <label for="">Thumbnail Gambar Karya-mu</label>

@@ -199,12 +199,23 @@ class KomunitasController extends Controller
     public function search(Request $request)
     {
         // get data search for community
-        return $GetSearchCommunity = DB::table('community')
+        $GetSearchCommunity = DB::table('community')
+            ->join('users', 'users.id', '=', 'community.id_user')
+            ->join('thumbnail_community', 'thumbnail_community.id_community', '=', 'community.id')
             ->where('name_community', 'like', '%' . $request->search . '%')
-            ->get();
+            ->orderBy('created_at', 'DESC')
+            ->get([
+                'community.id',
+                'community.name_community',
+                'community.description',
+                'community.created_at',
+                'thumbnail_community.path',
+                'users.fullname',
+                'users.image_profile'
+            ]);
 
         $search = $request->search;
-        return view('data.PencarianData.KodeBarang', compact('GetSearchCommunity', 'dataKodeBarang', 'search'));
+        return view('user.community.search', compact('GetSearchCommunity', 'search'));
     }
 
     /**

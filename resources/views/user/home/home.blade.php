@@ -40,11 +40,11 @@
         <div class="row mt-5">
             @foreach($getDataContent as $data)
             <div class="col-md-4 mb-5">
-                <a href="{{route('reviewKarya', $data->id)}}">
+                <a href="{{route('reviewKarya', $data->id)}}" class="text-dark">
                     <img src="{{ asset('storage/content/thumbnail/' . $data->path) }}" class="w-100 h-100 img-fluid " alt="">
                     <div class="d-flex justify-content-between mt-2">
                         <div>
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                            <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
                             {{$data->fullname}}
                         </div>
                         <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>

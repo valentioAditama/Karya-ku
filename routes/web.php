@@ -56,13 +56,20 @@ Route::middleware('auth')->group(function () {
 
     // my list karya
     Route::get('/my-karya/{id}', [MyListKaryaController::class, 'index'])->name('my-profile.karya');
+    Route::prefix('my-karya')->group(function () {
+        // Delete
+        Route::post('/delete/{id}', [MyListKaryaController::class, 'destroy'])->name('my-karya.destroy');
+    });
 
     // Upload Karya Content
     Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
     Route::prefix('upload')->group(function () {
         Route::post('/add', [UploadKaryaController::class, 'store'])->name('upload.add');
-        Route::post('/delete', [UploadKaryaController::class, 'update'])->name('upload.update');
         Route::post('/delete', [UploadKaryaController::class, 'destroy'])->name('upload.delete');
+
+        // update from my list karya
+        Route::get('/edit/{id}', [MyListKaryaController::class, 'edit'])->name('upload.edit');
+        Route::post('/update/{id}', [MyListKaryaController::class, 'update'])->name('upload.update');
     });
 });
 

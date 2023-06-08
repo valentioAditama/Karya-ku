@@ -2,19 +2,23 @@
 
 @section('content')
 <!-- Banner-my-profile -->
-<section class="banner-my-profile" style="background-image: url('{{asset('images/my-profile.png') }}')">
-    <div class=" container-fluid">
-    <!-- navbar -->
-    @include('components.user.navbar')
+<section class="banner-my-profile">
+    <img class="profilepic__banner banner-my-profile" src="{{ Auth::user()->image_banner ? asset('storage/user/banner/'. Auth::user()->image_banner) : asset('images/bannerDefault.png') }}" width="300" height="300" alt="Profile Picture" />
+    <div class="container-fluid">
+        <!-- navbar -->
+        @include('components.user.navbar')
     </div>
 </section>
-
 <!-- My Profile -->
 <section class="profile-image">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3 image-profile" height="300" alt="Black and White Portrait of a Man" loading="lazy" />
+                <div class="profilepic image-profile">
+                    <label for="file" class="profilepic__label">
+                        <img class="profilepic__image" src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" width="300" height="300" alt="Profile Picture" />
+                    </label>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="mt-4">
@@ -39,43 +43,76 @@
     </div>
 </section>
 
-<!-- List All My Karya data -->
 <section>
     <!-- title -->
-    <div class="text-center">
+    <div class="text-center mb-5">
         <h2 class="mt-5">Karya-ku</h2>
-        <h5>
-            Anda bisa menambahkan karya, memperbarui dan <br>
-            menyimpan karya anda sendiri di draft
+        <h5>Anda bisa menambahkan karya, memperbarui dan <br>
+            menyimpan karya anda sendiri
         </h5>
     </div>
 
     <!-- data Karyaku -->
     <div class="container-fluid">
-        <div class="row mt-5">
-            @foreach($getDataKarya as $data)
-            <div class="col-md-4">
-                <img src="https://d23.com/app/uploads/2020/01/1180w-463h_010920-riviera-art-gallery-780x440.jpg" class="w-100 h-75 img-fluid " alt="">
-                <div class="d-flex justify-content-between mt-2">
-                    <div>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                        {{Auth::user()->fullname}}
+        <div class="row mt-5 mb-5">
+            @foreach($getDataContent as $data)
+            <div class="col-md-4 mb-5">
+                <a href="{{route('reviewKarya', $data->id)}}" class="text-dark">
+                    <img src="{{ asset('storage/content/thumbnail/' . $data->path) }}" class="w-100 h-100 img-fluid " alt="">
+                    <div class="d-flex justify-content-between mt-2">
+                        <div>
+                            <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                            {{$data->fullname}}
+                        </div>
+                        <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
                     </div>
-                    <div>{{\Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y')}}</div>
-                </div>
+                </a>
                 <div class="d-flex justify-content-end mt-2">
-                    <a href="" class="btn btn-info">Delete</a> &nbsp;
-                    <a href="" class="btn btn-info">Edit</a>
+                    <a href="{{route('upload.edit', $data->id)}}">
+                        <button class="btn btn-sm btn-info">Edit</button> &nbsp;
+                    </a>
+                    <button class="btn btn-sm btn-danger">Delete</button>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
+
 </section>
+
+
+<script>
+    function updateProfilePic(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        const profilePic = document.querySelector('.profilepic__image');
+
+        reader.onload = function(e) {
+            profilePic.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    function updateBannerPic(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        const bannerPic = document.querySelector('.profilepic__banner');
+
+        reader.onload = function(e) {
+            bannerPic.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+</script>
 
 <!-- footer -->
 @include('components.user.footer')
 <!-- Notification -->
 @include('components.notifications')
-
+<!-- Modal For Skills-->
+@include('components.modal.myprofile.skills')
+@include('components.modal.myprofile.skills-update')
+@include('components.modal.myprofile.skills-delete')
 @endsection

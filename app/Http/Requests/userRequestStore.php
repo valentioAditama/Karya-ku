@@ -25,6 +25,8 @@ class userRequestStore extends FormRequest
         return [
             'fullname' => 'required',
             'email' => 'required',
+            'role_job' => 'nullable|string',
+            'location' => 'nullable|string'
         ];
     }
 

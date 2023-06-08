@@ -37,8 +37,24 @@ class ReviewContentKarya extends Controller
             ])
             ->where('content.id', '=', $id)->first();
 
+        // get data random from content
+        $getDataRandomContent = DB::table('content')
+            ->join('users', 'users.id', '=', 'content.id_user')
+            ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
+            ->inRandomOrder()
+            ->get([
+                'content.id',
+                'users.fullname',
+                'content.title',
+                'content.sub_title',
+                'content.description',
+                'thumbnail_content.path',
+                'content.status',
+                'content.created_at'
+            ]);
+
         // return view for users
-        return view('user.review-content.review-content', compact('getDataContent'));
+        return view('user.review-content.review-content', compact('getDataContent', 'getDataRandomContent'));
     }
 
     public function adminPage()
