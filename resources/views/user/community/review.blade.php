@@ -35,7 +35,7 @@
             <div class="form-post">
                 <div class="row">
                     <div class="col-md-1 d-flex justify-content-center">
-                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-11">
                         <form action="{{route('komunitas.storeArticel', $getCommunity->id)}}" method="post">
@@ -92,12 +92,12 @@
             <div class="form-post mb-3">
                 <div class="row">
                     <div class="col-md-1 d-flex justify-content-center">
-                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-5 d-flex align-items-center">
                         <div class="user-info">
                             <h5><b>{{$data->fullname}}</b></h5>
-                            <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
+                            <div>{{ \Carbon\Carbon::parse($data->created_at)->diffForHumans() }}</div>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
@@ -127,7 +127,7 @@
                                 <div class="mt-2">
                                     <a href="{{route('komunitas.comment', $data->id)}}" class="image-file text-center text-dark">
                                         <i class="fa-solid fa-comment"></i>&nbsp;
-                                        {{$data->comments_count}}
+                                        see comments
                                     </a>
                                 </div>
                             </div>

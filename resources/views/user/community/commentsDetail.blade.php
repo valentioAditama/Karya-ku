@@ -84,7 +84,7 @@
                             <div class="comments">
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-1">
-                                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" alt="Black and White Portrait of a Man" loading="lazy" />
                                     </div>
                                     <div class="col-md-11">
                                         <div class="user-info">
@@ -106,7 +106,7 @@
                                 @csrf
                                 <div class="row d-flex align-items-center justify-content-start">
                                     <div class="col-md-1">
-                                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                                     </div>
                                     <div class="col-md-9">
                                         <input type="hidden" name="id_content" value="{{$getContentCommunity->id_content}}">

@@ -30,8 +30,7 @@ class KomunitasController extends Controller
             ])->first();
 
         // get content community from users and get count all
-        $getContentCommunity = ContentCommunity::withCount('comments')
-            ->join('users', 'users.id', '=', 'content_community.id_user')
+        $getContentCommunity = ContentCommunity::join('users', 'users.id', '=', 'content_community.id_user')
             ->where('id_community', '=', $id)
             ->orderBy('content_community.created_at', 'DESC')
             ->get([
