@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-karya/{id}', [MyListKaryaController::class, 'index'])->name('my-profile.karya');
     Route::prefix('my-karya')->group(function () {
         // Delete
-        Route::post('/delete/{id}', [MyListKaryaController::class, 'destroy'])->name('my-karya.destroy');
+        Route::delete('/delete/{id}', [MyListKaryaController::class, 'destroy'])->name('my-karya.destroy');
     });
 
     // Upload Karya Content

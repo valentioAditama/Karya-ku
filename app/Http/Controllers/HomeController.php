@@ -14,6 +14,7 @@ class HomeController extends Controller
         $getDataContent = DB::table('content')
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
+            ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
                 'users.fullname',

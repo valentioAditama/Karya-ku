@@ -209,6 +209,19 @@
 </script>
 @endif
 
+@if (session('successDeleteContent'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.success({
+            title: 'Success',
+            message: `{{ session('successDeleteContent') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
 <!-- FAILED Request Store Data -->
 @if(session('errors'))
 @foreach(session('errors')->all() as $error)

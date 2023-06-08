@@ -28,6 +28,7 @@ class MyListKaryaController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.id_user', '=', Auth::id())
+            ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
                 'users.fullname',
@@ -142,6 +143,26 @@ class MyListKaryaController extends Controller
      */
     public function destroy(string $id)
     {
-        // 
+        try {
+            // before delete check other child relation
+            $getDataThumbnail = ThumbnailContent::where('id_content', '=', $id)->first();
+            $getDataThumbnail->delete();
+
+            // delete image child
+            $getDataImage = ImageContent::where('id_content', '=', $id)->first();
+            $getDataImage->delete();
+
+            // delete video child
+            $getDataVideo = VideoContent::where('id_content', '=', $id)->first();
+            $getDataVideo->delete();
+
+            // check and delete data from content parents
+            $getDataContent = Content::find($id);
+            $getDataContent->delete();
+
+            return redirect()->back()->with(['successDeleteContent' => 'Data Berhasil Di Hapus']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 }

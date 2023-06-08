@@ -58,8 +58,11 @@
             @foreach($getDataContent as $data)
             <div class="col-md-4 mb-5">
                 <a href="{{route('reviewKarya', $data->id)}}" class="text-dark">
-                    <img src="{{ asset('storage/content/thumbnail/' . $data->path) }}" class="w-100 h-100 img-fluid " alt="">
-                    <div class="d-flex justify-content-between mt-2">
+                    <img src="{{ asset('storage/content/thumbnail/' . $data->path) }}" class="w-100 h-75 img-fluid " alt="">
+                    <div class="mt-2">
+                        <b>{{$data->title}}</b>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1">
                         <div>
                             <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
                             {{$data->fullname}}
@@ -71,7 +74,7 @@
                     <a href="{{route('upload.edit', $data->id)}}">
                         <button class="btn btn-sm btn-info">Edit</button> &nbsp;
                     </a>
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <button class="btn btn-sm btn-danger" data-mdb-toggle="modal" data-mdb-target="#deleteContent{{$data->id}}" data-mdb-placement="bottom" title="Delete">Delete</button>
                 </div>
             </div>
             @endforeach
@@ -115,4 +118,8 @@
 @include('components.modal.myprofile.skills')
 @include('components.modal.myprofile.skills-update')
 @include('components.modal.myprofile.skills-delete')
+
+<!-- modal delete -->
+@include('components.modal.myprofile.delete-my-list')
+
 @endsection
