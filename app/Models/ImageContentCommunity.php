@@ -13,9 +13,10 @@ class ImageContentCommunity extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'image_content_community';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_content_community',
+        'path'
     ];
 }

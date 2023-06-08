@@ -33,7 +33,7 @@
             <div class="form-post">
                 <div class="row">
                     <div class="col-md-1 d-flex justify-content-center">
-                        <img src="{{ $getContentCommunity->image_profile ? asset('storage/user/profile/'. $getContentCommunity->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <img src="{{ $getContentCommunity->image_profile ? asset('storage/user/profile/'. $getContentCommunity->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-5 d-flex align-items-center">
                         <div class="user-info">
@@ -55,22 +55,21 @@
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-11">
                         <div class="row">
-                            <!-- likes -->
                             <div class="col-md-2">
+                                <!-- likes -->
                                 <div class="mt-2">
-                                    <button class="image-file text-center">
+                                    <span class="image-file text-center" onclick="document.getElementById('image-input').click()">
                                         <i class="fa-solid fa-thumbs-up"></i> &nbsp;
                                         112
-                                    </button>
+                                    </span>
                                 </div>
                             </div>
-                            <!-- comment -->
                             <div class="col-md-2">
                                 <div class="mt-2">
-                                    <button class="image-file text-center">
+                                    <span class="image-file text-center text-dark">
                                         <i class="fa-solid fa-comment"></i>&nbsp;
-                                        200
-                                    </button>
+                                        {{$getCountComment}} Comments
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -92,8 +91,10 @@
                                             <div>{{ \Carbon\Carbon::parse($data->created_at)->diffForHumans() }}</div>
                                         </div>
                                     </div>
-                                    <div class="mt-3 col-md-12">
-                                        {{$data->comment}}
+                                    <div class="row d-flex justify-content-end">
+                                        <div class="col-md-11">
+                                            <p class="h6">{{$data->comment}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

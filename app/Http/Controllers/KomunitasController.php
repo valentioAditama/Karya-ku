@@ -7,7 +7,9 @@ use App\Http\Requests\CreateCommunityStore;
 use App\Models\CommentContentCommunity;
 use App\Models\Community;
 use App\Models\ContentCommunity;
+use App\Models\ImageContentCommunity;
 use App\Models\ThumbnailCommunity;
+use App\Models\VideoContentCommunity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,17 +31,39 @@ class KomunitasController extends Controller
                 'thumbnail_community.path'
             ])->first();
 
-        // get content community from users and get count all
+        // get content community from users and get count of comments
         $getContentCommunity = ContentCommunity::join('users', 'users.id', '=', 'content_community.id_user')
+            ->leftJoin('image_content_community', function ($join) {
+                $join->on('image_content_community.id_content_community', '=', 'content_community.id')
+                    ->orWhereNull('image_content_community.id_content_community');
+            })
+            ->leftJoin('video_content_communities', function ($join) {
+                $join->on('video_content_communities.id_content_community', '=', 'content_community.id')
+                    ->orWhereNull('video_content_communities.id_content_community');
+            })
+            ->leftJoin('comment_content_community', 'comment_content_community.id_content_community', '=', 'content_community.id')
             ->where('id_community', '=', $id)
             ->orderBy('content_community.created_at', 'DESC')
-            ->get([
+            ->select(
                 'users.fullname',
                 'users.image_profile',
                 'content_community.description',
                 'content_community.created_at',
                 'content_community.id',
-            ]);
+                'image_content_community.path as image_content',
+                'video_content_communities.path as video_content',
+                DB::raw('COUNT(comment_content_community.id) as comment_count')
+            )
+            ->groupBy(
+                'users.fullname',
+                'users.image_profile',
+                'content_community.description',
+                'content_community.created_at',
+                'content_community.id',
+                'image_content_community.path',
+                'video_content_communities.path'
+            )
+            ->get();
 
         // review page for community
         return view('user.community.review', compact('getCommunity', 'getContentCommunity'));
@@ -93,8 +117,16 @@ class KomunitasController extends Controller
                 'comment_content_community.created_at',
             ]);
 
+        // get Count the comment
+        $getCountComment = DB::table('comment_content_community')
+            ->join('content_community', 'content_community.id', '=', 'comment_content_community.id_content_community')
+            ->join('users', 'users.id', '=', 'comment_content_community.id_user')
+            ->where('comment_content_community.id_content_community', '=', $id)
+            ->orderBy('created_at', 'ASC')
+            ->count();
+
         // Review Comment
-        return view('user.community.commentsDetail', compact('getCommunity', 'getContentCommunity', 'getComment'));
+        return view('user.community.commentsDetail', compact('getCommunity', 'getContentCommunity', 'getComment', 'getCountComment'));
     }
 
     public function storeComment(Request $request)
@@ -171,11 +203,32 @@ class KomunitasController extends Controller
     {
         try {
             // validated request and store to table database
-            ContentCommunity::create([
+            $getIdContent = ContentCommunity::create([
                 'id_user' => Auth::id(),
                 'id_community' => $id,
                 'description' => $request->description
             ]);
+
+            // return $getIdContent->id;
+
+            // Store path file storage & Image Data
+            // create path Image
+            $pathImage = $request->file('path_image')->store('public/community/content/image/');
+            ImageContentCommunity::create([
+                'id_content_community' => $getIdContent->id,
+                'path' => substr($pathImage, 32)
+            ]);
+
+            // Store path file storage & Video Data
+            // create path Video
+            if ($request->hasFile('path_video')) {
+                $pathVideo = $request->file('path_video')->store('public/community/content/video/');
+                VideoContentCommunity::create([
+                    'id_content_community' => $getIdContent->id,
+                    'path' => substr($pathVideo, 32)
+                ]);
+            }
+
 
             return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
         } catch (\Throwable $error) {

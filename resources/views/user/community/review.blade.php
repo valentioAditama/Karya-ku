@@ -38,7 +38,7 @@
                         <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-11">
-                        <form action="{{route('komunitas.storeArticel', $getCommunity->id)}}" method="post">
+                        <form action="{{route('komunitas.storeArticel', $getCommunity->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <textarea class="input-post" name="description" id="description" cols="30" rows="3" placeholder="Apa yang anda sedang pikirkan?" required></textarea>
                             <!-- files opsional -->
@@ -50,7 +50,7 @@
                                             &nbsp;
                                             Gambar
                                         </span>
-                                        <input type="file" id="image" accept="image/*" style="display: none;">
+                                        <input type="file" style="display: none;" id="image" name="path_image" accept="image/png, image/jpg, image/jpeg" value="{{ old('path_image') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -60,7 +60,7 @@
                                             &nbsp;
                                             Video
                                         </span>
-                                        <input type="file" id="video" accept="video/*" style="display: none;">
+                                        <input type="file" style="display: none;" id="video" name="path_video" accept="video/mp4, video/flv, video/webm" value="{{ old('path_video') }}">
                                     </div>
                                 </div>
                                 <div class="col-md-8 d-flex justify-content-end">
@@ -108,6 +108,12 @@
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-11">
                         <p class="h6">{{$data->description}}</p>
+                        <div class="mt-3 mb-3">
+                            <img src="{{ asset('storage/community/content/image/'. $data->image_content) }}" class="img-fluid" loading="lazy" {{$data->image_content ? '' : 'hidden'}} />
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <video src="{{ asset('storage/community/content/video/'. $data->video_content) }}" height="300" controls {{$data->video_content ? '' : 'hidden'}} />
+                        </div>
                     </div>
                 </div>
                 <!-- likes and comments -->
@@ -127,7 +133,7 @@
                                 <div class="mt-2">
                                     <a href="{{route('komunitas.comment', $data->id)}}" class="image-file text-center text-dark">
                                         <i class="fa-solid fa-comment"></i>&nbsp;
-                                        see comments
+                                        {{$data->comment_count}} comments
                                     </a>
                                 </div>
                             </div>
