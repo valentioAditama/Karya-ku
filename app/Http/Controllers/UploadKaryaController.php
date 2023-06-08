@@ -8,8 +8,6 @@ use App\Models\ImageContent;
 use App\Models\ThumbnailContent;
 use App\Models\VideoContent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
 class UploadKaryaController extends Controller
 {

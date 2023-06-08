@@ -49,19 +49,19 @@
     </div>
 
     <!-- data Karyaku -->
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row mt-5">
             @foreach($getCommunity as $data)
             <div class="col-md-4">
                 <a href="{{route('komunitas.review', $data->id)}}" class="text-dark">
-                    <img src="{{asset('storage/community/thumbnail/' . $data->path)}}" class="w-100 h-75 img-fluid " alt="">
+                    <img src="{{asset('storage/community/thumbnail/' . $data->path)}}" class="img-community" alt="">
                     <div class="mt-2">
                         <b>{{$data->name_community}}</b>
                     </div>
                     <div class="d-flex justify-content-between mt-2">
                         <div>
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                            Valentio Aditama
+                            <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy" />
+                            {{$data->fullname}}
                         </div>
                         <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
                     </div>

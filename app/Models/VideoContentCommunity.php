@@ -13,9 +13,10 @@ class VideoContentCommunity extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $table = '';
+    protected $table = 'video_content_communities';
     protected $primaryKey = 'id';
     protected $fillable = [
-        '',
+        'id_content_community',
+        'path'
     ];
 }

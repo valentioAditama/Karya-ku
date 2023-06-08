@@ -131,6 +131,12 @@ Route::prefix('komunitas')->group(function () {
     // create community articel store
     Route::post('/create/articel/{id}', [KomunitasController::class, 'storeArticel'])->name('komunitas.storeArticel');
 
+    // add members for users
+    Route::post('/create/articel/member/{id}', [KomunitasController::class, 'storeArticelMember'])->name('komunitas.storeArticelMember');
+
+    // Create Likes and Unlikes
+    Route::post('/create/articel/likes/{id}', [KomunitasController::class, 'storeArticelLikes'])->name('komunitas.storeArticelLikes');
+
     // review comment
     Route::get('/review/comment/{id}', [KomunitasController::class, 'reviewComment'])->name('komunitas.comment');
     Route::post('/review/comment/store', [KomunitasController::class, 'storeComment'])->name('komunitas.comment-store');

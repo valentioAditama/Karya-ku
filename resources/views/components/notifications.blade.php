@@ -1,7 +1,7 @@
 <!-- Login And register -->
 @error('fullname')
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.error({
             title: 'Error',
@@ -14,7 +14,7 @@
 
 @error('email')
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.error({
             title: 'Error',
@@ -27,7 +27,7 @@
 
 @error('password')
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.error({
             title: 'Error',
@@ -40,7 +40,7 @@
 
 @if (session('successRegister'))
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.success({
             title: 'Success',
@@ -53,7 +53,7 @@
 
 @if (session('successLogin'))
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.success({
             title: 'Success',
@@ -66,7 +66,7 @@
 
 @if (session('successLogout'))
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.success({
             title: 'Success',
@@ -80,7 +80,7 @@
 
 <!-- community -->
 <script>
-    // Show Notification 
+    // Show Notification
     function communityNoAuth() {
         iziToast.error({
             title: 'Error',
@@ -94,7 +94,7 @@
 <!-- CRUD -->
 @if (session('successStoreData'))
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.success({
             title: 'Success',
@@ -107,7 +107,7 @@
 
 @if (session('successUpdateData'))
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.success({
             title: 'Success',
@@ -120,7 +120,7 @@
 
 @if (session('successDeleteData'))
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.success({
             title: 'Success',
@@ -133,7 +133,72 @@
 
 @if (session('successStoreCommunity'))
 <script>
-    // Show Notification 
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.success({
+            title: 'Success',
+            message: `{{ session('successStoreCommunity') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+@if (session('errorLikeDuplicate'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.warning({
+            title: 'Success',
+            message: `{{ session('errorLikeDuplicate') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+@if (session('successLike'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.success({
+            title: 'Success',
+            message: `{{ session('successLike') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+@if (session('errorMembersDuplicate'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.warning({
+            title: 'Success',
+            message: `{{ session('errorMembersDuplicate') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+@if (session('successMembers'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.success({
+            title: 'Success',
+            message: `{{ session('successMembers') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+@if (session('successStoreCommunity'))
+<script>
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.success({
             title: 'Success',
@@ -148,7 +213,7 @@
 @if(session('errors'))
 @foreach(session('errors')->all() as $error)
 <script>
-    // Show Notification 
+    // Show Notification
     document.addEventListener('DOMContentLoaded', function() {
         iziToast.error({
             title: 'Error',

@@ -33,7 +33,7 @@
             <div class="form-post">
                 <div class="row">
                     <div class="col-md-1 d-flex justify-content-center">
-                        <img src="{{ $getContentCommunity->image_profile ? asset('storage/user/profile/'. $getContentCommunity->image_profile) : asset('images/profileDefault.webp') }}" class="rounded-circle" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <img src="{{ $getContentCommunity->image_profile ? asset('storage/user/profile/'. $getContentCommunity->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                     </div>
                     <div class="col-md-5 d-flex align-items-center">
                         <div class="user-info">
@@ -55,22 +55,24 @@
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-11">
                         <div class="row">
-                            <!-- likes -->
                             <div class="col-md-2">
+                                <!-- likes -->
                                 <div class="mt-2">
-                                    <button class="image-file text-center">
-                                        <i class="fa-solid fa-thumbs-up"></i> &nbsp;
-                                        112
-                                    </button>
+                                    <form action="{{ route('komunitas.storeArticelLikes', $getContentCommunity->id_content) }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn image-file w-100 text-center">
+                                            <i class="fa-solid fa-thumbs-up"></i> &nbsp;
+                                            {{$getCountLikes}}
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
-                            <!-- comment -->
                             <div class="col-md-2">
                                 <div class="mt-2">
-                                    <button class="image-file text-center">
+                                    <span class="btn w-100 image-file text-center text-dark">
                                         <i class="fa-solid fa-comment"></i>&nbsp;
-                                        200
-                                    </button>
+                                        {{$getCountComment}} Comments
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +86,7 @@
                             <div class="comments">
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-1">
-                                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                                        <img src="{{ $data->image_profile ? asset('storage/user/profile/'. $data->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" alt="Black and White Portrait of a Man" loading="lazy" />
                                     </div>
                                     <div class="col-md-11">
                                         <div class="user-info">
@@ -92,8 +94,10 @@
                                             <div>{{ \Carbon\Carbon::parse($data->created_at)->diffForHumans() }}</div>
                                         </div>
                                     </div>
-                                    <div class="mt-3 col-md-12">
-                                        {{$data->comment}}
+                                    <div class="row d-flex justify-content-end">
+                                        <div class="col-md-11">
+                                            <p class="h6">{{$data->comment}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +110,7 @@
                                 @csrf
                                 <div class="row d-flex align-items-center justify-content-start">
                                     <div class="col-md-1">
-                                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
+                                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded" height="75" alt="Black and White Portrait of a Man" loading="lazy" />
                                     </div>
                                     <div class="col-md-9">
                                         <input type="hidden" name="id_content" value="{{$getContentCommunity->id_content}}">
