@@ -98,6 +98,14 @@ class KomunitasController extends Controller
                 'thumbnail_community.path'
             ])->first();
 
+        // get Members for community
+        $getMembersCommunity = DB::table('members')
+            ->join('community', 'members.id_community', '=', 'community.id')
+            ->join('users', 'users.id', '=', 'members.id_user')
+            ->where('community.id', '=', $getCommunity->id)
+            ->count();
+
+
         // get content for comment community
         $getContentCommunity = DB::table('content_community')
             ->join('community', 'content_community.id_community', '=', 'community.id')
@@ -146,8 +154,9 @@ class KomunitasController extends Controller
             ->orderBy('created_at', 'ASC')
             ->count();
 
+
         // Review Comment
-        return view('user.community.commentsDetail', compact('getCommunity', 'getContentCommunity', 'getComment', 'getCountComment', 'getCountLikes'));
+        return view('user.community.commentsDetail', compact('getCommunity', 'getContentCommunity', 'getComment', 'getCountComment', 'getCountLikes', 'getMembersCommunity'));
     }
 
     public function storeComment(Request $request)
@@ -185,6 +194,17 @@ class KomunitasController extends Controller
 
         // for user
         return view('user.community.community', compact('getCommunity'));
+    }
+
+    public function search(Request $request)
+    {
+        // get data search for community
+        return $GetSearchCommunity = DB::table('community')
+            ->where('name_community', 'like', '%' . $request->search . '%')
+            ->get();
+
+        $search = $request->search;
+        return view('data.PencarianData.KodeBarang', compact('GetSearchCommunity', 'dataKodeBarang', 'search'));
     }
 
     /**

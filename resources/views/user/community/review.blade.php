@@ -18,10 +18,14 @@
                                     Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
                                 </p>
                                 <div class="mt-3">
+                                    @if(Auth::check())
                                     <form action="{{route('komunitas.storeArticelMember', $getCommunity->id)}}" method="post">
                                         @csrf
                                         <button type="submit" class="button-komunitas">{{ $getMembersCommunity }} Members</button>
                                     </form>
+                                    @else
+                                    <button class="button-komunitas" onclick="communityNoAuth()">{{ $getMembersCommunity }} Members</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -126,6 +130,7 @@
                             <div class="col-md-2">
                                 <!-- likes -->
                                 <div class="mt-2">
+                                    @if(Auth::check())
                                     <form action="{{ route('komunitas.storeArticelLikes', $data->id) }}" method="post">
                                         @csrf
                                         <button type="submit" class="btn image-file w-100 text-center">
@@ -133,6 +138,12 @@
                                             {{$data->like_count > 0 && $data->like_count == 1 ? $data->like_count : $data->like_count}}
                                         </button>
                                     </form>
+                                    @else
+                                    <button class="btn image-file w-100 text-center" onclick="communityNoAuth()">
+                                        <i class="fa-solid fa-thumbs-up"></i> &nbsp;
+                                        {{$data->like_count > 0 && $data->like_count == 1 ? $data->like_count : $data->like_count}}
+                                    </button>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-2">

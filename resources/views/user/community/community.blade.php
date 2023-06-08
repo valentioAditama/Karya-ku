@@ -16,7 +16,10 @@
                                 Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
                                 Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
                             </p>
-                            <input type="text" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda'>
+                            <form action="{{route('komunitas.search')}}" method="get">
+                                @csrf
+                                <input type="text" name="search" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda' value="{{ old('search') }}">
+                            </form>
                             <div class="mt-3">
                                 <!-- for guest -->
                                 @guest
@@ -60,7 +63,11 @@
                     </div>
                     <div class="d-flex justify-content-between mt-2">
                         <div>
-                            <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy" />
+                            @if (Auth::check() && Auth::user()->image_profile)
+                            <img src="{{ asset('storage/user/profile/' . Auth::user()->image_profile) }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
+                            @else
+                            <img src="{{ asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
+                            @endif
                             {{$data->fullname}}
                         </div>
                         <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
@@ -75,9 +82,6 @@
 <!-- footer -->
 @include('components.user.footer')
 <!-- Notification -->
-@include('components.notifications')
-
-<!-- Nnotification -->
 @include('components.notifications')
 
 @endsection

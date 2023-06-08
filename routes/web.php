@@ -94,8 +94,6 @@ Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
 // home page
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Komunitas Page
-Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
 
 // Laporan Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
@@ -119,8 +117,12 @@ Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
 // review content Karya
 Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
 
-// Community
+// Komunitas Page
+Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
 Route::prefix('komunitas')->group(function () {
+    // search komunitas
+    Route::get('/search', [KomunitasController::class, 'search'])->name('komunitas.search');
+
     // get method
     Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
     Route::get('/review/{id}', [KomunitasController::class, 'review'])->name('komunitas.review');
