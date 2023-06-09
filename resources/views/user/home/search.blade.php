@@ -18,7 +18,7 @@
                             </p>
                             <form action="{{route('home.search')}}" method="get">
                                 @csrf
-                                <input type="text" name="search" class="w-75 banner-home-form" value="{{ old('search')  }}" placeholder='Pikirkan "Ide" Anda'>
+                                <input type="text" name="search" class="w-75 banner-home-form" value="{{$search}}" placeholder='Pikirkan "Ide" Anda'>
                             </form>
                         </div>
                     </div>
@@ -50,8 +50,8 @@
                     </div>
                     <div class="d-flex justify-content-between mt-2">
                         <div>
-                            @if (Auth::check() && $data->image_profile)
-                            <img src="{{ asset('storage/user/profile/' . $data->image_profile) }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
+                            @if (Auth::check() && Auth::user()->image_profile)
+                            <img src="{{ asset('storage/user/profile/' . Auth::user()->image_profile) }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
                             @else
                             <img src="{{ asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
                             @endif

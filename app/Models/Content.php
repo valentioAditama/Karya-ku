@@ -19,6 +19,7 @@ class Content extends Model
         'id_user',
         'title',
         'sub_title',
+        'category',
         'description',
         'status'
     ];

@@ -36,8 +36,11 @@ class UploadKaryaController extends Controller
             // validation request
             $validateData = $request->validated();
 
+            // check konten br new line
+            $description = nl2br($request->input('description'));
+
             // Store Data Content Upload
-            $getIdContent = Content::create($validateData);
+            $getIdContent = Content::create(array_merge($validateData, ['description' => $description]));
 
             // // Store path file storage & Thumbnails Data
             // create path Thumbnail

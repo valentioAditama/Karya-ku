@@ -18,7 +18,7 @@
                             </p>
                             <form action="{{route('komunitas.search')}}" method="get">
                                 @csrf
-                                <input type="text" name="search" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda' value="{{ old('search') }}">
+                                <input type="text" name="search" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda' value="{{$search}}">
                             </form>
                             <div class="mt-3">
                                 <!-- for guest -->
@@ -54,7 +54,7 @@
     <!-- data Karyaku -->
     <div class="container-fluid mb-5">
         <div class="row mt-5">
-            @foreach($getCommunity as $data)
+            @foreach($GetSearchCommunity as $data)
             <div class="col-md-4">
                 <a href="{{route('komunitas.review', $data->id)}}" class="text-dark">
                     <img src="{{asset('storage/community/thumbnail/' . $data->path)}}" class="img-community" alt="">
@@ -63,8 +63,8 @@
                     </div>
                     <div class="d-flex justify-content-between mt-2">
                         <div>
-                            @if (Auth::check() && $data->image_profile)
-                            <img src="{{ asset('storage/user/profile/' . $data->image_profile) }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
+                            @if (Auth::check() && Auth::user()->image_profile)
+                            <img src="{{ asset('storage/user/profile/' . Auth::user()->image_profile) }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
                             @else
                             <img src="{{ asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" alt="Black and White Portrait of a Man" loading="lazy">
                             @endif

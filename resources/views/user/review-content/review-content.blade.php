@@ -48,7 +48,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8">
                         <p class="lead">
-                            {{$getDataContent->description}}
+                            {!! nl2br($getDataContent->description) !!}
                         </p>
                     </div>
                     <video src="{{ asset('storage/content/video/' . $getDataContent->path_video ) }}" class="w-100 h-75 img-fluid" alt="" controls {{$getDataContent->path_video ? '' : 'hidden'}}>
@@ -72,67 +72,24 @@
 <!-- data Karyaku -->
 <div class="container-fluid">
     <div class="row mt-5">
-        <div class="col-md-4">
-            <img src="https://d23.com/app/uploads/2020/01/1180w-463h_010920-riviera-art-gallery-780x440.jpg" class="w-100 h-75 img-fluid " alt="">
-            <div class="d-flex justify-content-between mt-2">
-                <div>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    Valentio Aditama
+        @foreach($getDataRandomContent as $data)
+        <div class="col-md-4 mb-5">
+            <a href="{{route('reviewKarya', $data->id)}}" class="text-dark">
+                <img src="{{ asset('storage/content/thumbnail/' . $data->path) }}" class="w-100 h-75 img-fluid " alt="">
+                <div class="mt-2">
+                    <b>{{$data->title}}</b>
                 </div>
-                <div>Selasa, 10 Feburari 2023</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <img src="https://ilovelife.co.id/blog/wp-content/uploads/2021/12/Berniat-Beli-NFT-Art-Pelajari-Dulu-Cara-Kerjanya.jpg" class="w-100 h-75 img-fluid " alt="">
-            <div class="d-flex justify-content-between mt-2">
-                <div>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    Valentio Aditama
-                </div>
-                <div>Selasa, 10 Feburari 2023</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <img src="https://i.ytimg.com/vi/dBsd_Mb33dQ/maxresdefault.jpg" class="w-100 h-75 img-fluid " alt="">
-            <div class="d-flex justify-content-between mt-2">
-                <div>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    Valentio Aditama
-                </div>
-                <div>Selasa, 10 Feburari 2023</div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <img src="https://d23.com/app/uploads/2020/01/1180w-463h_010920-riviera-art-gallery-780x440.jpg" class="w-100 h-75 img-fluid " alt="">
-            <div class="d-flex justify-content-between mt-2">
-                <div>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    Valentio Aditama
+                <div class="d-flex justify-content-between mt-2">
+                    <div>
+                        <img src="{{ Auth::user()->image_profile ? asset('storage/user/profile/'. Auth::user()->image_profile) : asset('images/profileDefault.webp') }}" class="profile-rounded-community mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                        {{$data->fullname}}
+                    </div>
+                    <div>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}</div>
                 </div>
-                <div>Selasa, 10 Feburari 2023</div>
-            </div>
+            </a>
         </div>
-        <div class="col-md-4">
-            <img src="https://ilovelife.co.id/blog/wp-content/uploads/2021/12/Berniat-Beli-NFT-Art-Pelajari-Dulu-Cara-Kerjanya.jpg" class="w-100 h-75 img-fluid " alt="">
-            <div class="d-flex justify-content-between mt-2">
-                <div>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    Valentio Aditama
-                </div>
-                <div>Selasa, 10 Feburari 2023</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <img src="https://i.ytimg.com/vi/dBsd_Mb33dQ/maxresdefault.jpg" class="w-100 h-75 img-fluid " alt="">
-            <div class="d-flex justify-content-between mt-2">
-                <div>
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle mr-3" height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    Valentio Aditama
-                </div>
-                <div>Selasa, 10 Feburari 2023</div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 </section>

@@ -39,11 +39,11 @@
         <div class="col-md-6">
           <div class="mb-3">
             <label for="">Judul</label>
-            <input type="text" class="form-control" name="title" value="{{ old('title') }}" required>
+            <input type="text" class="form-control" name="title" maxlength="75" value="{{ old('title') }}" required>
           </div>
           <div class="mb-3">
             <label for="">Sub Judul</label>
-            <input type="text" class="form-control" name="sub_title" value="{{ old('sub_title') }}" required>
+            <input type="text" class="form-control" name="sub_title" maxlength="150" value="{{ old('sub_title') }}" required>
           </div>
           <div class="mb-3">
             <label for="">Thumbnail Gambar Karya-mu</label>
@@ -63,8 +63,24 @@
           </div>
         </div>
         <div class=" col-md-6">
+          <div class="mb-3">
+            <label for="category">Kategori</label>
+            <select name="category" id="category" class="form-control" required>
+              <option selected>Pilih Category</option>
+              <option value="Fotografi">Fotografi</option>
+              <option value="Desain Grafis">Desain Grafis</option>
+              <option value="Seni Lukis">Seni Lukis</option>
+              <option value="Tulisan Kreatif">Tulisan Kreatif</option>
+              <option value="Musik dan Audio">Musik dan Audio</option>
+              <option value="Video dan Film Pendek">Video dan Film Pendek</option>
+              <option value="Kerajinan Tangan">Kerajinan Tangan</option>
+              <option value="Kuliner">Kuliner</option>
+              <option value="Mode dan Busana">Mode dan Busana</option>
+              <option value="Teknologi dan Inovasi">Teknologi dan Inovasi</option>
+            </select>
+          </div>
           <label for="">Deskripsi Karya-mu</label>
-          <textarea class="form-control" name="description" id="" cols="30" rows="13" required></textarea>
+          <textarea class="form-control" name="description" id="" cols="30" rows="10" required></textarea>
           <div class="d-flex justify-content-end mt-3">
             <button type="submit" class="button-laporan">Upload</button>
           </div>

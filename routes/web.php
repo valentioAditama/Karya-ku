@@ -51,18 +51,33 @@ Route::middleware('auth')->group(function () {
 
     // Change Password
     Route::get('/login-change-password', [MyProfileController::class, 'login_change_password'])->name('my-profile.login-change-password');
-    Route::get('/reset-password', [MyProfileController::class, 'reset_password'])->name('my-profile.reset-password');
+    Route::prefix('reset-password')->group(function () {
+        Route::post('login-change-password/check/{id}', [MyProfileController::class, 'login_change_password_check'])->name('my-profile.login-change-password.check');
+
+        // reset password
+        Route::get('/change-password/{id}', [MyProfileController::class, 'reset_password'])->name('my-profile.change-password');
+
+        // change reset password
+        Route::post('/change-password/change/{id}', [MyProfileController::class, 'change_password'])->name('my-profile.reset-password');
+    });
 
 
     // my list karya
     Route::get('/my-karya/{id}', [MyListKaryaController::class, 'index'])->name('my-profile.karya');
+    Route::prefix('my-karya')->group(function () {
+        // Delete
+        Route::delete('/delete/{id}', [MyListKaryaController::class, 'destroy'])->name('my-karya.destroy');
+    });
 
     // Upload Karya Content
     Route::get('/upload', [UploadKaryaController::class, 'index'])->name('upload');
     Route::prefix('upload')->group(function () {
         Route::post('/add', [UploadKaryaController::class, 'store'])->name('upload.add');
-        Route::post('/delete', [UploadKaryaController::class, 'update'])->name('upload.update');
         Route::post('/delete', [UploadKaryaController::class, 'destroy'])->name('upload.delete');
+
+        // update from my list karya
+        Route::get('/edit/{id}', [MyListKaryaController::class, 'edit'])->name('upload.edit');
+        Route::post('/update/{id}', [MyListKaryaController::class, 'update'])->name('upload.update');
     });
 });
 
@@ -93,9 +108,10 @@ Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
 
 // home page
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-// Komunitas Page
-Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
+Route::prefix('home')->group(function () {
+    // search
+    Route::get('search', [HomeController::class, 'search'])->name('home.search');
+});
 
 // Laporan Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
@@ -115,12 +131,28 @@ Route::prefix('tentang-kami')->group(function () {
 
 // Kategori Page
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+Route::prefix('kategori')->group(function () {
+    Route::get('/fotografi', [KategoriController::class, 'fotografi'])->name('kategori.fotografi');
+    Route::get('/desain-grafis', [KategoriController::class, 'desain_grafis'])->name('kategori.desain-grafis');
+    Route::get('/seni-lukis', [KategoriController::class, 'seni_lukis'])->name('kategori.seni-lukis');
+    Route::get('/tulisan-kreatif', [KategoriController::class, 'tulisan_kreatif'])->name('kategori.tulisan-kreatif');
+    Route::get('/musik', [KategoriController::class, 'musik'])->name('kategori.musik');
+    Route::get('/video-film-pendek', [KategoriController::class, 'video_film_pendek'])->name('kategori.video-film.pendek');
+    Route::get('/kerajinan-tangan', [KategoriController::class, 'kerajinan_tangan'])->name('kategori.kerajinan-tangan');
+    Route::get('/kuliner', [KategoriController::class, 'kuliner'])->name('kategori.kuliner');
+    Route::get('/mode-dan-busana', [KategoriController::class, 'mode_dan_busana'])->name('kategori.mode-dan-busana');
+    Route::get('/teknologi-dan-inovasi', [KategoriController::class, 'teknologi_dan_inovasi'])->name('kategori.teknologi-dan-inovasi');
+});
 
 // review content Karya
 Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
 
-// Community
+// Komunitas Page
+Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
 Route::prefix('komunitas')->group(function () {
+    // search komunitas
+    Route::get('/search', [KomunitasController::class, 'search'])->name('komunitas.search');
+
     // get method
     Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
     Route::get('/review/{id}', [KomunitasController::class, 'review'])->name('komunitas.review');

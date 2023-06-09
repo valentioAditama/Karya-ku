@@ -5,6 +5,80 @@
     border-radius: 0 0 86px 86px;
 }
 
+.banner-category-fotografi{
+    background-image: url('/public/images/photografi.jpg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.banner-category-desain-grafis{
+    background-image: url('/public/images/desain-grafis.jpg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+
+.banner-category-seni-lukis{
+    background-image: url('/public/images/seni-lukis-dan-gambar.jpg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+
+.banner-category-tulisan-kreatif{
+    background-image: url('/public/images/tulisan-kreatif.jpg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.banner-category-musik{
+    background-image: url('/public/images/musik-dan-audio.jpeg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.banner-category-video-film-pendek{
+    background-image: url('/public/images/video-film-pendek.jpeg');
+    height: 80vh;
+    background-size: cover;
+    background-position-y: -200px;
+    border-radius: 0 0 86px 86px;
+}
+
+.banner-category-kerajinan-tangan{
+    background-image: url('/public/images/kerajinan-tangan.webp');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.banner-category-kuliner{
+    background-image: url('/public/images/kuliner.jpg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.banner-category-mode-dan-busana{
+    background-image: url('/public/images/model-dan-busana.jpeg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+.banner-category-teknologi-dan-invoasi{
+    background-image: url('/public/images/teknologi-dan-inovasi.jpg');
+    height: 80vh;
+    background-size: cover;
+    border-radius: 0 0 86px 86px;
+}
+
+
 .nav-item {
     margin-left: 50px;
     margin-right: 10px;

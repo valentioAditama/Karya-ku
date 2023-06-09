@@ -18,7 +18,14 @@
                                     Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
                                 </p>
                                 <div class="mt-3">
-                                    <button class="button-komunitas">800 Members</button>
+                                    @if(Auth::check())
+                                    <form action="{{route('komunitas.storeArticelMember', $getCommunity->id)}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="button-komunitas">{{ $getMembersCommunity }} Members</button>
+                                    </form>
+                                    @else
+                                    <button class="button-komunitas" onclick="communityNoAuth()">{{ $getMembersCommunity }} Members</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -28,7 +35,7 @@
         </div>
     </section>
 
-    <section class="mt-4">
+    <section class="mt-4 mb-5">
         <div class="container">
             <div class="form-post">
                 <div class="row">
@@ -58,6 +65,7 @@
                             <div class="col-md-2">
                                 <!-- likes -->
                                 <div class="mt-2">
+                                    @if(Auth::check())
                                     <form action="{{ route('komunitas.storeArticelLikes', $getContentCommunity->id_content) }}" method="post">
                                         @csrf
                                         <button type="submit" class="btn image-file w-100 text-center">
@@ -65,6 +73,12 @@
                                             {{$getCountLikes}}
                                         </button>
                                     </form>
+                                    @else
+                                    <button class="btn image-file w-100 text-center" onclick="communityNoAuth()">
+                                        <i class="fa-solid fa-thumbs-up"></i> &nbsp;
+                                        {{$getCountLikes}}
+                                    </button>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-2">

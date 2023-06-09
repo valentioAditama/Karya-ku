@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Banner-home -->
-<section class="banner-home">
+<!-- Banner-category -->
+<section class="banner-category-desain-grafis">
     <div class="container-fluid">
         <!-- navbar -->
         @include('components.user.navbar')
@@ -10,16 +10,11 @@
             <div class="container d-flex justify-content-end align-items-center">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12">
-                        <div class="banner-home-title text-light">
-                            <p class="h2">Cari Karya yang membuatmu <b>Termotivasi</b></p>
-                            <p class="banner-home-sub-title">
-                                Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
-                                Temukan Inspirasi dan lakukan idemu sekarang.
-                            </p>
-                            <form action="{{route('home.search')}}" method="get">
-                                @csrf
-                                <input type="text" name="search" class="w-75 banner-home-form" value="{{ old('search')  }}" placeholder='Pikirkan "Ide" Anda'>
-                            </form>
+                        <div class="banner-category-title text-light">
+                            <p class="h2">Kategori</p>
+                            <p class="banner-category-sub-title">
+                                Carilah kategori karya yang anda mau dan anda ingin lihat, banyak orang-orang berkarya <br>
+                                sesuai dengan jenis kategorinya masing-masing </p>
                         </div>
                     </div>
                 </div>
@@ -28,13 +23,14 @@
     </div>
 </section>
 
-<!-- Load Data Karyaku -->
+<!-- Form Karyaku -->
 <section>
     <!-- title -->
     <div class="text-center">
-        <h2 class="mt-5">Karya-ku</h2>
-        <h5>Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
-            Temukan Inspirasi dan lakukan idemu sekarang.
+        <h2 class="mt-5">Kategori</h2>
+        <h5 class="mb-5">
+            Cari dan ketahui kategori kesukaan anda apa saja, banyak orang berkarya sesuai <br>
+            dengan jenis kategorinya masing-masing.
         </h5>
     </div>
 
