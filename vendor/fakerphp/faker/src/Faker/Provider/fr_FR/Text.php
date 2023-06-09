@@ -11931,7 +11931,7 @@ Le jeune homme balbutia.
 
 -- La bonne!
 
-Il ne plaisantait pas; maas, la vanité l'emportant sur toute
+Il ne plaisantait pas; mais, la vanité l'emportant sur toute
 prudence, Léon, malgré lui, se récria. D'ailleurs, il n'aimait que
 les femmes brunes.
 

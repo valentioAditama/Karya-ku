@@ -1,102 +1,116 @@
-<!DOCTYPE html>
-<html lang="zxx">
+<!doctype html>
+<html lang="en">
 
 <head>
-
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Admin Karya-ku</title>
-    <link rel="icon" href="img/mini_logo.png" type="image/png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/css/bootstrap1.min.css') }}" />
+    <title>Light Bootstrap Dashboard by Creative Tim</title>
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/themefy_icon/themify-icons.css') }}" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/niceselect/css/nice-select.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/owl_carousel/css/owl.carousel.css') }}" />
+    <!-- Bootstrap core CSS     -->
+    <link href="{{ asset('assets-admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/gijgo/gijgo.min.css') }}" />
+    <!-- Animation library for notifications   -->
+    <link href="{{ asset('assets-admin/assets/css/animate.min.css') }}" rel="stylesheet" />
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{{ asset('assets-admin/assets/css/light-bootstrap-dashboard.css?v=1.4.0') }}" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/tagsinput/tagsinput.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/datepicker/date-picker.css') }}" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets-admin/assets/css/demo.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/scroll/scrollable.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/datatable/css/jquery.dataTables.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/datatable/css/responsive.dataTables.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/datatable/css/buttons.dataTables.min.css') }}" />
-
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/text_editor/summernote-bs4.css') }}" />
-
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/morris/morris.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('assets-admin/vendors/material_icon/material-icons.css') }}" />
-
-    <link rel="stylesheet" href="{{ asset('assets-admin/css/metisMenu.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('assets-admin/css/style1.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets-admin/css/colors/default.css') }}" id="colorSkinCSS" />
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{{ asset('assets-admin/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
 
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
 
 </head>
 
-<body class="crm_body_bg">
-    <main>
-        @yield('content')
-    </main>
+<body>
 
-    <script src="{{ asset('assets-admin/js/jquery1-3.4.1.min.js') }}"></script>
+    <div class="wrapper">
+        <!-- sidebar -->
+        @include('components.admin.sidebar')
 
-    <script src="{{ asset('assets-admin/js/popper1.min.js') }}"></script>
+        <div class="main-panel">
+            <!-- navbar -->
+            @include('components.admin.navbar')
 
-    <script src="{{ asset('assets-admin/js/bootstrap1.min.js') }}"></script>
+            <div class="content">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
 
-    <script src="{{ asset('assets-admin/js/metisMenu.js') }}"></script>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Company
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <p class="copyright pull-right">
+                        &copy; <script>
+                            document.write(new Date().getFullYear())
+                        </script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    </p>
+                </div>
+            </footer>
 
-    <script src="{{ asset('assets-admin/vendors/count_up/jquery.waypoints.min.js') }}"></script>
 
-    <script src="{{ asset('assets-admin/vendors/chartlist/Chart.min.js') }}"></script>
+        </div>
+    </div>
 
-    <script src="{{ asset('assets-admin/vendors/count_up/jquery.counterup.min.js') }}"></script>
 
-    <script src="{{ asset('assets-admin/vendors/niceselect/js/jquery.nice-select.min.js') }}"></script>
-
-    <script src="{{ asset('assets-admin/vendors/owl_carousel/js/owl.carousel.min.js') }}"></script>
-
-    <script src="{{ asset('assets-admin/vendors/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/jszip.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/datatable/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/js/chart.min.js') }}"></script>
-
-    <script src="{{ asset('assets-admin/vendors/progressbar/jquery.barfiller.js') }}"></script>
-
-    <script src="{{ asset('assets-admin/vendors/tagsinput/tagsinput.js') }}"></script>
-
-    <script src="{{ asset('assets-admin/vendors/text_editor/summernote-bs4.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/am_chart/amcharts.js') }}"></script>
-
-    <script src="{{ asset('assets-admin/vendors/scroll/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/scroll/scrollable-custom.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/chart_am/core.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/chart_am/charts.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/chart_am/animated.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/chart_am/kelly.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendors/chart_am/chart-custom.js') }}"></script>
-
-    <script src="{{ asset('assets-admin/js/custom.js') }}"></script>
 </body>
+
+<!--   Core JS Files   -->
+<script src="{{ asset('assets-admin/assets/js/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets-admin/assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="{{ asset('assets-admin/assets/js/chartist.min.js') }}"></script>
+
+<!--  Notifications Plugin    -->
+<script src="{{ asset('assets-admin/assets/js/bootstrap-notify.js') }}"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{{ asset('assets-admin/assets/js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{{ asset('assets-admin/assets/js/demo.js') }}"></script>
+
 
 </html>
