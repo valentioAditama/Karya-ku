@@ -67,7 +67,7 @@
             <label for="category">Kategori</label>
             <select name="category" id="category" class="form-control" required>
               <option selected>Pilih Category</option>
-              <option value="Fotografi">FotoGrafi</option>
+              <option value="Fotografi">Fotografi</option>
               <option value="Desain Grafis">Desain Grafis</option>
               <option value="Seni Lukis">Seni Lukis</option>
               <option value="Tulisan Kreatif">Tulisan Kreatif</option>

@@ -49,7 +49,9 @@ class HomeController extends Controller
                 'content.created_at'
             ]);
 
+        // return value search
+        $search = $request->search;
         // return to view
-        return view('user.home.search', compact('getDataContent'));
+        return view('user.home.search', compact('getDataContent', 'search'));
     }
 }

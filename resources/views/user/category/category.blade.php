@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Fotografi</h5>
                         <p class="card-text">Fotografi ini akan mencakup berbagai jenis fotografi, seperti potret, lanskap, arsitektur, mode, makanan, dan sebagainya</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.fotografi') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Desain Grafis</h5>
                         <p class="card-text">Desain Grafis ini akan fokus pada desain grafis, termasuk ilustrasi, poster, logo, brosur, dan desain visual lainnya</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.desain-grafis') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Seni Lukis dan Gambar</h5>
                         <p class="card-text">Seni Lukis dan Gambar ini akan mencakup seni lukis, menggambar tangan, seni digital, dan berbagai teknik seni rupa</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.seni-lukis') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Tulisan Kreatif</h5>
                         <p class="card-text">Tulisan Kreatif ini akan memungkinkan pengguna untuk berbagi cerpen, puisi, esai, artikel, dan tulisan kreatif lainnya.</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.tulisan-kreatif') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Musik dan Audio</h5>
                         <p class="card-text">Musik dan Audio ini akan melibatkan musik, rekaman vokal, podcast, efek suara, atau karya audio lainnya.</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.musik') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Video dan Film Pendek</h5>
                         <p class="card-text">akan fokus pada pembuatan video dan film pendek. Pengguna dapat berbagi karya mereka dalam bentuk film pendek</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.video-film.pendek') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kerajinan Tangan</h5>
                         <p class="card-text">Kategori ini akan mencakup kerajinan tangan seperti rajutan, anyaman, pembuatan perhiasan, dekorasi rumah, dan sejenisnya</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.kerajinan-tangan') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kuliner</h5>
                         <p class="card-text">Kuliner ini akan memungkinkan pengguna untuk berbagi resep, foto makanan, video tutorial memasak, dan pengalaman kuliner mereka</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.kuliner') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Mode dan Busana</h5>
                         <p class="card-text">Moed dan Busana ini akan mencakup fashion, desain pakaian, outfit of the day (OOTD), dan aksesori</p>
-                        <a href="#!" class="btn btn-primary">Explore</a>
+                        <a href="{{ route('kategori.mode-dan-busana') }}" class="btn btn-primary">Explore</a>
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Teknologi dan Inovasi</h5>
                     <p class="card-text">Kategori ini akan melibatkan proyek-proyek inovatif, teknologi terbaru, aplikasi, perangkat keras, atau ide-ide kreatif di bidang teknologi</p>
-                    <a href="#!" class="btn btn-primary">Explore</a>
+                    <a href="{{ route('kategori.teknologi-dan-inovasi') }}" class="btn btn-primary">Explore</a>
                 </div>
             </div>
         </div>

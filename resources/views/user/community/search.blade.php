@@ -18,7 +18,7 @@
                             </p>
                             <form action="{{route('komunitas.search')}}" method="get">
                                 @csrf
-                                <input type="text" name="search" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda' value="{{ old('search') }}">
+                                <input type="text" name="search" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda' value="{{$search}}">
                             </form>
                             <div class="mt-3">
                                 <!-- for guest -->

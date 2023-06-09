@@ -131,6 +131,18 @@ Route::prefix('tentang-kami')->group(function () {
 
 // Kategori Page
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+Route::prefix('kategori')->group(function () {
+    Route::get('/fotografi', [KategoriController::class, 'fotografi'])->name('kategori.fotografi');
+    Route::get('/desain-grafis', [KategoriController::class, 'desain_grafis'])->name('kategori.desain-grafis');
+    Route::get('/seni-lukis', [KategoriController::class, 'seni_lukis'])->name('kategori.seni-lukis');
+    Route::get('/tulisan-kreatif', [KategoriController::class, 'tulisan_kreatif'])->name('kategori.tulisan-kreatif');
+    Route::get('/musik', [KategoriController::class, 'musik'])->name('kategori.musik');
+    Route::get('/video-film-pendek', [KategoriController::class, 'video_film_pendek'])->name('kategori.video-film.pendek');
+    Route::get('/kerajinan-tangan', [KategoriController::class, 'kerajinan_tangan'])->name('kategori.kerajinan-tangan');
+    Route::get('/kuliner', [KategoriController::class, 'kuliner'])->name('kategori.kuliner');
+    Route::get('/mode-dan-busana', [KategoriController::class, 'mode_dan_busana'])->name('kategori.mode-dan-busana');
+    Route::get('/teknologi-dan-inovasi', [KategoriController::class, 'teknologi_dan_inovasi'])->name('kategori.teknologi-dan-inovasi');
+});
 
 // review content Karya
 Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
