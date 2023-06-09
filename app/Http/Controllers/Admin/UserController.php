@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -32,7 +33,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            // Check validate users data and store to database
+            $request->validate([
+                'fullname' => 'required',
+                'email' => 'required',
+                'password' => 'required',
+                'role' => 'required',
+                'status' => 'required',
+            ]);
+            User::create([
+                'fullname' => $request->fullname,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'status' => $request->status,
+            ]);
+
+            // return to view 
+            return redirect()->back()->with(['successStoreData' => 'Berhasil Simpan Data']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 
     /**
@@ -56,7 +78,24 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            // get id user and delete 
+            $getIdUser = User::find($id);
+
+            // update data and store
+            $getIdUser->update([
+                'fullname' => $request->fullname,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'status' => $request->status,
+            ]);
+
+            // return to view 
+            return redirect()->back()->with(['successStoreData' => 'Berhasil Simpan Data']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 
     /**
@@ -64,6 +103,17 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // get id user and delete 
+            $getIdUser = User::find($id);
+
+            // delete and destroy data
+            $getIdUser->delete();
+
+            // return to view 
+            return redirect()->back()->with(['successStoreData' => 'Berhasil Simpan Data']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 }
