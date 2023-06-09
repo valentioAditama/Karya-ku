@@ -25,6 +25,7 @@ class UploadRequestStore extends FormRequest
         return [
             'title' => 'required',
             'sub_title' => 'required',
+            'category' => 'required',
             'description' => 'required',
             'path_thumbnail' => 'required|mimes:jpeg,jpg,png|max:8000',
             'path_image' => 'required|mimes:jpeg,jpg,png|max:8000',
@@ -37,6 +38,7 @@ class UploadRequestStore extends FormRequest
         return [
             'title' => 'Judul Tidak Boleh Kosong',
             'sub_title' => 'Sub Judul Tidak Boleh Kosong',
+            'category' => 'Kategori Tidak Boleh Kosong',
             'description' => 'Deskripsi Tidak Boleh Kosong',
             'path_thumbnail' => 'Thumbanil Gambar Tidak Boleh Kosong',
             'path_image' => 'Gambar Tidak Boleh Kosong',

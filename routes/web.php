@@ -51,7 +51,15 @@ Route::middleware('auth')->group(function () {
 
     // Change Password
     Route::get('/login-change-password', [MyProfileController::class, 'login_change_password'])->name('my-profile.login-change-password');
-    Route::get('/reset-password', [MyProfileController::class, 'reset_password'])->name('my-profile.reset-password');
+    Route::prefix('reset-password')->group(function () {
+        Route::post('login-change-password/check/{id}', [MyProfileController::class, 'login_change_password_check'])->name('my-profile.login-change-password.check');
+
+        // reset password
+        Route::get('/change-password/{id}', [MyProfileController::class, 'reset_password'])->name('my-profile.change-password');
+
+        // change reset password
+        Route::post('/change-password/change/{id}', [MyProfileController::class, 'change_password'])->name('my-profile.reset-password');
+    });
 
 
     // my list karya
@@ -100,7 +108,10 @@ Route::get('/', [LandingPage::class, 'index'])->name('landing-page');
 
 // home page
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::prefix('home')->group(function () {
+    // search
+    Route::get('search', [HomeController::class, 'search'])->name('home.search');
+});
 
 // Laporan Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');

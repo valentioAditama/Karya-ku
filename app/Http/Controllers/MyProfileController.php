@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MyProfileController extends Controller
 {
@@ -54,9 +55,42 @@ class MyProfileController extends Controller
         return view('user.my-profile.login-change-password');
     }
 
-    public function reset_password()
+    public function login_change_password_check(Request $request, $id)
+    {
+        // check password
+        $checkPassword = User::find($id);
+
+        if (Hash::check($request->password, $checkPassword->password)) {
+            return redirect('/reset-password/change-password/' . $id)->with(['successCheckPassword' => 'Check Password Berhasil']);
+        } else {
+            return redirect()->back()->with(['errorCheckPassword' => 'Password Salah']);
+        }
+    }
+
+    public function reset_password($id)
     {
         return view('user.my-profile.reset-password');
+    }
+
+    public function change_password(Request $request, $id)
+    {
+        // check user password old
+        $checkUserPassword = User::find($id);
+        if (Hash::check($request->old_password, $checkUserPassword->password)) {
+            // check password confirm
+            if ($request->password == $request->confirm_password) {
+                $checkUserPassword->update([
+                    'password' => Hash::make($request->confirm_password)
+                ]);
+
+                // return back view
+                return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+            } else {
+                return redirect()->back()->with(['errorcheckPasswordConfirm' => 'Password Tidak Matching']);
+            }
+        } else {
+            return redirect()->back()->with(['errorCheckPassword' => 'Password Salah']);
+        }
     }
 
     /**

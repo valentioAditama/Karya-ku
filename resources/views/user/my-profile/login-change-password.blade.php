@@ -30,26 +30,29 @@
         <div class="d-flex justify-content-center">
             <div class="mb-3">
                 <h2><b>Masukan Password Anda</b></h2>
-                <input type="password" class="form-control" required>
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-start mt-3">
-                        <!-- Checkbox -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                            <label class="form-check-label" for="form1Example3"> Show Password </label>
+                <form action="{{route('my-profile.login-change-password.check', Auth::id())}}" method="post">
+                    @csrf
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-start mt-3">
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="show-password" onclick="showPassword()">
+                                <label class="form-check-label" for="show-password">Show password</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center">
-                        <a href="{{route('komunitas.create')}}">
+                        <div class="mt-3 d-flex justify-content-center">
                             <button class="btn btn-info">Submit</button>
-                        </a>
-                    </div>
-                    <a href="{{route('home')}}" class="mt-3 text-center">Back To Home</a>
-                </div>
+                        </div>
+                </form>
+                <a href="{{route('home')}}" class="mt-3 text-center">Back To Home</a>
             </div>
         </div>
+    </div>
 </section>
 
+<!-- Show Password -->
+@include('components.user.show-password')
 <!-- footer -->
 @include('components.user.footer')
 <!-- Notification -->

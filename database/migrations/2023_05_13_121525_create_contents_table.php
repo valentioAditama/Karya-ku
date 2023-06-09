@@ -16,8 +16,9 @@ class CreateContentsTable extends Migration
         Schema::create('content', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('id_user');
-            $table->string('title', 50);
+            $table->string('title', 75);
             $table->string('sub_title', 150);
+            $table->string('category', 50);
             $table->text('description');
             $table->enum('status', ['active', 'non-active'])->default('active');
             $table->timestamps();

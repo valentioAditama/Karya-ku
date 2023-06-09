@@ -222,6 +222,46 @@
 </script>
 @endif
 
+@if (session('successCheckPassword'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.success({
+            title: 'Success',
+            message: `{{ session('successCheckPassword') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+@if (session('errorCheckPassword'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.error({
+            title: 'error',
+            message: `{{ session('errorCheckPassword') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+@if (session('errorcheckPasswordConfirm'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.error({
+            title: 'error',
+            message: `{{ session('errorcheckPasswordConfirm') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
+
 <!-- FAILED Request Store Data -->
 @if(session('errors'))
 @foreach(session('errors')->all() as $error)

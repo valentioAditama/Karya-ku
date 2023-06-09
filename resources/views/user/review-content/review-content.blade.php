@@ -48,7 +48,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8">
                         <p class="lead">
-                            {{$getDataContent->description}}
+                            {!! nl2br($getDataContent->description) !!}
                         </p>
                     </div>
                     <video src="{{ asset('storage/content/video/' . $getDataContent->path_video ) }}" class="w-100 h-75 img-fluid" alt="" controls {{$getDataContent->path_video ? '' : 'hidden'}}>

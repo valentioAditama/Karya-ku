@@ -145,13 +145,13 @@
                             <input type="text" name="location" class="form-control" value="{{Auth::user()->location}}">
                         </div>
                         <div class="d-flex justify-content-end mt-3">
-                            <button type="submit" class="btn btn-primary">Ubah Password</button> &nbsp; &nbsp;
+                            <a href="{{route('my-profile.login-change-password')}}" class="btn btn-primary">Ubah Password</a> &nbsp; &nbsp;
                             <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

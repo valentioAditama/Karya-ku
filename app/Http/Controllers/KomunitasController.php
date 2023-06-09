@@ -189,7 +189,7 @@ class KomunitasController extends Controller
                 'community.created_at',
                 'thumbnail_community.path',
                 'users.fullname',
-                'users.image_profile'
+                'users.image_profile as image_profile'
             ]);
 
         // for user
