@@ -24,7 +24,7 @@
                 <i class="fa fa-circle text-warning"></i> Unsubscribe
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
 
