@@ -35,6 +35,7 @@
                                     <th scope="col">Image content</th>
                                     <th scope="col">Thumbnail content</th>
                                     <th scope="col">Video content</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">action</th>
                                 </tr>
                             </thead>
@@ -57,6 +58,7 @@
                                     <td>
                                         <a href="/storage/content/video/{{$data->path_video ? $data->path_video : '-' }}">{{ $data->path_video ? "see Video" : "-" }}</a>
                                     </td>
+                                    <td>{{ $data->status}}</td>
                                     <td>
                                         @if(Auth::user()->role == "admin")
                                         <a class="btn btn-warning btn-fill btn-sm" data-toggle="modal" data-target="#status_content_karya{{$data->id}}">
@@ -78,5 +80,8 @@
 
 <!-- modal admin status user -->
 @include('components.admin.modal.status-content-karya')
+
+<!-- Notification -->
+@include('components.notifications')
 
 @endSection

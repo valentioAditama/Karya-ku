@@ -64,6 +64,19 @@
 </script>
 @endif
 
+@if (session('errorLogin'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.error({
+            title: 'Error',
+            message: `{{ session('errorLogin') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
 @if (session('successLogout'))
 <script>
     // Show Notification

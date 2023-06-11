@@ -42,9 +42,11 @@
                                     <td>{{ $data->fullname}}</td>
                                     <td>{{ $data->comment}}</td>
                                     <td>
+                                        @if(Auth::user()->role == "super-admin")
                                         <a class="btn btn-danger btn-fill btn-sm" data-toggle="modal" data-target="#laporan-delete{{$data->id}}">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -58,5 +60,8 @@
 </div>
 <!-- modal admin report -->
 @include('components.admin.modal.laporan-delete')
+
+<!-- Notification -->
+@include('components.notifications')
 
 @endSection

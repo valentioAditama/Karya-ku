@@ -63,4 +63,7 @@
 <!-- modal admin report -->
 @include('components.admin.modal.articel-content-community')
 
+<!-- Notification -->
+@include('components.notifications')
+
 @endSection

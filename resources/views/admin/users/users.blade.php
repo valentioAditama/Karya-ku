@@ -77,4 +77,8 @@
 <!-- modal admin status user -->
 @include('components.admin.modal.status-users')
 
+<!-- Notification -->
+@include('components.notifications')
+
+
 @endSection

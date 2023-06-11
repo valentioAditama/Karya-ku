@@ -69,4 +69,7 @@
 <!-- modal admin status user -->
 @include('components.admin.modal.status-community')
 
+<!-- Notification -->
+@include('components.notifications')
+
 @endSection

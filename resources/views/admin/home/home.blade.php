@@ -122,7 +122,7 @@
                 @php
                 $no = 1;
                 @endphp
-                @foreach($getCommunityData as $dataCommunity)
+                @foreach($getCommentsData as $dataCommunity)
                 <tr>
                   <th scope="row">{{ $no++ }}</th>
                   <td>{{ $dataCommunity->fullname}}</td>

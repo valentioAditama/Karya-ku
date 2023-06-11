@@ -19,6 +19,14 @@ class CommunityController extends Controller
         $getCommunityData = Community::join('users', 'users.id', '=', 'community.id_user')
             ->join('thumbnail_community', 'thumbnail_community.id_community', '=', 'community.id')
             ->orderby('community.created_at', 'desc')
+            ->select([
+                'users.fullname',
+                'community.name_community',
+                'community.description',
+                'community.status',
+                'thumbnail_community.path',
+                'community.id'
+            ])
             ->paginate(10);
 
         // return page for admin and super admin
@@ -31,6 +39,22 @@ class CommunityController extends Controller
     public function create()
     {
         //
+    }
+
+    public function change_status(Request $request, $id)
+    {
+        try {
+            // change status update
+            $getChangeStatus = Community::find($id);
+            $getChangeStatus->update([
+                'status' => $request->status
+            ]);
+
+            // return redirect back
+            return redirect()->back()->with(['successStore' => 'Status Berhasil Di Ubah']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 
     /**

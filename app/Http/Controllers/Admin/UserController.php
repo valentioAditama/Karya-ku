@@ -28,6 +28,22 @@ class UserController extends Controller
         // 
     }
 
+    public function change_status(Request $request, $id)
+    {
+        try {
+            // change status update
+            $getChangeStatus = User::find($id);
+            $getChangeStatus->update([
+                'status' => $request->status
+            ]);
+
+            // return redirect back
+            return redirect()->back()->with(['successStore' => 'Status Berhasil Di Ubah']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      */

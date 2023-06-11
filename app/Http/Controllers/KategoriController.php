@@ -19,6 +19,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Fotografi')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -41,6 +42,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Desain Grafis')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -63,6 +65,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Seni Lukis')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -85,6 +88,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Tulisan Kreatif')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -107,6 +111,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Musik dan Audio')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -129,6 +134,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Video dan Film Pendek')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -151,6 +157,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Kerajinan Tangan')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -173,6 +180,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Kuliner')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -195,6 +203,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Mode dan Busana')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',
@@ -217,6 +226,7 @@ class KategoriController extends Controller
             ->join('users', 'users.id', '=', 'content.id_user')
             ->join('thumbnail_content', 'thumbnail_content.id_content', '=', 'content.id')
             ->where('content.category', '=', 'Teknologi dan Inovasi')
+            ->where('content.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'content.id',

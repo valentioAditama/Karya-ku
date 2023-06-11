@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -46,6 +47,22 @@ class KontenKaryaController extends Controller
     public function create()
     {
         //
+    }
+
+    public function change_status(Request $request, $id)
+    {
+        try {
+            // change status update
+            $getChangeStatus = Content::find($id);
+            $getChangeStatus->update([
+                'status' => $request->status
+            ]);
+
+            // return redirect back
+            return redirect()->back()->with(['successStore' => 'Status Berhasil Di Ubah']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 
     /**

@@ -7,18 +7,21 @@
           <i class="nc-icon nc-bulb-63"></i>
         </div>
       </div>
-      <div class="modal-body">
-        <label for="status" class="h5">Status Content Karya</label>
-        <select class="form-control" name="status" id="status" required>
-          <option selected>Pilih Status</option>
-          <option value="Active">Active</option>
-          <option value="non-active">Non Active</option>
-        </select>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-fill btn-primary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-fill btn-success">Save</button>
-      </div>
+      <form action="{{ route('admin.content-karya.change-status', $data->id) }}" method="post">
+        @csrf
+        <div class="modal-body">
+          <label for="status" class="h5">Status Content Karya</label>
+          <select class="form-control" name="status" id="status" required>
+            <option selected>Pilih Status</option>
+            <option value="Active">Active</option>
+            <option value="non-active">Non Active</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-fill btn-primary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-fill btn-success">Save</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
