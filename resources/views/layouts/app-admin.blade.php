@@ -23,10 +23,11 @@
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets-admin/assets/css/demo.css" rel="stylesheet" />
+    <link href="{{ asset('assets-admin/assets/css/demo.css') }}" rel="stylesheet" />
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets-admin/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
 
@@ -38,6 +39,17 @@
     @vite(['resources/js/app.js'])
 
 </head>
+
+<style>
+    .modal-backdrop {
+        /* bug fix - no overlay */
+        display: none;
+    }
+
+    .modal {
+        background: rgba(0, 0, 0, 0.5);
+    }
+</style>
 
 <body>
 
@@ -57,34 +69,10 @@
 
             <footer class="footer">
                 <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Company
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                     <p class="copyright pull-right">
                         &copy; <script>
                             document.write(new Date().getFullYear())
-                        </script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                        </script> <a href="">Karya-ku</a>
                     </p>
                 </div>
             </footer>

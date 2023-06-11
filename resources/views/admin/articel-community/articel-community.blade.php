@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Community</h4>
+                        <h4 class="title">Articel Community</h4>
                         <p class="category">Last Update</p>
                     </div>
                     <div class="content">
@@ -28,16 +28,17 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">users</th>
-                                    <th scope="col">name community</th>
-                                    <th scope="col">Description Community</th>
-                                    <th scope="col">status</th>
-                                    <th scope="col">thumbnail Comunnity</th>
-                                    <th scope="col">action</th>
+                                    <th scope="col">community</th>
+                                    <th scope="col">description</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $no = 1; @endphp
-                                @foreach($getCommunityData as $data)
+                                @php
+                                $no = 1;
+                                @endphp
+                                @foreach($getDataArticelCommunity as $data)
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
                                     <td>{{ $data->fullname}}</td>
@@ -45,15 +46,9 @@
                                     <td>{{ $data->description}}</td>
                                     <td>{{ $data->status}}</td>
                                     <td>
-                                        <a href="/storage/community/thumbnail/{{$data->path ? $data->path : '-' }}">{{ $data->path ? "see photo" : "-" }}</a>
-                                    </td>
-                                    <td>
-                                        @if(Auth::user()->role == "admin")
-                                        <a class="btn btn-warning btn-fill btn-sm" data-toggle="modal" data-target="#status_community{{$data->id}}">
+                                        <a class="btn btn-warning btn-fill btn-sm" data-toggle="modal" data-target="#status-articel-community{{$data->id}}">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        @else
-                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -65,8 +60,7 @@
         </div>
     </div>
 </div>
-
-<!-- modal admin status user -->
-@include('components.admin.modal.status-community')
+<!-- modal admin report -->
+@include('components.admin.modal.articel-content-community')
 
 @endSection

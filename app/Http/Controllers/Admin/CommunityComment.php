@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\CommentContentCommunity;
 use Illuminate\Http\Request;
 
-class RolePermission extends Controller
+class CommunityComment extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.role-permission.role-permission');
+        // get data Community
+        $getCommentCommunity = CommentContentCommunity::join('users', 'users.id', '=', 'comment_content_community.id_user')
+            ->orderby('comment_content_community.created_at', 'desc')
+            ->paginate(10);
+
+        // return page for admin and super admin
+        return view('admin.community.comments', compact('getCommentCommunity'));
     }
 
     /**

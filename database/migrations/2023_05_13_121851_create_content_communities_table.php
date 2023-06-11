@@ -18,6 +18,7 @@ class CreateContentCommunitiesTable extends Migration
             $table->uuid('id_user');
             $table->uuid('id_community');
             $table->string('description', 2000);
+            $table->enum('status', ['active', 'non-active'])->default('active');
             $table->timestamps();
 
             // reference to users and community

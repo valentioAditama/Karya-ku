@@ -19,7 +19,8 @@ class ContentCommunity extends Model
     protected $fillable = [
         'id_user',
         'id_community',
-        'description'
+        'description',
+        'status'
     ];
 
     public function comments()

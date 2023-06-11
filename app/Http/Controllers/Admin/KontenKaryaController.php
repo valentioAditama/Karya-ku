@@ -24,9 +24,11 @@ class KontenKaryaController extends Controller
             })
             ->get([
                 'users.fullname',
+                'content.id',
                 'content.title',
                 'content.sub_title',
                 'content.description',
+                'content.category',
                 'thumbnail_content.path as path_thumbnail',
                 'image_content.path as path_image',
                 'video_content.path as path_video',

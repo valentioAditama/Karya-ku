@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticelCommunity;
+use App\Http\Controllers\Admin\CommunityComment;
 use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\KontenKaryaController;
@@ -89,14 +91,57 @@ Route::middleware('isAdmin')->group(function () {
         Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');
         // Management Users
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+        Route::prefix('users')->group(function () {
+            // crud data
+            Route::post('/add/{id}', [UserController::class, 'store'])->name('admin.users.store');
+            Route::post('/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
+            Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('admin.users.delete');
+        });
+
         // Laporan
         Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('admin.laporan');
+        Route::prefix('laporan')->group(function () {
+            // crud data
+            Route::post('/add/{id}', [AdminLaporanController::class, 'store'])->name('admin.laporan.store');
+            Route::post('/update/{id}', [AdminLaporanController::class, 'update'])->name('admin.laporan.update');
+            Route::delete('/delete/{id}', [AdminLaporanController::class, 'destroy'])->name('admin.laporan.delete');
+        });
+
         // Community
         Route::get('/community', [CommunityController::class, 'index'])->name('admin.community');
+        Route::prefix('community')->group(function () {
+            // crud data
+            Route::post('/add/{id}', [CommunityController::class, 'store'])->name('admin.community.store');
+            Route::post('/update/{id}', [CommunityController::class, 'update'])->name('admin.community.update');
+            Route::delete('/delete/{id}', [CommunityController::class, 'destroy'])->name('admin.community.delete');
+        });
+
         // Community Comments
-        Route::get('/community/comments', [CommunityController::class, 'adminPageComment'])->name('admin.community.comments');
+        Route::get('/community/comments', [CommunityComment::class, 'index'])->name('admin.community.comments');
+        Route::prefix('community-comments')->group(function () {
+            // crud data
+            Route::post('/add/{id}', [CommunityComment::class, 'store'])->name('admin.community-comments.store');
+            Route::post('/update/{id}', [CommunityComment::class, 'update'])->name('admin.community-comments.update');
+            Route::delete('/delete/{id}', [CommunityComment::class, 'destroy'])->name('admin.community-comments.delete');
+        });
+
         // content Karya
         Route::get('/content-karya', [KontenKaryaController::class, 'index'])->name('admin.content-karya');
+        Route::prefix('content-karya')->group(function () {
+            // crud data
+            Route::post('/add/{id}', [KontenKaryaController::class, 'store'])->name('admin.content-karya.store');
+            Route::post('/update/{id}', [KontenKaryaController::class, 'update'])->name('admin.content-karya.update');
+            Route::delete('/delete/{id}', [KontenKaryaController::class, 'destroy'])->name('admin.content-karya.delete');
+        });
+
+        // Articel Community
+        Route::get('/articel-community', [ArticelCommunity::class, 'index'])->name('admin.articel-community');
+        Route::prefix('articel-community')->group(function () {
+            // crud data
+            Route::post('/add/{id}', [ArticelCommunity::class, 'store'])->name('admin.articel-community.store');
+            Route::post('/update/{id}', [ArticelCommunity::class, 'update'])->name('admin.articel-community.update');
+            Route::delete('/delete/{id}', [ArticelCommunity::class, 'destroy'])->name('admin.articel-community.delete');
+        });
     });
 });
 

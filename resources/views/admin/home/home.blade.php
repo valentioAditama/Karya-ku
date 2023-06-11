@@ -2,10 +2,6 @@
 
 @section('content')
 
-<!-- SideBar -->
-@include('components.admin.sidebar')
-<!-- End SideBar -->
-
 <div class="content">
   <div class="container-fluid">
     <div class="row">
@@ -172,7 +168,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

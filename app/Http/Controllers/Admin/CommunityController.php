@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CommentContentCommunity;
+use App\Models\Community;
 use Illuminate\Http\Request;
 
 class CommunityController extends Controller
@@ -13,14 +15,14 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        // return page for admin and super admin
-        return view('admin.community.community');
-    }
+        // get data Community
+        $getCommunityData = Community::join('users', 'users.id', '=', 'community.id_user')
+            ->join('thumbnail_community', 'thumbnail_community.id_community', '=', 'community.id')
+            ->orderby('community.created_at', 'desc')
+            ->paginate(10);
 
-    public function adminPageComment()
-    {
         // return page for admin and super admin
-        return view('admin.community.comments');
+        return view('admin.community.community', compact('getCommunityData'));
     }
 
     /**
