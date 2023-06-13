@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CommentContentCommunity;
 use App\Models\Community;
+use App\Models\ThumbnailCommunity;
+use App\Models\ThumbnailContent;
 use Illuminate\Http\Request;
 
 class CommunityController extends Controller
@@ -62,7 +64,29 @@ class CommunityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            // validate data 
+            $validated = $request->validate([
+                'name_community' => 'required',
+                'description' => 'required',
+                'thumbnail_community' => 'required'
+            ]);
+
+            // Get Id Community and store data community, path thumbnail to table
+            $getIdCommunity = Community::create($validated);
+
+            // create path Thumbnail
+            $pathThumbnail = $request->file('thumbnail_community')->store('public/community/thumbnail/');
+            ThumbnailCommunity::create([
+                'id_community' => $getIdCommunity->id,
+                'path' => substr($pathThumbnail, 27)
+            ]);
+
+            // return redirect back
+            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Simpan']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 
     /**
@@ -86,7 +110,30 @@ class CommunityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            // Get Id Community and store data community, path thumbnail to table
+            $getIdCommunity = Community::find($id);
+            $getIdCommunity->update([
+                'name_community' => $request->name_community,
+                'description' => $request->description,
+                'thumbnail_community' => $request->thumbnail_community,
+            ]);
+
+            // Store path Thumbnail
+            $pathThumbnail = $request->file('thumbnail_community')->store('public/community/thumbnail/');
+            $getDataThumbnail = ThumbnailContent::where('id_community', '=', $getIdCommunity)
+                ->first();
+
+            $getDataThumbnail->update([
+                'id_community' => $getIdCommunity->id,
+                'path' => substr($pathThumbnail, 27)
+            ]);
+
+            // return redirect back
+            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Ubah']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 
     /**
@@ -94,6 +141,20 @@ class CommunityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // Get Id Community and store data community, path thumbnail to table
+            $getIdCommunity = Community::find($id);
+
+            // Store path Thumbnail
+            $getDataThumbnail = ThumbnailContent::where('id_community', '=', $getIdCommunity)->first();
+
+            // get data thumbnail
+            $getDataThumbnail->delete();
+
+            // return redirect back
+            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Ubah']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 }

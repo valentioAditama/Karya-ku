@@ -67,7 +67,16 @@
                                         <a class="btn btn-warning btn-fill btn-sm" data-toggle="modal" data-target="#status_content_karya{{$data->id}}">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        @else
+                                        @elseif(Auth::user()->role == "superuser")
+                                        <a class="btn btn-warning btn-fill btn-sm" data-toggle="modal" data-target="#status_content_karya{{$data->id}}">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a class="btn btn-primary btn-fill btn-sm" data-toggle="modal" data-target="#modal-edit{{$data->id}}">
+                                            <i class="fa-solid fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-fill btn-sm" data-toggle="modal" data-target="#modal-delete{{$data->id}}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
                                         @endif
                                     </td>
                                 </tr>
@@ -83,7 +92,6 @@
 
 <!-- modal admin status user -->
 @include('components.admin.modal.status-content-karya')
-
 <!-- Notification -->
 @include('components.notifications')
 

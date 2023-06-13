@@ -23,7 +23,7 @@ class adminSeeder extends Seeder
 
         User::create([
             'fullname' => 'super user',
-            'email' => 'superUser@gmail.com',
+            'email' => 'superuser@gmail.com',
             'role' => 'superuser',
             'password' => Hash::make('password123')
         ]);

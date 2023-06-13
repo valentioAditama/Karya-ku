@@ -18,10 +18,13 @@
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="search" placeholder="search">
                                 </div>
-                                <div class="col-1">
-                                    <button type="submit" class="btn btn-primary">Search</button>
+                                <div class="col-md-7">
+                                    <button type="submit" class="btn btn-primary">Search</button> &nbsp;
                                 </div>
                             </form>
+                            <button class="btn btn-success btn-fill" data-toggle="modal" data-target="#modal-add">
+                                <i class="fa-solid fa-add"></i> Add Data
+                            </button>
                         </div>
                         <table class="table table-striped h5">
                             <thead>
@@ -52,7 +55,16 @@
                                         <a class="btn btn-warning btn-fill btn-sm" data-toggle="modal" data-target="#status_community{{$data->id}}">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        @else
+                                        @elseif(Auth::user()->role == "superuser")
+                                        <a class="btn btn-warning btn-fill btn-sm" data-toggle="modal" data-target="#status_community{{$data->id}}">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a class="btn btn-primary btn-fill btn-sm" data-toggle="modal" data-target="#modal-edit{{$data->id}}">
+                                            <i class="fa-solid fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-fill btn-sm" data-toggle="modal" data-target="#modal-delete{{$data->id}}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
                                         @endif
                                     </td>
                                 </tr>

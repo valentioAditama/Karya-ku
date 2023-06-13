@@ -62,7 +62,6 @@ class KomunitasController extends Controller
                 'content_community.description',
                 'content_community.created_at',
                 'content_community.id',
-                'content_community.status',
                 'image_content_community.path as image_content',
                 'video_content_communities.path as video_content',
                 DB::raw('COUNT(DISTINCT content_community.id) as content_count'),

@@ -128,7 +128,7 @@ Route::middleware(['isAdmin'])->group(function () {
             Route::post('/change-status/{id}', [CommunityController::class, 'change_status'])->name('admin.community.change-status');
 
             // crud data
-            Route::post('/add/{id}', [CommunityController::class, 'store'])->name('admin.community.store');
+            Route::post('/add', [CommunityController::class, 'store'])->name('admin.community.store');
             Route::post('/update/{id}', [CommunityController::class, 'update'])->name('admin.community.update');
             Route::delete('/delete/{id}', [CommunityController::class, 'destroy'])->name('admin.community.delete');
         });
@@ -203,7 +203,7 @@ Route::middleware(['isSuperAdmin'])->group(function () {
             Route::post('/change-status/{id}', [CommunityController::class, 'change_status'])->name('admin.community.change-status');
 
             // crud data
-            Route::post('/add/{id}', [CommunityController::class, 'store'])->name('admin.community.store');
+            Route::post('/add', [CommunityController::class, 'store'])->name('admin.community.store');
             Route::post('/update/{id}', [CommunityController::class, 'update'])->name('admin.community.update');
             Route::delete('/delete/{id}', [CommunityController::class, 'destroy'])->name('admin.community.delete');
         });
