@@ -8,6 +8,7 @@ use App\Models\Community;
 use App\Models\ThumbnailCommunity;
 use App\Models\ThumbnailContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommunityController extends Controller
 {
@@ -69,11 +70,15 @@ class CommunityController extends Controller
             $validated = $request->validate([
                 'name_community' => 'required',
                 'description' => 'required',
-                'thumbnail_community' => 'required'
+                'thumbnail_community' => 'required',
             ]);
 
             // Get Id Community and store data community, path thumbnail to table
-            $getIdCommunity = Community::create($validated);
+            $getIdCommunity = Community::create([
+                'id_user' => Auth::id(),
+                'name_community' => $validated['name_community'],
+                'description' => $validated['description'],
+            ]);
 
             // create path Thumbnail
             $pathThumbnail = $request->file('thumbnail_community')->store('public/community/thumbnail/');
@@ -83,7 +88,7 @@ class CommunityController extends Controller
             ]);
 
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Simpan']);
+            return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -116,21 +121,22 @@ class CommunityController extends Controller
             $getIdCommunity->update([
                 'name_community' => $request->name_community,
                 'description' => $request->description,
-                'thumbnail_community' => $request->thumbnail_community,
             ]);
+
+            $getDataThumbnail = ThumbnailCommunity::where('id_community', '=', $getIdCommunity->id)->first();
 
             // Store path Thumbnail
-            $pathThumbnail = $request->file('thumbnail_community')->store('public/community/thumbnail/');
-            $getDataThumbnail = ThumbnailContent::where('id_community', '=', $getIdCommunity)
-                ->first();
-
-            $getDataThumbnail->update([
-                'id_community' => $getIdCommunity->id,
-                'path' => substr($pathThumbnail, 27)
-            ]);
+            if ($request->file('thumbnail_community') == null) {
+            } else {
+                $pathThumbnail = $request->file('thumbnail_community')->store('public/community/thumbnail/');
+                $getDataThumbnail->update([
+                    'id_community' => $getIdCommunity->id,
+                    'path' => substr($pathThumbnail, 27)
+                ]);
+            }
 
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Ubah']);
+            return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Ubah']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -146,13 +152,19 @@ class CommunityController extends Controller
             $getIdCommunity = Community::find($id);
 
             // Store path Thumbnail
-            $getDataThumbnail = ThumbnailContent::where('id_community', '=', $getIdCommunity)->first();
+            $getDataThumbnail = ThumbnailCommunity::where('id_community', '=', $getIdCommunity->id)->first();
 
-            // get data thumbnail
-            $getDataThumbnail->delete();
+            if ($getDataThumbnail != null) {
+                $getDataThumbnail->delete();
+            }
+
+            if ($getIdCommunity != null) {
+                // get data thumbnail
+                $getIdCommunity->delete();
+            }
 
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Ubah']);
+            return redirect()->back()->with(['successDeleteData' => 'Data Berhasil Di Ubah']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }

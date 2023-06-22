@@ -77,7 +77,6 @@
         </div>
     </div>
 </div>
-
 <!-- modal admin status user -->
 @include('components.admin.modal.status-community')
 

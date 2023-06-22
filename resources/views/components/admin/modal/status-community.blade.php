@@ -71,7 +71,7 @@
           <i class="nc-icon nc-bulb-63"></i>
         </div>
       </div>
-      <form action="{{ route('admin.community.update', $data->id) }}" method="post">
+      <form action="{{ route('admin.community.update', $data->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="modal-body">
           <div class="mb-3">
@@ -80,7 +80,7 @@
           </div>
           <div class="mb-3">
             <label for="thumbnail_community" class="h5">File</label>
-            <input type="file" class="form-control form-control-sm" name="thumbnail_community" id="thumbnail_community" required>
+            <input type="file" class="form-control form-control-sm" name="thumbnail_community" id="thumbnail_community">
           </div>
           <div class="mb-3">
             <label for="description" class="h5">Description</label>

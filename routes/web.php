@@ -149,7 +149,7 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::get('/community/comments', [CommunityComment::class, 'index'])->name('admin.community.comments');
         Route::prefix('community-comments')->group(function () {
             // change status
-            Route::post('/change-status/{id}', [CommunityComment::class, 'change_status'])->name('admin.community.change-status');
+            Route::post('/change-status/{id}', [CommunityComment::class, 'change_status'])->name('admin.community-comment.change-status');
 
             // crud data
             Route::post('/add/{id}', [CommunityComment::class, 'store'])->name('admin.community-comments.store');
@@ -224,7 +224,7 @@ Route::middleware(['isSuperAdmin'])->group(function () {
         Route::get('/community/comments', [CommunityComment::class, 'index'])->name('admin.community.comments');
         Route::prefix('community-comments')->group(function () {
             // change status
-            Route::post('/change-status/{id}', [CommunityComment::class, 'change_status'])->name('admin.community.change-status');
+            Route::post('/change-status/{id}', [CommunityComment::class, 'change_status'])->name('admin.community-comment.change-status');
 
             // crud data
             Route::post('/add/{id}', [CommunityComment::class, 'store'])->name('admin.community-comments.store');

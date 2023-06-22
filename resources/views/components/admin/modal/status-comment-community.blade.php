@@ -7,7 +7,7 @@
           <i class="nc-icon nc-bulb-63"></i>
         </div>
       </div>
-      <form action="{{ route('admin.community.change-status', $data->id) }}" method="post">
+      <form action="{{ route('admin.community-comment.change-status', $data->id) }}" method="post">
         @csrf
         <div class="modal-body">
           <label for="status" class="h5">Status Comment Community</label>
