@@ -20,7 +20,7 @@ class CreateVideoContentsTable extends Migration
             $table->timestamps();
 
             // reference to users
-            $table->foreign('id_content')->references('id')->on('content');
+            $table->foreign('id_content')->references('id')->on('content')->onDelete('cascade');
         });
     }
 

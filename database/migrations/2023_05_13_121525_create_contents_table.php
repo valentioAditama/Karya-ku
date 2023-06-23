@@ -23,7 +23,7 @@ class CreateContentsTable extends Migration
             $table->enum('status', ['active', 'non-active'])->default('active');
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

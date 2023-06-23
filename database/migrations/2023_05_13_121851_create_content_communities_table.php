@@ -22,8 +22,8 @@ class CreateContentCommunitiesTable extends Migration
             $table->timestamps();
 
             // reference to users and community
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_community')->references('id')->on('community');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_community')->references('id')->on('community')->onDelete('cascade');
         });
     }
 

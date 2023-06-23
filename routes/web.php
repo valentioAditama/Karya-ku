@@ -215,7 +215,7 @@ Route::middleware(['isSuperAdmin'])->group(function () {
             Route::post('/change-status/{id}', [ArticelCommunity::class, 'change_status'])->name('admin.articel.change-status');
 
             // crud data
-            Route::post('/add/{id}', [ArticelCommunity::class, 'store'])->name('admin.articel-community.store');
+            Route::post('/add', [ArticelCommunity::class, 'store'])->name('admin.articel-community.store');
             Route::post('/update/{id}', [ArticelCommunity::class, 'update'])->name('admin.articel-community.update');
             Route::delete('/delete/{id}', [ArticelCommunity::class, 'destroy'])->name('admin.articel-community.delete');
         });
