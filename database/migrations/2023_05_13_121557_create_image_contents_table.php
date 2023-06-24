@@ -20,7 +20,7 @@ class CreateImageContentsTable extends Migration
             $table->timestamps();
 
             // reference to content
-            $table->foreign('id_content')->references('id')->on('content');
+            $table->foreign('id_content')->references('id')->on('content')->onDelete('cascade');
         });
     }
 

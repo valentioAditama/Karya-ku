@@ -20,7 +20,7 @@ class CreateVideoContentCommunitiesTable extends Migration
             $table->timestamps();
 
             // reference to to content community
-            $table->foreign('id_content_community')->references('id')->on('content_community');
+            $table->foreign('id_content_community')->references('id')->on('content_community')->onDelete('cascade');
         });
     }
 

@@ -20,7 +20,7 @@ class CreateThumbnailContentsTable extends Migration
             $table->timestamps();
 
             // reference to Content
-            $table->foreign('id_content')->references('id')->on('content');
+            $table->foreign('id_content')->references('id')->on('content')->onDelete('cascade');
         });
     }
 

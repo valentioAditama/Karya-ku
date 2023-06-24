@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         // get all data user
-        $getDataUser = User::all()->where('role', 'user');
+        $getDataUser = User::orderBy('created_at', 'desc')->paginate(15);
         // return view for admin
         return view('admin.users.users', compact('getDataUser'));
     }
@@ -26,6 +26,22 @@ class UserController extends Controller
     public function create()
     {
         // 
+    }
+
+    public function change_status(Request $request, $id)
+    {
+        try {
+            // change status update
+            $getChangeStatus = User::find($id);
+            $getChangeStatus->update([
+                'status' => $request->status
+            ]);
+
+            // return redirect back
+            return redirect()->back()->with(['successStore' => 'Status Berhasil Di Ubah']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 
     /**
@@ -42,6 +58,7 @@ class UserController extends Controller
                 'role' => 'required',
                 'status' => 'required',
             ]);
+
             User::create([
                 'fullname' => $request->fullname,
                 'email' => $request->email,
@@ -51,7 +68,7 @@ class UserController extends Controller
             ]);
 
             // return to view 
-            return redirect()->back()->with(['successStoreData' => 'Berhasil Simpan Data']);
+            return redirect()->back()->with(['successStoreData' => 'Berhasil Tambah Data']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -92,7 +109,7 @@ class UserController extends Controller
             ]);
 
             // return to view 
-            return redirect()->back()->with(['successStoreData' => 'Berhasil Simpan Data']);
+            return redirect()->back()->with(['successStoreData' => 'Berhasil Edit Data']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -111,7 +128,7 @@ class UserController extends Controller
             $getIdUser->delete();
 
             // return to view 
-            return redirect()->back()->with(['successStoreData' => 'Berhasil Simpan Data']);
+            return redirect()->back()->with(['successStoreData' => 'Berhasil Hapus Data']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }

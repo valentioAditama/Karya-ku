@@ -55,7 +55,7 @@
     <div class="container-fluid mb-5">
         <div class="row mt-5">
             @foreach($getCommunity as $data)
-            <div class="col-md-4">
+            <div class="col-md-4 mb-4">
                 <a href="{{route('komunitas.review', $data->id)}}" class="text-dark">
                     <img src="{{asset('storage/community/thumbnail/' . $data->path)}}" class="img-community" alt="">
                     <div class="mt-2">

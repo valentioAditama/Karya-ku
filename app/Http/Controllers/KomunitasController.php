@@ -54,6 +54,7 @@ class KomunitasController extends Controller
             ->leftJoin('comment_content_community', 'comment_content_community.id_content_community', '=', 'content_community.id')
             ->leftJoin('like_content_community', 'like_content_community.id_content_community', '=', 'content_community.id')
             ->where('id_community', '=', $id)
+            ->where('content_community.status', '=', 'active')
             ->orderBy('content_community.created_at', 'DESC')
             ->select(
                 'users.fullname',
@@ -73,6 +74,7 @@ class KomunitasController extends Controller
                 'content_community.description',
                 'content_community.created_at',
                 'content_community.id',
+                'content_community.status',
                 'image_content_community.path',
                 'video_content_communities.path',
             )
@@ -130,11 +132,13 @@ class KomunitasController extends Controller
             ->join('content_community', 'content_community.id', '=', 'comment_content_community.id_content_community')
             ->join('users', 'users.id', '=', 'comment_content_community.id_user')
             ->where('comment_content_community.id_content_community', '=', $id)
+            ->where('comment_content_community.status', '=', 'active')
             ->orderBy('created_at', 'ASC')
             ->get([
                 'users.fullname',
                 'users.image_profile',
                 'comment_content_community.comment',
+                'comment_content_community.status',
                 'comment_content_community.created_at',
             ]);
 
@@ -181,6 +185,7 @@ class KomunitasController extends Controller
         $getCommunity = DB::table('community')
             ->join('users', 'users.id', '=', 'community.id_user')
             ->join('thumbnail_community', 'thumbnail_community.id_community', '=', 'community.id')
+            ->where('community.status', '=', 'active')
             ->orderBy('created_at', 'DESC')
             ->get([
                 'community.id',

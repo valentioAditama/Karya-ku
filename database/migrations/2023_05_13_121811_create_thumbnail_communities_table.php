@@ -20,7 +20,7 @@ class CreateThumbnailCommunitiesTable extends Migration
             $table->timestamps();
 
             // reference to community
-            $table->foreign('id_community')->references('id')->on('community');
+            $table->foreign('id_community')->references('id')->on('community')->onDelete('cascade');
         });
     }
 

@@ -10,9 +10,10 @@
                     <p class="fs-5">Silakan Masukan Email anda yang sudah terdaftar sebelumnya</p>
                 </div>
                 @csrf
-                <form action="" method="">
+                <form action="{{route('password.email')}}" method="post">
+                    @csrf
                     <div class="mt-3">
-                        <input type="text" class="form-input" name="" id="" placeholder="Email" required>
+                        <input id="email" type="email" class="form-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     </div>
                     <div class="mt-3">
                         <button class="button-auth-login">Submit</button>
@@ -25,4 +26,8 @@
         </div>
     </div>
 </div>
+
+<!-- Notification -->
+@include('components.notifications')
+
 @endsection

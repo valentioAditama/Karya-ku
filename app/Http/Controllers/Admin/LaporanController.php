@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Laporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,15 @@ class LaporanController extends Controller
     public function index()
     {
         // Get All Data Report
-        $getDataReport = DB::table('laporan')->join('users', 'users.id', '=', 'laporan.id_user')->get();
+        $getDataReport = DB::table('laporan')
+            ->join('users', 'users.id', '=', 'laporan.id_user')
+            ->orderBy('created_at', 'desc')
+            ->get([
+                'users.fullname',
+                'laporan.id',
+                'laporan.comment',
+                'laporan.created_at'
+            ]);
         return view('admin.laporan.laporan', compact('getDataReport'));
     }
 
@@ -63,6 +72,14 @@ class LaporanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // get data 
+            $getDataLaporan = Laporan::find($id);
+            $getDataLaporan->delete();
+
+            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Hapus']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 }

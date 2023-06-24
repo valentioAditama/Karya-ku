@@ -64,6 +64,19 @@
 </script>
 @endif
 
+@if (session('errorLogin'))
+<script>
+    // Show Notification
+    document.addEventListener('DOMContentLoaded', function() {
+        iziToast.error({
+            title: 'Error',
+            message: `{{ session('errorLogin') }}`,
+            position: 'topRight',
+        });
+    });
+</script>
+@endif
+
 @if (session('successLogout'))
 <script>
     // Show Notification
@@ -76,7 +89,6 @@
     });
 </script>
 @endif
-
 
 <!-- community -->
 <script>
@@ -259,21 +271,4 @@
         });
     });
 </script>
-@endif
-
-
-<!-- FAILED Request Store Data -->
-@if(session('errors'))
-@foreach(session('errors')->all() as $error)
-<script>
-    // Show Notification
-    document.addEventListener('DOMContentLoaded', function() {
-        iziToast.error({
-            title: 'Error',
-            message: `{{ $error }}`,
-            position: 'topRight',
-        });
-    });
-</script>
-@endforeach
 @endif

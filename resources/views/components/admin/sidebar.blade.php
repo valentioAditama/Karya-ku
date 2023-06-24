@@ -8,7 +8,7 @@
         </div>
 
         <ul class="nav">
-            <li class="active">
+            <li>
                 <a href="{{ route('admin.home') }}">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
@@ -27,14 +27,26 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.content-karya') }}">
+                    <i class="pe-7s-note"></i>
+                    <p>Konten Karya</p>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.community') }}">
                     <i class="pe-7s-news-paper"></i>
                     <p>Community</p>
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.articel-community') }}">
+                    <i class="pe-7s-comment"></i>
+                    <p>Articel Community</p>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.community.comments') }}">
-                    <i class="pe-7s-science"></i>
+                    <i class="pe-7s-comment"></i>
                     <p>Community Comments</p>
                 </a>
             </li>

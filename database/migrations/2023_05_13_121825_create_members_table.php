@@ -20,8 +20,8 @@ class CreateMembersTable extends Migration
             $table->timestamps();
 
             // referece to community and users
-            $table->foreign('id_community')->references('id')->on('community');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_community')->references('id')->on('community')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

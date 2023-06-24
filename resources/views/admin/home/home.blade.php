@@ -2,10 +2,6 @@
 
 @section('content')
 
-<!-- SideBar -->
-@include('components.admin.sidebar')
-<!-- End SideBar -->
-
 <div class="content">
   <div class="container-fluid">
     <div class="row">
@@ -126,7 +122,7 @@
                 @php
                 $no = 1;
                 @endphp
-                @foreach($getCommunityData as $dataCommunity)
+                @foreach($getCommentsData as $dataCommunity)
                 <tr>
                   <th scope="row">{{ $no++ }}</th>
                   <td>{{ $dataCommunity->fullname}}</td>
@@ -172,7 +168,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

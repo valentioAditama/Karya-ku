@@ -2,101 +2,66 @@
 
 @section('content')
 
-<!-- SideBar -->
-@include('components.admin.sidebar')
-<!-- End SideBar -->
-
-<section class="main_content dashboard_part large_header_bg">
-
-    <!-- navbar -->
-    @include('components.admin.navbar')
-    <!-- End Navbar -->
-
-    <div class="main_content_iner overly_inner ">
-        <div class="container-fluid p-0 ">
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
-                        <div class="page_title_left d-flex align-items-center">
-                            <h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
-                            <ol class="breadcrumb page_bradcam mb-0">
-                                <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-                                <li class="breadcrumb-item active">Laporan</li>
-                            </ol>
-                        </div>
-                        <div class="page_title_right">
-                            <div class="page_date_button d-flex align-items-center">
-                                <img src="img/icon/calender_icon.svg" alt>
-                                August 1, 2020 - August 31, 2020
-                            </div>
-                        </div>
+<!-- SideBar --><!-- End SideBar -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Laporan</h4>
+                        <p class="category">Last Update</p>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="white_card card_height_100 mb_30 pt-4">
-                        <div class="white_card_body">
-                            <div class="QA_section">
-                                <div class="white_box_tittle list_header">
-                                    <h4>Laporan </h4>
-                                    <div class="box_right d-flex lms_block">
-                                        <div class="serach_field_2">
-                                            <div class="search_inner">
-                                                <form active="#">
-                                                    <div class="search_field">
-                                                        <input type="text" placeholder="Search content here...">
-                                                    </div>
-                                                    <button type="submit"> <i class="ti-search"></i> </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="add_button ms-2">
-                                            <a href="#" data-toggle="modal" data-target="#addcategory" class="btn_1">search</a>
-                                        </div>
-                                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <form action="" method="post">
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="search" placeholder="search">
                                 </div>
-                                <div class="QA_table mb_30">
-
-                                    <table class="table lms_table_active ">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Nomor</th>
-                                                <th scope="col">Fullname</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Laporan</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php $no=0; $no++ @endphp
-                                            @foreach($getDataReport as $data)
-                                            <tr>
-                                                <th scope="row"> <a href="#" class="question_content">{{$no++}}</a></th>
-                                                <td>{{$data->fullname}}</td>
-                                                <td>{{$data->email}}</td>
-                                                <td>{{$data->comment}}</td>
-                                                <td>
-                                                    <div class="action_btns d-flex">
-                                                        <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-                                                        <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
+                        <table class="table table-striped h5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">users</th>
+                                    <th scope="col">comments</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                $no = 1;
+                                @endphp
+                                @foreach($getDataReport as $data)
+                                <tr>
+                                    <th scope="row">{{ $no++ }}</th>
+                                    <td>{{ $data->fullname}}</td>
+                                    <td>{{ $data->comment}}</td>
+                                    <td>
+                                        @if(Auth::user()->role == "superuser")
+                                        <a class="btn btn-danger btn-fill btn-sm" data-toggle="modal" data-target="#laporan-delete{{$data->id}}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- modal admin report -->
+@include('components.admin.modal.laporan-delete')
 
-    @include('components.admin.footer')
-</section>
+<!-- Notification -->
+@include('components.notifications')
 
 @endSection
