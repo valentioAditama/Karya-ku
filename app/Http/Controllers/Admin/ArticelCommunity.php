@@ -53,7 +53,7 @@ class ArticelCommunity extends Controller
                 'status' => $request->status
             ]);
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Status Berhasil Di Ubah']);
+            return redirect()->back()->with(['successStoreData' => 'Status Berhasil Di Ubah']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -98,7 +98,7 @@ class ArticelCommunity extends Controller
             }
 
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Tambahkan']);
+            return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Tambahkan']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -146,7 +146,7 @@ class ArticelCommunity extends Controller
             }
 
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Update']);
+            return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Update']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -160,7 +160,7 @@ class ArticelCommunity extends Controller
             $data->delete();
 
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Data Berhasil Di Hapus']);
+            return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Hapus']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }

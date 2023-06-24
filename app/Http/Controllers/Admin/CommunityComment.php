@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CommentContentCommunity;
+use App\Models\Community;
 use Illuminate\Http\Request;
 
 class CommunityComment extends Controller
@@ -15,9 +16,13 @@ class CommunityComment extends Controller
     {
         // get data Community
         $getCommentCommunity = CommentContentCommunity::join('users', 'users.id', '=', 'comment_content_community.id_user')
+            ->join('content_community', 'content_community.id', '=', 'comment_content_community.id_content_community')
+            ->join('community', 'community.id', '=', 'content_community.id_community')
             ->orderby('comment_content_community.created_at', 'desc')
             ->select([
                 'users.fullname',
+                'community.name_community',
+                'content_community.description as articel',
                 'comment_content_community.id',
                 'comment_content_community.comment',
                 'comment_content_community.status'
@@ -37,7 +42,7 @@ class CommunityComment extends Controller
                 'status' => $request->status
             ]);
             // return redirect back
-            return redirect()->back()->with(['successStore' => 'Status Berhasil Di Ubah']);
+            return redirect()->back()->with(['successStoreData' => 'Status Berhasil Di Ubah']);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -88,6 +93,15 @@ class CommunityComment extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // find data get id
+            $data = CommentContentCommunity::find($id);
+            $data->delete();
+
+            // return redirect 
+            return redirect()->back()->with(['successDeleteData' => 'Data Berhasil Di Simpan']);
+        } catch (\Throwable $error) {
+            return $error->getMessage();
+        }
     }
 }
