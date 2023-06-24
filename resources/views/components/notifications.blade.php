@@ -90,7 +90,6 @@
 </script>
 @endif
 
-
 <!-- community -->
 <script>
     // Show Notification
@@ -272,21 +271,4 @@
         });
     });
 </script>
-@endif
-
-
-<!-- FAILED Request Store Data -->
-@if(session('errors'))
-@foreach(session('errors')->all() as $error)
-<script>
-    // Show Notification
-    document.addEventListener('DOMContentLoaded', function() {
-        iziToast.error({
-            title: 'Error',
-            message: `{{ $error }}`,
-            position: 'topRight',
-        });
-    });
-</script>
-@endforeach
 @endif
