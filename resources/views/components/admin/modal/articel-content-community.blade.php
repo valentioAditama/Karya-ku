@@ -90,27 +90,28 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="users" class="h5">Users</label>
-            <input type="text" class="form-control form-control-sm" id="users" name="users" value="{{Auth::user()->fullname}}" readonly>
+            <input type="text" class="form-control form-control-sm" id="user" name="user" value="{{$data->fullname}}" readonly>
+            <input type="hidden" class="form-control form-control-sm" id="users" name="users" value="{{$data->id_user}}" readonly>            
           </div>
           <div class="mb-3">
             <label for="community" class="h5">Community</label>
             <select class="form-control form-control-sm" name="community" id="community" required>
-              @foreach($dataCommunity as $data)
-              <option value="{{$data->id}}">{{$data->name_community}}</option>
+              @foreach($dataCommunity as $datasCommunity)
+              <option value="{{$datasCommunity->id}}" selected>{{$datasCommunity->name_community}}</option>
               @endforeach
             </select>
           </div>
           <div class="mb-3">
             <label for="description" class="h5">Articel</label>
-            <textarea class="form-control" name="description" id="description" cols="30" rows="10" required>{{$data->description}}</textarea>
+            <textarea class="form-control" name="description" id="description" cols="30" rows="10" required>{{ $data->articel_description }}</textarea>
           </div>
           <div class="mb-3">
             <label for="image" class="h5">Image</label>
             <input type="file" class="form-control" name="image" id="formFile" accept="image/png, image/jpg, image/jpeg">
           </div>
-          <div class=" mb-3">
+          <div class="mb-3">
             <label for="video" class="h5">Video</label>
-            <input type="file" class="form-control" name="video" id="formFile" accept="video/mp4, video/flv, video/webm">
+            <input type="file" class="form-control" id="video" name="video" accept="video/mp4, video/flv, video/webm" value="{{ old('path_video') }}">
           </div>
         </div>
         <div class="modal-footer">

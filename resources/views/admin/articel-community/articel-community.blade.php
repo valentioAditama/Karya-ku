@@ -48,7 +48,7 @@
                                     <th scope="row">{{ $no++ }}</th>
                                     <td>{{ $data->fullname}}</td>
                                     <td>{{ $data->name_community}}</td>
-                                    <td>{{ $data->description}}</td>
+                                    <td>{{ $data->articel_description}}</td>
                                     <td>{{ $data->status}}</td>
                                     <td> <a href="/storage/community/content/image/{{$data->path_image ? $data->path_image : '-' }}">{{ $data->path_image ? "see Image" : "-" }}</a></td>
                                     <td> <a href="/storage/community/content/video/{{$data->path_video ? $data->path_video : '-' }}">{{ $data->path_video ? "see Video" : "-" }}</a></td>

@@ -28,8 +28,9 @@ class ArticelCommunity extends Controller
             ->orderby('content_community.created_at', 'desc')
             ->select([
                 'users.fullname',
+                'users.id as id_user',
                 'community.name_community',
-                'content_community.description',
+                'content_community.description as articel_description',
                 'content_community.status',
                 'content_community.id',
                 'image_content_community.path as path_image',
@@ -118,7 +119,7 @@ class ArticelCommunity extends Controller
 
             // get and store data
             $data->update([
-                'id_user' => Auth::id(),
+                'id_user' => $request->users,
                 'id_community' => $request->community,
                 'description' => $request->description
             ]);
