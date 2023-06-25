@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CommentContentCommunity;
-use App\Models\Community;
 use Illuminate\Http\Request;
 
 class CommunityComment extends Controller
