@@ -44,6 +44,42 @@ class ArticelCommunity extends Controller
         return view('admin.articel-community.articel-community', compact('getDataArticelCommunity', 'dataCommunity'));
     }
 
+    public function search(Request $request)
+    {
+        // get data from articel community and search it
+        $getDataArticelCommunity = ContentCommunity::join('users', 'users.id', '=', 'content_community.id_user')
+            ->join('community', 'community.id', '=', 'content_community.id_community')
+            ->leftJoin('image_content_community', function ($join) {
+                $join->on('image_content_community.id_content_community', '=', 'content_community.id')
+                    ->orWhereNull('image_content_community.id_content_community');
+            })
+            ->leftJoin('video_content_communities', function ($join) {
+                $join->on('video_content_communities.id_content_community', '=', 'content_community.id')
+                    ->orWhereNull('video_content_communities.id_content_community');
+            })
+            ->where('users.fullname', 'like', '%' . $request->search . '%')
+            ->orwhere('community.name_community', 'like', '%' . $request->search . '%')
+            ->orwhere('content_community.description', 'like', '%' . $request->search . '%')
+            ->orwhere('content_community.status', 'like', '%' . $request->search . '%')
+            ->orderby('content_community.created_at', 'desc')
+            ->select([
+                'users.fullname',
+                'users.id as id_user',
+                'community.name_community',
+                'content_community.description as articel_description',
+                'content_community.status',
+                'content_community.id',
+                'image_content_community.path as path_image',
+                'video_content_communities.path as path_video',
+            ])
+            ->paginate(10);
+
+        // get data community
+        $dataCommunity = Community::all();
+
+        return view('admin.articel-community.articel-community', compact('getDataArticelCommunity', 'dataCommunity'));
+    }
+
     public function change_status(Request $request, $id)
     {
         try {

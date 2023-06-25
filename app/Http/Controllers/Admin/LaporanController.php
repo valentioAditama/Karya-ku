@@ -27,6 +27,24 @@ class LaporanController extends Controller
         return view('admin.laporan.laporan', compact('getDataReport'));
     }
 
+    public function search(Request $request)
+    {
+        // get data all and search it 
+        // Get All Data Report
+        $getDataReport = DB::table('laporan')
+            ->join('users', 'users.id', '=', 'laporan.id_user')
+            ->where('users.fullname', 'like', '%' . $request->search . '%')
+            ->orwhere('laporan.comment', 'like', '%' . $request->search . '%')
+            ->orderBy('created_at', 'desc')
+            ->get([
+                'users.fullname',
+                'laporan.id',
+                'laporan.comment',
+                'laporan.created_at'
+            ]);
+        return view('admin.laporan.laporan', compact('getDataReport'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -36,6 +36,30 @@ class CommunityController extends Controller
         return view('admin.community.community', compact('getCommunityData'));
     }
 
+    public function search(Request $request)
+    {
+        // get data Community and search it
+        $getCommunityData = Community::join('users', 'users.id', '=', 'community.id_user')
+            ->join('thumbnail_community', 'thumbnail_community.id_community', '=', 'community.id')
+            ->where('users.fullname', 'like', '%' . $request->search . '%')
+            ->orwhere('community.name_community', 'like', '%' . $request->search . '%')
+            ->orwhere('community.description', 'like', '%' . $request->search . '%')
+            ->orwhere('community.status', 'like', '%' . $request->search . '%')
+            ->orderby('community.created_at', 'desc')
+            ->select([
+                'users.fullname',
+                'community.name_community',
+                'community.description',
+                'community.status',
+                'thumbnail_community.path',
+                'community.id'
+            ])
+            ->paginate(10);
+
+        // return page for admin and super admin
+        return view('admin.community.community', compact('getCommunityData'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

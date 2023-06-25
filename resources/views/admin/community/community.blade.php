@@ -14,7 +14,7 @@
                     </div>
                     <div class="content">
                         <div class="row">
-                            <form action="" method="post">
+                            <form action="{{ route('admin.community.search') }}" method="get">
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="search" placeholder="search">
                                 </div>

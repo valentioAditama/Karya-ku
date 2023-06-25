@@ -95,6 +95,9 @@ Route::middleware(['isAdmin'])->group(function () {
             // change status
             Route::post('/change-status/{id}', [UserController::class, 'change_status'])->name('admin.users.change-status');
 
+            // search
+            Route::get('/search', [UserController::class, 'search'])->name('admin.users.search');
+
             // crud data
             Route::post('/add', [UserController::class, 'store'])->name('admin.users.store');
             Route::post('/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
@@ -104,6 +107,9 @@ Route::middleware(['isAdmin'])->group(function () {
         // Laporan
         Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('admin.laporan');
         Route::prefix('laporan')->group(function () {
+            // search
+            Route::get('/search', [AdminLaporanController::class, 'search'])->name('admin.laporan.search');
+
             // crud data
             Route::post('/add/{id}', [AdminLaporanController::class, 'store'])->name('admin.laporan.store');
             Route::post('/update/{id}', [AdminLaporanController::class, 'update'])->name('admin.laporan.update');
@@ -115,6 +121,10 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::prefix('content-karya')->group(function () {
             // change status
             Route::post('/change-status/{id}', [KontenKaryaController::class, 'change_status'])->name('admin.content-karya.change-status');
+
+            // search
+            Route::get('/search', [KontenKaryaController::class, 'search'])->name('admin.content-karya.search');
+
             // crud data
             Route::post('/add', [KontenKaryaController::class, 'store'])->name('admin.content-karya.store');
             Route::post('/update/{id}', [KontenKaryaController::class, 'update'])->name('admin.content-karya.update');
@@ -126,6 +136,9 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::prefix('community')->group(function () {
             // change status
             Route::post('/change-status/{id}', [CommunityController::class, 'change_status'])->name('admin.community.change-status');
+
+            // search
+            Route::get('/search', [CommunityController::class, 'search'])->name('admin.community.search');
 
             // crud data
             Route::post('/add', [CommunityController::class, 'store'])->name('admin.community.store');
@@ -139,6 +152,10 @@ Route::middleware(['isAdmin'])->group(function () {
             // change status
             Route::post('/change-status/{id}', [ArticelCommunity::class, 'change_status'])->name('admin.articel.change-status');
 
+            // search
+            Route::get('/search', [ArticelCommunity::class, 'search'])->name('admin.articel.search');
+
+
             // crud data
             Route::post('/add/{id}', [ArticelCommunity::class, 'store'])->name('admin.articel-community.store');
             Route::post('/update/{id}', [ArticelCommunity::class, 'update'])->name('admin.articel-community.update');
@@ -150,6 +167,9 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::prefix('community-comments')->group(function () {
             // change status
             Route::post('/change-status/{id}', [CommunityComment::class, 'change_status'])->name('admin.community-comment.change-status');
+
+            // search
+            Route::get('/search', [CommunityComment::class, 'search'])->name('admin.community-comment.search');
 
             // crud data
             Route::post('/add/{id}', [CommunityComment::class, 'store'])->name('admin.community-comments.store');
@@ -170,6 +190,9 @@ Route::middleware(['isSuperAdmin'])->group(function () {
             // change status
             Route::post('/change-status/{id}', [UserController::class, 'change_status'])->name('admin.users.change-status');
 
+            // search
+            Route::get('/search', [UserController::class, 'search'])->name('admin.users.search');
+
             // crud data
             Route::post('/add', [UserController::class, 'store'])->name('admin.users.store');
             Route::post('/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
@@ -179,6 +202,9 @@ Route::middleware(['isSuperAdmin'])->group(function () {
         // Laporan
         Route::get('/laporan', [AdminLaporanController::class, 'index'])->name('admin.laporan');
         Route::prefix('laporan')->group(function () {
+            // search
+            Route::get('/search', [AdminLaporanController::class, 'search'])->name('admin.laporan.search');
+
             // crud data
             Route::post('/add/{id}', [AdminLaporanController::class, 'store'])->name('admin.laporan.store');
             Route::post('/update/{id}', [AdminLaporanController::class, 'update'])->name('admin.laporan.update');
@@ -190,6 +216,10 @@ Route::middleware(['isSuperAdmin'])->group(function () {
         Route::prefix('content-karya')->group(function () {
             // change status
             Route::post('/change-status/{id}', [KontenKaryaController::class, 'change_status'])->name('admin.content-karya.change-status');
+
+            // search
+            Route::get('/search', [KontenKaryaController::class, 'search'])->name('admin.content-karya.search');
+
             // crud data
             Route::post('/add}', [KontenKaryaController::class, 'store'])->name('admin.content-karya.store');
             Route::post('/update/{id}', [KontenKaryaController::class, 'update'])->name('admin.content-karya.update');
@@ -201,6 +231,9 @@ Route::middleware(['isSuperAdmin'])->group(function () {
         Route::prefix('community')->group(function () {
             // change status
             Route::post('/change-status/{id}', [CommunityController::class, 'change_status'])->name('admin.community.change-status');
+
+            // search
+            Route::get('/search', [CommunityController::class, 'search'])->name('admin.community.search');
 
             // crud data
             Route::post('/add', [CommunityController::class, 'store'])->name('admin.community.store');
@@ -214,6 +247,9 @@ Route::middleware(['isSuperAdmin'])->group(function () {
             // change status
             Route::post('/change-status/{id}', [ArticelCommunity::class, 'change_status'])->name('admin.articel.change-status');
 
+            // search
+            Route::get('/search', [ArticelCommunity::class, 'search'])->name('admin.articel.search');
+
             // crud data
             Route::post('/add', [ArticelCommunity::class, 'store'])->name('admin.articel-community.store');
             Route::post('/update/{id}', [ArticelCommunity::class, 'update'])->name('admin.articel-community.update');
@@ -225,6 +261,9 @@ Route::middleware(['isSuperAdmin'])->group(function () {
         Route::prefix('community-comments')->group(function () {
             // change status
             Route::post('/change-status/{id}', [CommunityComment::class, 'change_status'])->name('admin.community-comment.change-status');
+
+            // search
+            Route::get('/search', [CommunityComment::class, 'search'])->name('admin.community-comment.search');
 
             // crud data
             Route::post('/add', [CommunityComment::class, 'store'])->name('admin.community-comments.add');
