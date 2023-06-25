@@ -20,6 +20,23 @@ class UserController extends Controller
         return view('admin.users.users', compact('getDataUser'));
     }
 
+    public function search(Request $request)
+    {
+        // get data users and search
+        $getDataUser = User::where('fullname', 'like', '%' . $request->search . '%')
+            ->orwhere('email', 'like', '%' . $request->search . '%')
+            ->orwhere('role', 'like', '%' . $request->search . '%')
+            ->orwhere('status', 'like', '%' . $request->search . '%')
+            ->orwhere('role_job', 'like', '%' . $request->search . '%')
+            ->orwhere('location', 'like', '%' . $request->search . '%')
+            ->orderBy('created_at', 'desc')->paginate(15);
+
+        // get value return to search bar
+        $search = $request->search;
+        // return view for admin
+        return view('admin.users.users', compact('getDataUser', 'search'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
