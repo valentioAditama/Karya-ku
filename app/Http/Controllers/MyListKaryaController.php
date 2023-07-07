@@ -133,6 +133,7 @@ class MyListKaryaController extends Controller
             }
 
             return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+            return response()->json("Data Berhasil Di Simpan", 200);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }
@@ -161,6 +162,7 @@ class MyListKaryaController extends Controller
             $getDataContent->delete();
 
             return redirect()->back()->with(['successDeleteContent' => 'Data Berhasil Di Hapus']);
+            return response()->json("Data Berhasil Di Hapus", 200);
         } catch (\Throwable $error) {
             return $error->getMessage();
         }

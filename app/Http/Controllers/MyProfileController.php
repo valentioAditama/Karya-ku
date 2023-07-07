@@ -62,8 +62,10 @@ class MyProfileController extends Controller
 
         if (Hash::check($request->password, $checkPassword->password)) {
             return redirect('/reset-password/change-password/' . $id)->with(['successCheckPassword' => 'Check Password Berhasil']);
+            return response()->json("Check Password Berhasil", 200);
         } else {
             return redirect()->back()->with(['errorCheckPassword' => 'Password Salah']);
+            return response()->json("Password Salah", 401);
         }
     }
 
@@ -85,11 +87,14 @@ class MyProfileController extends Controller
 
                 // return back view
                 return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+                return response()->json("Data Berhasil Di Simpan", 200);
             } else {
                 return redirect()->back()->with(['errorcheckPasswordConfirm' => 'Password Tidak Matching']);
+                return response()->json("Password Tidak Matching", 401);
             }
         } else {
             return redirect()->back()->with(['errorCheckPassword' => 'Password Salah']);
+            return response()->json("Password Salah", 401);
         }
     }
 
@@ -108,6 +113,7 @@ class MyProfileController extends Controller
         Skills::create($validated);
 
         return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+        return response()->json("Data Berhasil Di Simpan", 200);
     }
 
     public function updateSkills(SkillsStore $request)
@@ -124,6 +130,7 @@ class MyProfileController extends Controller
         $updateSkills->update($validated);
 
         return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+        return response()->json("Data Berhasil Di Simpan", 200);
     }
 
     public function deleteSkills(SkillsStore $request)
@@ -135,6 +142,7 @@ class MyProfileController extends Controller
             ->delete();
 
         return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+        return response()->json("Data Berhasil Di Simpan", 200);
     }
 
     /**
@@ -170,6 +178,7 @@ class MyProfileController extends Controller
         }
 
         return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+        return response()->json("Data Berhasil Di Simpa", 200);
     }
 
     /**
@@ -226,6 +235,8 @@ class MyProfileController extends Controller
             $getUserData->update($validateRequest);
 
             return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+
+            return response()->json("Data Berhasil Di Simpan", 200);
         } catch (\Throwable $error) {
             // handling error
             return $error->getMessage();

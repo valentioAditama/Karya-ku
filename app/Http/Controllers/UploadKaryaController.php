@@ -69,6 +69,7 @@ class UploadKaryaController extends Controller
             }
 
             return redirect()->back()->with(['successStoreData' => 'Data Berhasil Di Simpan']);
+            return response()->json("Data Berhasil Di Simpan", 200);
         } catch (\Throwable $error) {
             // handling error
             return $error->getMessage();
