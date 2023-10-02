@@ -34,7 +34,7 @@
     position: relative;
     width: 270px;
     height: 270px;
-    border-radius: 50%;
+    border-radius: 5%;
     overflow: hidden;
     background-color: #111;
   }
@@ -62,7 +62,7 @@
     object-fit: cover;
     opacity: 1;
     transition: opacity .2s ease-in-out;
-    filter: brightness(0.5)
+    filter: brightness(0.8)
   }
 
   .profilepic__content {

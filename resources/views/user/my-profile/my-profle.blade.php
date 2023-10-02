@@ -38,7 +38,7 @@
                 <div class="mt-4">
                     <a href="{{route('my-profile.karya', Auth::id() )}}" class="btn btn-primary">
                         <div class="text-center">
-                            <b>List Karya-ku</b>
+                            <b>My List Karya-ku</b>
                         </div>
                     </a>
                     <label for="fileBanner" class="profilepic__label btn btn-warning">
@@ -110,7 +110,7 @@
                                 <input type="text" class="social-media-input" name="youtube" placeholder="Youtube Channel" value="{{$getSocialYoutube ? $getSocialYoutube->name : '' }}">
                             </div>
                             <div class="d-flex justify-content-end mt-3 mb-3">
-                                <button type="submit" class="btn btn-success">Simpan</button>
+                                <button type="submit" class="btn btn-success">Save</button>
                             </div>
                         </div>
                     </form>
@@ -129,7 +129,7 @@
                         <input id="file" type="file" name="image_profile" onchange="updateProfilePic(event)" hidden />
                         <input id="fileBanner" type="file" name="image_banner" onchange="updateBannerPic(event)" hidden />
                         <div class="mb-3">
-                            <label for="fullname" class="mb-2">Nama Lengkap</label>
+                            <label for="fullname" class="mb-2">Fullname</label>
                             <input type="text" name="fullname" class="form-control" value="{{Auth::user()->fullname}}" required>
                         </div>
                         <div class="mb-3">
@@ -145,8 +145,8 @@
                             <input type="text" name="location" class="form-control" value="{{Auth::user()->location}}">
                         </div>
                         <div class="d-flex justify-content-end mt-3">
-                            <a href="{{route('my-profile.login-change-password')}}" class="btn btn-primary">Ubah Password</a> &nbsp; &nbsp;
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <a href="{{route('my-profile.login-change-password')}}" class="btn btn-primary">Change Password</a> &nbsp; &nbsp;
+                            <button type="submit" class="btn btn-success">Save</button>
                     </form>
                 </div>
             </div>
