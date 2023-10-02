@@ -16,19 +16,19 @@
 			<!-- Left links -->
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link text-light" href="{{route('home')}}">Beranda</a>
+					<a class="nav-link text-light" href="{{route('home')}}">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-light" href="{{route('komunitas')}}">Komunitas</a>
+					<a class="nav-link text-light" href="{{route('komunitas')}}">Community</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-light" href="{{route('laporan')}}">Laporan</a>
+					<a class="nav-link text-light" href="{{route('laporan')}}">Report</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-light" href="{{route('tentang-kami')}}">Tentang Kami</a>
+					<a class="nav-link text-light" href="{{route('tentang-kami')}}">About Us</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-light" href="{{route('kategori')}}">Kategori</a>
+					<a class="nav-link text-light" href="{{route('kategori')}}">Category</a>
 				</li>
 			</ul>
 			<!-- Left links -->
@@ -39,8 +39,8 @@
 		<!-- for guest -->
 		@guest
 		<div class="d-flex align-items-center">
-			<a class="text-light me-3" href="{{route('login')}}">Masuk</a>
-			<a class="text-light text-center button-home-register" href="{{route('register')}}">Buat Akun</a>
+			<a class="text-light me-3" href="{{route('login')}}">Sign In</a>
+			<a class="text-light text-center button-home-register" href="{{route('register')}}">Sign Up</a>
 		</div>
 		@endguest
 

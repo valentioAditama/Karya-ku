@@ -11,14 +11,14 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12">
                         <div class="banner-home-title text-light">
-                            <p class="h2">Cari Karya yang membuatmu <b>Termotivasi</b></p>
+                            <p class="h2">Search Art for you get<b>motivate</b></p>
                             <p class="banner-home-sub-title">
-                                Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
-                                Temukan Inspirasi dan lakukan idemu sekarang.
+                                Inspiration for work, culture and so on from people all over the world. <br>
+                                Find Inspiration and put your ideas into action now.
                             </p>
                             <form action="{{route('home.search')}}" method="get">
                                 @csrf
-                                <input type="text" name="search" class="w-75 banner-home-form" value="{{ old('search')  }}" placeholder='Pikirkan "Ide" Anda'>
+                                <input type="text" name="search" class="w-75 banner-home-form" value="{{ old('search')  }}" placeholder='Thinking about your ideas'>
                             </form>
                         </div>
                     </div>
@@ -33,8 +33,8 @@
     <!-- title -->
     <div class="text-center">
         <h2 class="mt-5">Karya-ku</h2>
-        <h5>Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
-            Temukan Inspirasi dan lakukan idemu sekarang.
+        <h5>Inspiration for work, culture and so on from people all over the world. <br>
+            Find Inspiration and put your ideas into action now.
         </h5>
     </div>
 

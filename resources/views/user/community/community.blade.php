@@ -11,25 +11,25 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12">
                         <div class="banner-komunitas-title text-light">
-                            <p class="h2">Cari dan buatkan <b>Komunitas</b></p>
+                            <p class="h2">Search and Make a <b>Community</b></p>
                             <p class="banner-komunitas-sub-title">
-                                Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
-                                Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
+                                Inspiration for work, culture and so on from people all over the world. <br>
+                                Find Inspiration and put your ideas into action now.
                             </p>
                             <form action="{{route('komunitas.search')}}" method="get">
                                 @csrf
-                                <input type="text" name="search" class="w-75 banner-komunitas-form" placeholder='Cari Komunitas yang cocok dengan anda' value="{{ old('search') }}">
+                                <input type="text" name="search" class="w-75 banner-komunitas-form" placeholder='Search Community do you want it' value="{{ old('search') }}">
                             </form>
                             <div class="mt-3">
                                 <!-- for guest -->
                                 @guest
-                                <button class="button-komunitas" onclick="communityNoAuth()">Buat Komunitas</button>
+                                <button class="button-komunitas" onclick="communityNoAuth()">Create a Community</button>
                                 @endguest
 
                                 <!-- for user has login -->
                                 @auth
                                 <a href="{{route('komunitas.create')}}">
-                                    <button class="button-komunitas">Buat Komunitas</button>
+                                    <button class="button-komunitas">Create a Community</button>
                                 </a>
                                 @endguest
                             </div>
@@ -45,9 +45,9 @@
 <section>
     <!-- title -->
     <div class="text-center">
-        <h2 class="mt-5">Komunitas</h2>
-        <h5>Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
-            Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
+        <h2 class="mt-5">Community</h2>
+        <h5>Inspiration for work, culture and so on from people all over the world. <br>
+            Find Inspiration and put your ideas into action now.
         </h5>
     </div>
 

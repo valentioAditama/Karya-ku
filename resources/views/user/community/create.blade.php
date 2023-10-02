@@ -28,9 +28,10 @@
     <!-- title -->
     <div class="text-center">
         <h2 class="mt-5">Buat Komunitas</h2>
-        <h5>Inspirasi Karya, Budaya dan lain sebagainya dari orang-orang di seluruh dunia. <br>
-            Temukan Inspirasi dan lakukan Hubunganmu dengan orang-orang.
+        <h5>Inspiration for work, culture and so on from people all over the world. <br>
+            Find Inspiration and put your ideas into action now.
         </h5>
+
     </div>
 
     <div class="container mt-5 mb-5">
