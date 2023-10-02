@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="title-auth">
-                    <p class="fs-1">Lupa Password</p>
-                    <p class="fs-5">Silakan Masukan Email anda yang sudah terdaftar sebelumnya</p>
+                    <p class="fs-1">Forgot Password</p>
+                    <p class="fs-5">Please fill email before you have</p>
                 </div>
                 @csrf
                 <form action="{{route('password.email')}}" method="post">
@@ -20,7 +20,7 @@
                     </div>
                 </form>
                 <div class="mt-2">
-                    <a href="{{route('login')}}" class="text-decoration-none text-light">Kembali</a>
+                    <a href="{{route('login')}}" class="text-decoration-none text-light">Back</a>
                 </div>
             </div>
         </div>

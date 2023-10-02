@@ -6,12 +6,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="title-auth">
-                    <p class="title">Selamat Datang Di <b>Karya-ku</b></p>
-                    <p class="sub-title">Imajinasi berkembang di setiap lembar karya-mu</p>
+                    <p class="title">Welcome Back To <b>Karya-ku</b></p>
+                    <p class="sub-title">Imagination Growth Up On Each Letter</p>
                 </div>
                 <div class="mt-4">
                     <a href="{{route('home')}}">
-                        <button class="button-auth ">Mulai Sekarang</button>
+                        <button class="button-auth ">Start Now</button>
                     </a>
                 </div>
             </div>

@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12">
                 <div class="title-auth">
-                    <p class="fs-1">Selamat Datang</p>
-                    <p class="fs-5">Silakan Login jika anda ingin <b>berkarya</b></p>
+                    <p class="fs-1">Welcome Back</p>
+                    <p class="fs-5">Please login if you want to <b>berkarya</b></p>
                 </div>
                 @csrf
                 <form action="{{route('login')}}" method="POST">
@@ -27,14 +27,14 @@
                                 </div>
                             </div>
                             <div class="col-6 col-sm-4 col-md-4">
-                                <a href="{{route('register')}}" class="text-decoration-none text-light">Belum Punya Akun?</a>
+                                <a href="{{route('register')}}" class="text-decoration-none text-light">Not Have Account?</a>
                             </div>
                         </div>
                     </div>
                     <button class="button-auth-login" type="submit">Login</button>
                 </form>
                 <div class="mt-2">
-                    <a href="{{route('password.request')}}" class="text-decoration-none text-light">Lupa Password?</a>
+                    <a href="{{route('password.request')}}" class="text-decoration-none text-light">Forgot Password?</a>
                 </div>
             </div>
         </div>

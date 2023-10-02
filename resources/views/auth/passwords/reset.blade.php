@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="title-auth">
                     <p class="fs-1">Reset Password</p>
-                    <p class="fs-5">Silakan Ganti Password Anda</p>
+                    <p class="fs-5">Please Change your Password </p>
                 </div>
                 @csrf
                 <form method="POST" action="{{ route('password.update') }}">
@@ -40,7 +40,7 @@
                     </div>
                 </form>
                 <div class="mt-2">
-                    <a href="{{route('login')}}" class="text-decoration-none text-light">Kembali</a>
+                    <a href="{{route('login')}}" class="text-decoration-none text-light">Back</a>
                 </div>
             </div>
         </div>

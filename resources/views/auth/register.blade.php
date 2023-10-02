@@ -8,15 +8,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="title-auth">
-                    <p class="fs-1">Daftar Akun</p>
-                    <p class="fs-5">Silakan daftar akun-mu jika belum mempunyai akun</p>
+                    <p class="fs-1">Register Account</p>
+                    <p class="fs-5">Please Create a new account if u dont have account</p>
                 </div>
                 @csrf
                 <!-- Form Page -->
                 <form action="{{route('register')}}" method="POST">
                     @csrf
                     <div class="mt-3">
-                        <input type="text" class="form-input @error('fullname') @enderror" name="fullname" value="{{ old('fullname') }}" id="fullname" placeholder="Nama Lengkap" required>
+                        <input type="text" class="form-input @error('fullname') @enderror" name="fullname" value="{{ old('fullname') }}" id="fullname" placeholder="Fullname" required>
                     </div>
                     <div class="mt-3">
                         <input type="email" class="form-input @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required>
@@ -36,14 +36,14 @@
                                 </div>
                             </div>
                             <div class="col-6 col-md-6 d-flex justify-content-end">
-                                <a href="{{route('login')}}" class="text-decoration-none text-light">Sudah Punya Akun?</a>
+                                <a href="{{route('login')}}" class="text-decoration-none text-light">Have Account?</a>
                             </div>
                         </div>
                     </div>
                     <button class="button-auth-login" type="submit" onclick="validation()">Register</button>
                 </form>
                 <div class="mt-2">
-                    <a href="password/reset" class="text-decoration-none text-light">Lupa Password?</a>
+                    <a href="password/reset" class="text-decoration-none text-light">Forgot Password?</a>
                 </div>
             </div>
         </div>
