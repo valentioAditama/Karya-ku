@@ -284,7 +284,7 @@ Route::prefix('home')->group(function () {
     Route::get('search', [HomeController::class, 'search'])->name('home.search');
 });
 
-// Laporan Page
+// Report Page
 Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
 Route::prefix('laporan')->group(function () {
     Route::post('/add', [LaporanController::class, 'store'])->name('laporan.add');
@@ -292,7 +292,7 @@ Route::prefix('laporan')->group(function () {
     Route::post('/delete/{id}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
 });
 
-// Tentang Kami Page
+// About us Page
 Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
 Route::prefix('tentang-kami')->group(function () {
     Route::post('/add', [TentangKamiController::class, 'store'])->name('tentang-kami.add');
@@ -300,7 +300,7 @@ Route::prefix('tentang-kami')->group(function () {
     Route::post('/delete/{id}', [TentangKamiController::class, 'destroy'])->name('tentang-kami.destroy');
 });
 
-// Kategori Page
+// Category Page
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
 Route::prefix('kategori')->group(function () {
     Route::get('/fotografi', [KategoriController::class, 'fotografi'])->name('kategori.fotografi');
@@ -318,7 +318,7 @@ Route::prefix('kategori')->group(function () {
 // review content Karya
 Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
 
-// Komunitas Page
+// Community Page
 Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
 Route::prefix('komunitas')->group(function () {
     // search komunitas
