@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\Home;
 use App\Http\Controllers\api\MyListKarya;
 use App\Http\Controllers\api\MyProfile;
 use App\Http\Controllers\api\UploadKarya;
@@ -62,20 +63,20 @@ Route::prefix('my-karya')->group(function () {
 // upload karya content
 Route::prefix('upload')->group(function () {
     Route::post('/add', [UploadKarya::class, 'store'])->name('upload.add');
-    
+
     // update from my list karya
     Route::get('/edit/{id}', [MyListKarya::class, 'edit'])->name('upload.edit');
     Route::post('/update/{id}', [MyListKarya::class, 'update'])->name('upload.update');
 });
 
 
-// // Guest
-// // Home Page 
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-// Route::prefix('home')->group(function () {
-//     // search
-//     Route::get('search', [HomeController::class, 'search'])->name('home.search');
-// });
+// Guest
+// Home Page 
+Route::get('/home', [Home::class, 'index'])->name('home');
+Route::prefix('home')->group(function () {
+    // search
+    Route::get('search', [Home::class, 'search'])->name('home.search');
+});
 
 // // Report Page
 // Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
