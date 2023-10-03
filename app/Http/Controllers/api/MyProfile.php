@@ -19,43 +19,44 @@ class MyProfile extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
         // get data social media
         // facebook
         $getSocialFacebook = DB::table('social_media')
-            ->where('id_user', '=', Auth::id())
+            ->where('id_user', '=', $id)
             ->where('brand_social_media', '=', 'Facebook')
             ->first();
 
         // Instagram
         $getSocialInstagram = DB::table('social_media')
-            ->where('id_user', '=', Auth::id())
+            ->where('id_user', '=', $id)
             ->where('brand_social_media', '=', 'Instagram')
             ->first();
 
         // Twitter
         $getSocialTwitter = DB::table('social_media')
-            ->where('id_user', '=', Auth::id())
+            ->where('id_user', '=', $id)
             ->where('brand_social_media', '=', 'Twitter')
             ->first();
 
         // Youtube
         $getSocialYoutube = DB::table('social_media')
-            ->where('id_user', '=', Auth::id())
+            ->where('id_user', '=', $id)
             ->where('brand_social_media', '=', 'Youtube')
             ->first();
 
         // Get Data From Skils
         $getDataSkills = DB::table('skills')
-            ->where('id_user', '=', Auth::id())
+            ->where('id_user', '=', $id)
             ->get();
 
         return response()->json([
             'code' => 200,
             'status' => 'OK',
             'data' => compact('getSocialFacebook', 'getSocialInstagram', 'getSocialTwitter', 'getSocialYoutube', 'getDataSkills')
-        ]);
+            // 'data' => $getDataSkills
+        ], 200);
     }
 
     public function login_change_password_check(Request $request, $id)

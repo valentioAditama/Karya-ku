@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12">
                         <div class="banner-laporan-title text-light">
-                            <p class="h2">Give <b>Comments</b> From You For<b>Karya-ku</b></p>
+                            <p class="h2">Give <b>Comments</b> From You For <b>Karya-ku</b></p>
                             <p class="banner-laporan-sub-title">
                                 Give a comments for us, because we will be can give you the best of quality <br>
                                 to candidate people want to become as ART.</p>

@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12">
                         <div class="banner-home-title text-light">
-                            <p class="h2">Search Art for you get<b>motivate</b></p>
+                            <p class="h2">Search Art for you get a <b>Inspiration</b></p>
                             <p class="banner-home-sub-title">
                                 Inspiration for work, culture and so on from people all over the world. <br>
                                 Find Inspiration and put your ideas into action now.
