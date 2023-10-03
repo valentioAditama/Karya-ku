@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\api\Home;
+use App\Http\Controllers\api\Kategori;
+use App\Http\Controllers\api\Komunitas;
 use App\Http\Controllers\api\MyListKarya;
 use App\Http\Controllers\api\MyProfile;
+use App\Http\Controllers\api\ReviewContentKarya;
+use App\Http\Controllers\api\TentangKami;
 use App\Http\Controllers\api\UploadKarya;
 use App\Http\Controllers\api\users;
 use Illuminate\Http\Request;
@@ -79,62 +83,58 @@ Route::prefix('home')->group(function () {
 });
 
 // // Report Page
-// Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
-// Route::prefix('laporan')->group(function () {
-//     Route::post('/add', [LaporanController::class, 'store'])->name('laporan.add');
-//     Route::post('/edit/{id}', [LaporanController::class, 'update'])->name('laporan.update');
-//     Route::post('/delete/{id}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
-// });
+Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+Route::prefix('laporan')->group(function () {
+    Route::post('/add', [LaporanController::class, 'store'])->name('laporan.add');
+    Route::post('/edit/{id}', [LaporanController::class, 'update'])->name('laporan.update');
+    Route::post('/delete/{id}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
+});
 
 // // About Us Page
-// Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
-// Route::prefix('tentang-kami')->group(function () {
-//     Route::post('/add', [TentangKamiController::class, 'store'])->name('tentang-kami.add');
-//     Route::post('/edit/{id}', [TentangKamiController::class, 'update'])->name('tentang-kami.update');
-//     Route::post('/delete/{id}', [TentangKamiController::class, 'destroy'])->name('tentang-kami.destroy');
-// });
+Route::prefix('tentang-kami')->group(function () {
+    Route::post('/add', [TentangKami::class, 'store'])->name('tentang-kami.add');
+});
 
-// // Category Page
-// Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
-// Route::prefix('kategori')->group(function () {
-//     Route::get('/fotografi', [KategoriController::class, 'fotografi'])->name('kategori.fotografi');
-//     Route::get('/desain-grafis', [KategoriController::class, 'desain_grafis'])->name('kategori.desain-grafis');
-//     Route::get('/seni-lukis', [KategoriController::class, 'seni_lukis'])->name('kategori.seni-lukis');
-//     Route::get('/tulisan-kreatif', [KategoriController::class, 'tulisan_kreatif'])->name('kategori.tulisan-kreatif');
-//     Route::get('/musik', [KategoriController::class, 'musik'])->name('kategori.musik');
-//     Route::get('/video-film-pendek', [KategoriController::class, 'video_film_pendek'])->name('kategori.video-film.pendek');
-//     Route::get('/kerajinan-tangan', [KategoriController::class, 'kerajinan_tangan'])->name('kategori.kerajinan-tangan');
-//     Route::get('/kuliner', [KategoriController::class, 'kuliner'])->name('kategori.kuliner');
-//     Route::get('/mode-dan-busana', [KategoriController::class, 'mode_dan_busana'])->name('kategori.mode-dan-busana');
-//     Route::get('/teknologi-dan-inovasi', [KategoriController::class, 'teknologi_dan_inovasi'])->name('kategori.teknologi-dan-inovasi');
-// });
+// Category Page
+Route::get('/kategori', [Kategori::class, 'index'])->name('kategori');
+Route::prefix('kategori')->group(function () {
+    Route::get('/fotografi', [Kategori::class, 'fotografi'])->name('kategori.fotografi');
+    Route::get('/desain-grafis', [Kategori::class, 'desain_grafis'])->name('kategori.desain-grafis');
+    Route::get('/seni-lukis', [Kategori::class, 'seni_lukis'])->name('kategori.seni-lukis');
+    Route::get('/tulisan-kreatif', [Kategori::class, 'tulisan_kreatif'])->name('kategori.tulisan-kreatif');
+    Route::get('/musik', [Kategori::class, 'musik'])->name('kategori.musik');
+    Route::get('/video-film-pendek', [Kategori::class, 'video_film_pendek'])->name('kategori.video-film.pendek');
+    Route::get('/kerajinan-tangan', [Kategori::class, 'kerajinan_tangan'])->name('kategori.kerajinan-tangan');
+    Route::get('/kuliner', [Kategori::class, 'kuliner'])->name('kategori.kuliner');
+    Route::get('/mode-dan-busana', [Kategori::class, 'mode_dan_busana'])->name('kategori.mode-dan-busana');
+    Route::get('/teknologi-dan-inovasi', [Kategori::class, 'teknologi_dan_inovasi'])->name('kategori.teknologi-dan-inovasi');
+});
 
 // // Review Content Karya Page
-// Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
+Route::get('/review-karyaku/{id}', [ReviewContentKarya::class, 'index'])->name('reviewKarya');
 
-// // Community Page 
-// Route::get('/komunitas', [KomunitasController::class, 'index'])->name('komunitas');
-// Route::prefix('komunitas')->group(function () {
-//     // search komunitas
-//     Route::get('/search', [KomunitasController::class, 'search'])->name('komunitas.search');
+// Community Page 
+Route::get('/komunitas', [Komunitas::class, 'index'])->name('komunitas');
+Route::prefix('komunitas')->group(function () {
+    // search komunitas
+    Route::get('/search', [Komunitas::class, 'search'])->name('komunitas.search');
 
-//     // get method
-//     Route::get('/create', [KomunitasController::class, 'create'])->name('komunitas.create');
-//     Route::get('/review/{id}', [KomunitasController::class, 'review'])->name('komunitas.review');
+    // get method
+    Route::get('/review/{id}', [Komunitas::class, 'review'])->name('komunitas.review');
 
-//     // create community
-//     Route::post('/create/community', [KomunitasController::class, 'store'])->name('komunitas.store');
+    // create community
+    Route::post('/create/community', [Komunitas::class, 'store'])->name('komunitas.store');
 
-//     // create community articel store
-//     Route::post('/create/articel/{id}', [KomunitasController::class, 'storeArticel'])->name('komunitas.storeArticel');
+    // create community articel store
+    Route::post('/create/articel/{id}', [Komunitas::class, 'storeArticel'])->name('komunitas.storeArticel');
 
-//     // add members for users
-//     Route::post('/create/articel/member/{id}', [KomunitasController::class, 'storeArticelMember'])->name('komunitas.storeArticelMember');
+    // add members for users
+    Route::post('/create/articel/member/{id}', [Komunitas::class, 'storeArticelMember'])->name('komunitas.storeArticelMember');
 
-//     // Create Likes and Unlikes
-//     Route::post('/create/articel/likes/{id}', [KomunitasController::class, 'storeArticelLikes'])->name('komunitas.storeArticelLikes');
+    // Create Likes and Unlikes
+    Route::post('/create/articel/likes/{id}', [Komunitas::class, 'storeArticelLikes'])->name('komunitas.storeArticelLikes');
 
-//     // review comment
-//     Route::get('/review/comment/{id}', [KomunitasController::class, 'reviewComment'])->name('komunitas.comment');
-//     Route::post('/review/comment/store', [KomunitasController::class, 'storeComment'])->name('komunitas.comment-store');
-// });
+    // review comment
+    Route::get('/review/comment/{id}', [Komunitas::class, 'reviewComment'])->name('komunitas.comment');
+    Route::post('/review/comment/store', [Komunitas::class, 'storeComment'])->name('komunitas.comment-store');
+});
