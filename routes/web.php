@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Auth
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
 
     // My Profiles
     Route::get('/my-profile/{id}', [MyProfileController::class, 'index'])->name('my-profile');
